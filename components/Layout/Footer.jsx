@@ -136,7 +136,7 @@ const Footer = () => {
         {`
           .footer-root {
             position: relative;
-            background-color: ${colors.primary.dark};
+            background-color: ${colors.background.dark};
             color: #fff;
           }
 

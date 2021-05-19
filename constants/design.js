@@ -22,6 +22,7 @@ export const colors = {
   background: {
     default: '#fff',
     light: '#fafafa',
+    dark: '#171347',
   },
   white: {
     main: '#fff',

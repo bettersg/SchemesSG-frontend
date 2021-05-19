@@ -1,7 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid, TextField, Button } from '@material-ui/core';
-import HeroContainer from '../../Container/HeroContainer';
+import {
+  Typography,
+  Grid,
+  TextField,
+  Button,
+  Container,
+} from '@material-ui/core';
 import { breakpoints } from '../../../constants/design';
 
 const useStyles = makeStyles(() => ({
@@ -22,7 +27,7 @@ const HomepageHero = () => {
   return (
     <>
       <section className='HomepageHero-root'>
-        <HeroContainer blue>
+        <Container maxWidth='lg'>
           <Grid container spacing={2} alignItems='center'>
             <Grid item lg={6}>
               <Typography
@@ -69,7 +74,7 @@ const HomepageHero = () => {
               />
             </Grid>
           </Grid>
-        </HeroContainer>
+        </Container>
       </section>
 
       <style jsx>
@@ -82,6 +87,10 @@ const HomepageHero = () => {
             padding: 0 5rem;
             text-align: center;
             color: #fff;
+          }
+
+          section {
+            padding: 3rem 0;
           }
 
           img {

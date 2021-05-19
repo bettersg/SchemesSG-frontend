@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import axios from 'axios';
 import {
   Typography,
@@ -7,13 +8,29 @@ import {
   Button,
   TextField,
   Paper,
+  Snackbar,
 } from '@material-ui/core';
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
+import {
+  Description,
+  Info,
+  Pageview,
+  RecordVoiceOver,
+} from '@material-ui/icons';
+import MuiAlert from '@material-ui/lab/Alert';
 import IconContainer from '../../Container/IconContainer';
-import { Description, Info, Pageview } from '@material-ui/icons';
-import Link from 'next/link';
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant='filled' {...props} />;
+}
+
 const ProductsIntro = () => {
   const [form, setForm] = React.useState({ Name: '', Email: '', Case: '' });
+  const [open, setOpen] = React.useState(false);
+  const [success, setSuccess] = React.useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,6 +44,13 @@ const ProductsIntro = () => {
     );
 
     const data = await res.data;
+    if (data) {
+      setOpen(true);
+      setSuccess(true);
+    } else {
+      setOpen(true);
+      setSuccess(false);
+    }
     console.log(data);
   };
   return (
@@ -53,7 +77,9 @@ const ProductsIntro = () => {
                   your AI referral companion
                 </Typography>
                 <div className='feature-description'>
-                  <IconContainer icon={<RecordVoiceOverIcon />} />
+                  <IconContainer
+                    icon={<RecordVoiceOver style={{ width: 20 }} />}
+                  />
                   <Typography variant='body1' style={{ marginLeft: 12 }}>
                     You can tell us about your needs and our AI engine will
                     trawl through our collated listings to search for schemes
@@ -61,7 +87,7 @@ const ProductsIntro = () => {
                   </Typography>
                 </div>
                 <div className='feature-description'>
-                  <IconContainer icon={<Info />} />
+                  <IconContainer icon={<Info style={{ width: 20 }} />} />
                   <Typography variant='body1' style={{ marginLeft: 12 }}>
                     More details on how to use the AI search tool on the Schemes
                     Pal page.
@@ -124,14 +150,14 @@ const ProductsIntro = () => {
                   through Schemes Bank and no schemes exist for your needs?
                 </Typography>
                 <div className='feature-description'>
-                  <IconContainer icon={<Description />} />
+                  <IconContainer icon={<Description style={{ width: 20 }} />} />
                   <Typography variant='body1' style={{ marginLeft: 12 }}>
                     There might be a case for further research to assist you and
                     also to update our Schemes Bank
                   </Typography>
                 </div>
                 <div className='feature-description'>
-                  <IconContainer icon={<Pageview />} />
+                  <IconContainer icon={<Pageview style={{ width: 20 }} />} />
                   <Typography variant='body1' style={{ marginLeft: 12 }}>
                     Drop us a note and our volunteers will help to search. If it
                     is a new trend or area, we might also do more research to
@@ -161,6 +187,7 @@ const ProductsIntro = () => {
                     id='outlined-full-width'
                     onChange={handleChange}
                     label='Email (optional, if you want us to reply you)'
+                    type='email'
                     placeholder='e.g. abc@123.com'
                     fullWidth
                     margin='normal'
@@ -199,6 +226,13 @@ const ProductsIntro = () => {
             </Grid>
           </Grid>
         </div>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity={success ? 'success' : 'error'}>
+            {success
+              ? 'Feedback received!'
+              : 'Apologies! An error occur during submission'}
+          </Alert>
+        </Snackbar>
       </Container>
       <style jsx>
         {`
