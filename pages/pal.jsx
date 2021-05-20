@@ -114,7 +114,7 @@ const Pal = ({ queryResults }) => {
               <Paper elevation={3}>
                 <form className='query-container' onSubmit={handleSubmit}>
                   <TextField
-                    id='query-input'
+                    id='outlined-full-width'
                     label='Tell us a few word'
                     rows={5}
                     multiline
@@ -122,6 +122,7 @@ const Pal = ({ queryResults }) => {
                     value={value}
                     onChange={handleChange}
                     variant='outlined'
+                    fullWidth
                   />
                   <Button
                     type='submit'
@@ -206,9 +207,8 @@ const Pal = ({ queryResults }) => {
           }
 
           form {
-            display: flex;
-            flex-direction: column;
             padding: 2rem;
+            text-align: center;
           }
 
           .search-results-container {

@@ -6,15 +6,15 @@ import PageHero from '../components/Sections/PageHero';
 import { colors } from '../constants/design';
 import Link from 'next/link';
 
-const Team = () => {
+const Bank = () => {
   return (
     <>
-      <Layout title='Team | Schemes SG'>
+      <Layout title='Bank | Schemes SG'>
         <PageHero
           title='Schemes Bank'
           subtitle='Full list of assistance listings compiled by our volunteers over time and accumulated through crowdsourcing.'
         />
-        <section className='Team-content'>
+        <section className='Bank-content'>
           <Container maxWidth='lg'>
             <div className='iframe-container'>
               <iframe
@@ -47,7 +47,7 @@ const Team = () => {
 
       <style jsx>
         {`
-          .Team-root {
+          .Bank-root {
             position: relative;
           }
 
@@ -87,4 +87,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Bank;
