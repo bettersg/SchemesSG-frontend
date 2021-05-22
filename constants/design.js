@@ -28,3 +28,9 @@ export const colors = {
     main: '#fff',
   },
 };
+
+export const updateColors = {
+  'Add listing': '#008aff',
+  'Edit listing': '#567568',
+  'System update': '#f25767',
+};
