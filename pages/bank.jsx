@@ -19,7 +19,7 @@ const Bank = () => {
             <div className='iframe-container'>
               <iframe
                 src='https://datastudio.google.com/embed/reporting/5621beb1-3a1e-486b-9121-66f25382eab0/page/v0CAC'
-                frameborder='0'
+                frameBorder='0'
                 allowFullScreen
               />
             </div>

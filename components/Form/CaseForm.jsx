@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 
@@ -22,20 +22,27 @@ const CaseForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post(
-      'https://script.google.com/macros/s/AKfycbyqGHt2p224ebUahB6XDOgxtru9fvXm3YonCKcPus--p8e57TFB/exec',
-      form
-    );
+    const scriptURLschemescase =
+      'https://script.google.com/macros/s/AKfycbyqGHt2p224ebUahB6XDOgxtru9fvXm3YonCKcPus--p8e57TFB/exec';
 
-    const data = await res.data;
-    if (data) {
-      setOpen(true);
-      setSuccess(true);
-    } else {
-      setOpen(true);
-      setSuccess(false);
-    }
-    console.log(data);
+    fetch(scriptURLschemescase, {
+      method: 'POST',
+      body: form,
+    })
+      .then((response) => {
+        if (response.status == 200) {
+          setOpen(true);
+          setSuccess(true);
+        } else {
+          setOpen(true);
+          setSuccess(false);
+        }
+      })
+      .catch((error) => {
+        console.error('Error!', error.message);
+        setOpen(true);
+        setSuccess(false);
+      });
   };
   return (
     <>
