@@ -1,4 +1,5 @@
 import Prismic from '@prismicio/client';
+import moment from 'moment';
 
 export const apiEndpoint = 'https://schemes.cdn.prismic.io/api/v2';
 
@@ -14,4 +15,8 @@ export const linkResolver = (doc) => {
 
   // Default to homepage
   return '/';
+};
+
+export const convertDate = (str) => {
+  return moment(str).format('MMMM D, YYYY');
 };

@@ -98,7 +98,7 @@ const Navbar = () => {
                   <TextLink text='Our Team' href='/team' />
                 </li>
                 <li>
-                  <TextLink text='Updates' href='/updates' />
+                  <TextLink text='Blog' href='/blog' />
                 </li>
                 <li>
                   <Button
@@ -176,7 +176,7 @@ const Navbar = () => {
                     <TextLink text='Our Team' href='/team' />
                   </ListItem>
                   <ListItem onClick={() => setSideMenu(false)}>
-                    <TextLink text='Updates' href='/updates' />
+                    <TextLink text='Blog' href='/blog' />
                   </ListItem>
                   <ListItem onClick={() => setSideMenu(false)}>
                     <Button

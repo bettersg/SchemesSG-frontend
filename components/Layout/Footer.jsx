@@ -91,8 +91,8 @@ const Footer = () => {
                   </div>
                   <div>
                     <TextLink
-                      text='Updates'
-                      href='/updates'
+                      text='Blog'
+                      href='/blog'
                       color='inherit'
                       variant='body1'
                     />
