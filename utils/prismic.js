@@ -7,9 +7,9 @@ export const client = Prismic.client(apiEndpoint);
 
 export const linkResolver = (doc) => {
   // Define the url depending on the document type
-  if (doc.type === 'updates') {
-    return '/updates/' + doc.uid;
-  } else if (doc.type === 'blog') {
+  if (doc.type === 'blog') {
+    return '/blog';
+  } else if (doc.type === 'blog_posts') {
     return '/blog/' + doc.uid;
   }
 

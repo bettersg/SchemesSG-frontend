@@ -26,7 +26,6 @@ const Blog = ({ posts, updates }) => {
     setAnchorEl(null);
   };
 
-  console.log(posts);
   return (
     <>
       <Layout title='Blog & Updates | Schemes SG'>
