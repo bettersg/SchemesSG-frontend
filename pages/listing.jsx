@@ -17,22 +17,25 @@ import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import CaseForm from '../components/Form/CaseForm';
+import AddListingForm from '../components/Form/AddListingForm';
+import EditListingForm from '../components/Form/EditListingForm';
+import FeedbackForm from '../components/Form/FeedbackForm';
 
 const forms = [
   {
     name: 'Add a listing',
     icon: <AddIcon style={{ marginRight: 8 }} />,
-    form: <CaseForm />,
+    form: <AddListingForm />,
   },
   {
     name: 'Edit a listing',
     icon: <EditIcon style={{ marginRight: 8 }} />,
-    form: <CaseForm />,
+    form: <EditListingForm />,
   },
   {
     name: 'Feedback',
     icon: <FeedbackIcon style={{ marginRight: 8 }} />,
-    form: <CaseForm />,
+    form: <FeedbackForm />,
   },
 ];
 
