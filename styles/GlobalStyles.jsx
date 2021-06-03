@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors } from '../constants/design';
+import { breakpoints, colors } from '../constants/design';
 
 const GlobalStyles = () => (
   <style global jsx>
@@ -18,6 +18,14 @@ const GlobalStyles = () => (
 
       .ss-blue {
         color: ${colors.primary.main};
+      }
+
+      @media only screen and (max-width: ${breakpoints.width.sm}px) {
+        html,
+        body,
+        #__next {
+          font-size: 14px;
+        }
       }
     `}
   </style>

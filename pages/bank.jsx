@@ -3,7 +3,7 @@ import { Container, Hidden, Typography } from '@material-ui/core';
 
 import Layout from '../components/Layout/Layout';
 import PageHero from '../components/Sections/PageHero';
-import { colors } from '../constants/design';
+import { breakpoints, colors } from '../constants/design';
 import Link from 'next/link';
 
 const Bank = () => {
@@ -65,7 +65,7 @@ const Bank = () => {
           }
 
           .iframe-container {
-            height: 880px;
+            height: 100vw;
           }
 
           iframe {
@@ -89,6 +89,12 @@ const Bank = () => {
 
           a:hover {
             opacity: 0.7;
+          }
+
+          @media only screen and (max-width: ${breakpoints.width.sm}px) {
+            .iframe-container {
+              height: 144vw;
+            }
           }
         `}
       </style>

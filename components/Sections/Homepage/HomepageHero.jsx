@@ -1,4 +1,5 @@
 import React from 'react';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -6,6 +7,7 @@ import {
   TextField,
   Button,
   Container,
+  Hidden,
 } from '@material-ui/core';
 import { breakpoints } from '../../../constants/design';
 
@@ -17,8 +19,17 @@ const useStyles = makeStyles(() => ({
     width: '280px',
     marginRight: 8,
   },
+  smInput: {
+    width: '100%',
+    marginRight: 0,
+  },
+  smButton: {
+    marginTop: '0.4rem',
+  },
 }));
 const HomepageHero = () => {
+  const sm = useMediaQuery(`(max-width: ${breakpoints.width.sm}px)`);
+
   const classes = useStyles();
   const [value, setValue] = React.useState('');
   const handleChange = (event) => {
@@ -29,7 +40,7 @@ const HomepageHero = () => {
       <section className='HomepageHero-root'>
         <Container maxWidth='lg'>
           <Grid container spacing={2} alignItems='center'>
-            <Grid item lg={6}>
+            <Grid item md={6} xs={12}>
               <Typography
                 variant='h2'
                 variantMapping={{ h2: 'h1' }}
@@ -46,7 +57,7 @@ const HomepageHero = () => {
               </Typography>
               <form className='query-container' action='/pal#search-results'>
                 <TextField
-                  className={classes.input}
+                  className={sm ? classes.smInput : classes.input}
                   id='query-input'
                   label='Enter your query'
                   name='query'
@@ -55,6 +66,7 @@ const HomepageHero = () => {
                   variant='outlined'
                 />
                 <Button
+                  className={sm ? classes.smButton : ''}
                   type='submit'
                   variant='contained'
                   color='primary'
@@ -67,12 +79,14 @@ const HomepageHero = () => {
               </Typography>
             </Grid>
 
-            <Grid item lg={6}>
-              <img
-                alt='Image placeholder'
-                src='/static/images/homepage/undraw_back_to_school_inwc (1).svg'
-              />
-            </Grid>
+            <Hidden smDown>
+              <Grid item md={6}>
+                <img
+                  alt='Image placeholder'
+                  src='/static/images/homepage/undraw_back_to_school_inwc (1).svg'
+                />
+              </Grid>
+            </Hidden>
           </Grid>
         </Container>
       </section>
@@ -106,6 +120,13 @@ const HomepageHero = () => {
           @media only screen and (max-width: ${breakpoints.width.md}px) {
             .HomepageHero-content {
               padding: 0 1rem;
+            }
+
+            .query-container {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              margin-bottom: 0.4rem;
             }
           }
         `}

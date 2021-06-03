@@ -21,7 +21,7 @@ const Case = () => {
           maxWidth='lg'
           style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
           <Grid container spacing={4} alignItems='center'>
-            <Grid item lg={6}>
+            <Grid item xs={12} md={6}>
               <Typography variant='h4' gutterBottom>
                 Reach out to us
               </Typography>
@@ -40,7 +40,7 @@ const Case = () => {
                 </Typography>
               </div>
             </Grid>
-            <Grid item lg={6}>
+            <Grid item xs={12} md={6}>
               <Paper elevation={3}>
                 <CaseForm />
               </Paper>

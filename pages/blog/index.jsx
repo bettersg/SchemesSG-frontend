@@ -37,7 +37,7 @@ const Blog = ({ posts, updates }) => {
           <Container maxWidth='lg'>
             <Grid container spacing={3}>
               {posts.map((post) => (
-                <Grid item sm={4}>
+                <Grid item xs={12} sm={6} md={4}>
                   <BlogpostCard post={post} />
                 </Grid>
               ))}

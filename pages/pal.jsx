@@ -76,7 +76,7 @@ const Pal = ({ queryResults }) => {
           maxWidth='lg'
           style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
           <Grid container spacing={4} alignItems='center'>
-            <Grid item lg={6}>
+            <Grid item xs={12} md={6}>
               <Typography variant='h4' gutterBottom>
                 How to use
               </Typography>
@@ -130,7 +130,7 @@ const Pal = ({ queryResults }) => {
                 </Typography>
               </div>
             </Grid>
-            <Grid item lg={6}>
+            <Grid item xs={12} md={6}>
               <Paper elevation={3}>
                 <form className='query-container' onSubmit={handleSubmit}>
                   <TextField
@@ -171,7 +171,7 @@ const Pal = ({ queryResults }) => {
                 </Typography>
                 <Grid container spacing={3}>
                   {searchResults.data.map((result) => (
-                    <Grid item lg={4}>
+                    <Grid item xs={12} sm={6} lg={4}>
                       <SchemeResultCard
                         scheme={result.Scheme}
                         agency={result.Agency}
