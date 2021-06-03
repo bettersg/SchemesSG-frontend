@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { breakpoints } from '../../constants/design';
+import { createFormData } from '../../utils';
 
 const useStyles = makeStyles(() => ({
   formControl: {
@@ -44,7 +45,7 @@ const FeedbackForm = () => {
 
     fetch(scriptURLfeedback, {
       method: 'POST',
-      body: form,
+      body: createFormData(form),
     })
       .then((response) => {
         if (response.status == 200) {

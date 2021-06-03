@@ -2,6 +2,7 @@ import React from 'react';
 // import axios from 'axios';
 import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
+import { createFormData } from '../../utils';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -27,7 +28,7 @@ const CaseForm = () => {
 
     fetch(scriptURLschemescase, {
       method: 'POST',
-      body: form,
+      body: createFormData(form),
     })
       .then((response) => {
         if (response.status == 200) {

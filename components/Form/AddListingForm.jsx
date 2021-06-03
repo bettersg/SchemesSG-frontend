@@ -3,6 +3,7 @@ import React from 'react';
 import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import { breakpoints } from '../../constants/design';
+import { createFormData } from '../../utils';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -28,7 +29,7 @@ const AddListingForm = () => {
 
     fetch(scriptURLadd, {
       method: 'POST',
-      body: form,
+      body: createFormData(form),
     })
       .then((response) => {
         if (response.status == 200) {
