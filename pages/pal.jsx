@@ -18,6 +18,7 @@ import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { colors } from '../constants/design';
 import SchemeResultCard from '../components/Card/SchemeResultCard';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -34,6 +35,16 @@ const Pal = ({ queryResults }) => {
   const [searchResults, setSearchResults] = React.useState(queryResults);
   const [loading, setLoading] = React.useState(false);
   const [value, setValue] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
   const handleChange = (event) => {
     setValue(event.target.value);
   };
@@ -77,13 +88,22 @@ const Pal = ({ queryResults }) => {
                   <br />
                   <strong>DO NOT</strong> give identifiable info like NRIC or
                   name.{' '}
-                  <LightTooltip
-                    title='We record the query text but only for a short period of time. This is to train the AI model and improve its accuracy to serve you better. We are unable to identify the individuals who entered the query or who it refers to. You can help us ensure an even greater level of security by not providing names or identifiable detail.'
-                    placement='right'>
-                    <span className='tooltip-text'>
-                      Important: please read this.
-                    </span>
-                  </LightTooltip>
+                  <ClickAwayListener onClickAway={handleTooltipClose}>
+                    <LightTooltip
+                      title='We record the query text but only for a short period of time. This is to train the AI model and improve its accuracy to serve you better. We are unable to identify the individuals who entered the query or who it refers to. You can help us ensure an even greater level of security by not providing names or identifiable detail.'
+                      placement='right'
+                      onClose={handleTooltipClose}
+                      open={open}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener>
+                      <span
+                        className='tooltip-text'
+                        onClick={handleTooltipOpen}>
+                        Important: please read this.
+                      </span>
+                    </LightTooltip>
+                  </ClickAwayListener>
                 </Typography>
               </div>
               <div className='feature-description'>
@@ -138,7 +158,7 @@ const Pal = ({ queryResults }) => {
           </Grid>
         </Container>
         {!!searchResults && searchResults !== 'nil' && searchResults.data && (
-          <div className='search-results-container'>
+          <div className='search-results-container' id='search-results'>
             {loading ? (
               <p>loading...</p>
             ) : (
@@ -163,6 +183,15 @@ const Pal = ({ queryResults }) => {
                     </Grid>
                   ))}
                 </Grid>
+                <Button
+                  type='button'
+                  variant='outlined'
+                  color='primary'
+                  disableElevation
+                  onClick={() => window.scrollTo({ top: 0 })}
+                  style={{ marginTop: '2rem' }}>
+                  <Typography variant='subtitle1'>Back to Top</Typography>
+                </Button>
               </Container>
             )}
           </div>

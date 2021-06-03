@@ -1,6 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { Typography, Container, Grid, Button, Paper } from '@material-ui/core';
+import {
+  Typography,
+  Container,
+  Grid,
+  Button,
+  Paper,
+  Hidden,
+} from '@material-ui/core';
 import {
   Description,
   Info,
@@ -9,6 +16,7 @@ import {
 } from '@material-ui/icons';
 import IconContainer from '../../Container/IconContainer';
 import CaseForm from '../../Form/CaseForm';
+import { breakpoints } from '../../../constants/design';
 
 const ProductsIntro = () => {
   return (
@@ -84,10 +92,16 @@ const ProductsIntro = () => {
               look through the listings).
             </Typography>
           </div>
-          <iframe
-            src='https://datastudio.google.com/embed/reporting/5621beb1-3a1e-486b-9121-66f25382eab0/page/v0CAC'
-            frameBorder='0'
-          />
+
+          <Hidden xsDown>
+            <iframe
+              src='https://datastudio.google.com/embed/reporting/5621beb1-3a1e-486b-9121-66f25382eab0/page/v0CAC'
+              frameBorder='0'
+            />
+          </Hidden>
+          <Hidden smUp>
+            <iframe src='https://datastudio.google.com/embed/reporting/e9511193-d184-432c-9db7-12061cd74d93/page/0V2DC' />
+          </Hidden>
         </div>
 
         <div className='product-intro-container'>
@@ -169,7 +183,13 @@ const ProductsIntro = () => {
 
           iframe {
             width: 100%;
-            height: 620px;
+            height: 40vw;
+          }
+
+          @media only screen and (max-width: ${breakpoints.width.sm}px) {
+            iframe {
+              height: 150vw;
+            }
           }
         `}
       </style>
