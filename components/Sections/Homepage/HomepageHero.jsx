@@ -44,7 +44,7 @@ const HomepageHero = () => {
                 Singapore, from government agencies, to VWOs, charities,
                 self-help groups and more.
               </Typography>
-              <form className='query-container' action='/pal'>
+              <form className='query-container' action='/pal#search-results'>
                 <TextField
                   className={classes.input}
                   id='query-input'
