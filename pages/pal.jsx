@@ -19,6 +19,7 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { colors } from '../constants/design';
 import SchemeResultCard from '../components/Card/SchemeResultCard';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import { createFormData } from '../utils';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -31,11 +32,25 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
-const Pal = ({ queryResults }) => {
+const Pal = ({ queryResults, query }) => {
   const [searchResults, setSearchResults] = React.useState(queryResults);
   const [loading, setLoading] = React.useState(false);
   const [value, setValue] = React.useState('');
   const [open, setOpen] = React.useState(false);
+
+  React.useEffect(async () => {
+    if (query) {
+      const scriptURLpalquery =
+        'https://script.google.com/macros/s/AKfycbwgKnPhUBHnlGJ3YudlSeaMfjUe9mPaI-N3Sbz9uar52oDDFf0/exec';
+
+      fetch(scriptURLpalquery, {
+        method: 'POST',
+        body: createFormData(query),
+      })
+        .then((response) => console.log('Done!', response))
+        .catch((error) => console.error('Error!', error.message));
+    }
+  }, []);
 
   const handleTooltipClose = () => {
     setOpen(false);
@@ -58,8 +73,20 @@ const Pal = ({ queryResults }) => {
     );
 
     const data = await res.data;
+
     setSearchResults(data);
     setLoading(false);
+
+    const scriptURLpalquery =
+      'https://script.google.com/macros/s/AKfycbwgKnPhUBHnlGJ3YudlSeaMfjUe9mPaI-N3Sbz9uar52oDDFf0/exec';
+
+    fetch(scriptURLpalquery, {
+      method: 'POST',
+      body: createFormData({ Query: value }),
+    })
+      .then((response) => console.log('Done!', response.status))
+      .catch((error) => console.error('Error!', error.message));
+
     const url = new URL(window.location);
     url.searchParams.set('query', value);
     window.history.pushState({}, '', url);
@@ -267,10 +294,10 @@ export async function getServerSideProps(context) {
   );
 
   const queryResults = await res.data;
-
   return {
     props: {
       queryResults,
+      query: context.query.query ? { Query: context.query.query } : null,
     },
   };
 }
