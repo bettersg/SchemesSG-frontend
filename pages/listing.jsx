@@ -3,7 +3,6 @@ import Link from 'next/link';
 import {
   Container,
   Typography,
-  Paper,
   Accordion,
   AccordionSummary,
   AccordionDetails,
@@ -16,7 +15,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FeedbackIcon from '@material-ui/icons/Feedback';
-import CaseForm from '../components/Form/CaseForm';
 import AddListingForm from '../components/Form/AddListingForm';
 import EditListingForm from '../components/Form/EditListingForm';
 import FeedbackForm from '../components/Form/FeedbackForm';
@@ -39,8 +37,8 @@ const forms = [
   },
 ];
 
-const Listing = () => {
-  const [expanded, setExpanded] = React.useState(0);
+const Listing = ({ form }) => {
+  const [expanded, setExpanded] = React.useState(form === "feedback" ? 2 : 0);
 
   const handleAccordion = (panel) => (isExpanded) => {
     setExpanded(isExpanded ? panel : 0);
@@ -62,7 +60,9 @@ const Listing = () => {
                 expanded={expanded === i}
                 onChange={handleAccordion(i)}
                 key={form.name}
-                style={{ margin: '16px 0' }}>
+                style={{ margin: '16px 0' }}
+                id={i === 2 ? "feedback" : ""}
+              >
                 <AccordionSummary
                   expandIcon={expanded !== i && <ExpandMoreIcon />}
                   aria-controls='panel1bh-content'
@@ -121,5 +121,11 @@ const Listing = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  return {
+    props: context.query, 
+  }
+}
 
 export default Listing;

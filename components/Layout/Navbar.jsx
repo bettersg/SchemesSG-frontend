@@ -131,10 +131,10 @@ const Navbar = () => {
                   <ListItem onClick={() => setSideMenu(false)}>
                     <ImgLink
                       href='/'
-                      img='/static/logos/scantistLogo.png'
+                      img='/static/logos/dark.svg'
                       alt='Schemes SG Logo'
-                      height='48'
-                      width='200'
+                      height='27'
+                      width='130'
                     />
                   </ListItem>
 

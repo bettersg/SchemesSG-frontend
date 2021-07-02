@@ -115,7 +115,7 @@ const Footer = () => {
                   <div>
                     <TextLink
                       text='Provide feedback'
-                      href='/feedback'
+                      href='/listing?form=feedback#feedback'
                       color='inherit'
                       variant='body1'
                     />
