@@ -38,7 +38,7 @@ const ProductsIntro = () => {
               style={{ display: 'flex', alignItems: 'center' }}>
               <div className='content'>
                 <Typography variant='h4' color='primary' gutterBottom>
-                  <b>[Beta] Schemes Pal</b>
+                  <b>Schemes Pal</b>
                   <br />
                   your AI referral companion
                 </Typography>
@@ -83,13 +83,7 @@ const ProductsIntro = () => {
           </Typography>
           <div className='feature-description bank-subtitle'>
             <Typography variant='body1'>
-              We've consolidated public-domain listings of schemes provided by
-              government, VWOs, self-help groups and other assistance sources,
-              and made them filterable so that you can quickly zero in on your
-              needs. This list is constantly being updated. Currently this is
-              best viewed on Desktop (if you are on mobile, tap once on the main
-              area of the Bank to activate the inner scrollbar and scroll to
-              look through the listings).
+              We've consolidated public listings of government, VWO, self-help group schemes and made them filterable. We constantly update the list. Best viewed on Desktop. If you're on mobile tap on the Bank's main area to activate the inner scrollbar.
             </Typography>
           </div>
 
@@ -113,27 +107,23 @@ const ProductsIntro = () => {
               style={{ display: 'flex', alignItems: 'center' }}>
               <div className='content'>
                 <Typography variant='h4' color='primary' gutterBottom>
-                  <b>[Beta] Schemes Case</b>
+                  <b>Schemes Case</b>
                   <br />
-                  Engage one of our volunteers
+                  Engage our volunteers
                 </Typography>
                 <Typography variant='body1'>
-                  Can't find anything you need using Schemes Pal? Trawled
-                  through Schemes Bank and no schemes exist for your needs?
+                  Can't find anything that meets your needs using the AI or by manually filtering?
                 </Typography>
                 <div className='feature-description'>
                   <IconContainer icon={<Description style={{ width: 20 }} />} />
                   <Typography variant='body1' style={{ marginLeft: 12 }}>
-                    There might be a case for further research to assist you and
-                    also to update our Schemes Bank
+                    We can help with further research to assist you.
                   </Typography>
                 </div>
                 <div className='feature-description'>
                   <IconContainer icon={<Pageview style={{ width: 20 }} />} />
                   <Typography variant='body1' style={{ marginLeft: 12 }}>
-                    Drop us a note and our volunteers will help to search. If it
-                    is a new trend or area, we might also do more research to
-                    shed light on it.
+                    If it is a new trend or unmet social need, we might also write to shed light on it.
                   </Typography>
                 </div>
               </div>

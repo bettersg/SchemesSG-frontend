@@ -9,6 +9,11 @@ const theme = createMuiTheme({
         textTransform: 'none',
       },
     },
+    MuiInputLabel: {
+      outlined: {
+        textAlign: 'left',
+      },
+    },
   },
   typography: {
     fontFamily: `'Nunito Sans', sans-serif`,

@@ -21,27 +21,15 @@ const about = [
     name: 'How it started',
     description: (
       <>
-        Having volunteered with various social sector organisations since 2012,
-        I mentally accumulated a list of assistance schemes provided by various
-        institutions. This information was shared informally with my social
-        worker friends or volunteers when they had to refer beneficiaries to
-        sources of help. Over the years, I realised my friends also had their
-        own lists, and we would share these resources. I have always thought
-        that, if all this tacit knowledge were properly KM-ed, they could be
-        quite a powerful resource for the social sector.
+        Schemes SG started as a side project by our product lead. A long-time volunteer with various VWOs, he collated a "help-list" to facilitate referral work and built a quick front-end to share these resources with his friends. The resource gained unexpected traction with social workers and volunteers. Sensing that a consolidated directory could address care workers' pain point of having to navigate the confusing social assistance landscape, he gathered like-minded individuals from friends and the
+        <a href='https://better.sg' target='_blank' rel='noopener noreferrer'> better.sg </a>
+        tech community to improve the tool.
         <br />
         <br />
-        In 2017, I picked up AI and full stack programming. The idea continued
-        sitting at the back of my head, until I had to create an app for a
-        polytechnic class project. I built a quick prototype with this topic,
-        and people started asking me to take this idea further. After some quick
-        user research and iteration, I revamped the product and launched an MVP
-        in Jan 2021 which quickly gained traction amongst social workers and
-        volunteers.
+        The team engaged social workers, caregivers and friends to understand lived experiences and help-seeking practices. They found that social needs are often intertwined, and if technology could improve the search process by making sense of the entangled issues that people face, it would immensely alleviate mental burden faced by help-seekers and professionals. This inspired our natural language search tool and tagging system.
         <br />
         <br />
-        That was when I realised: hey, there is a chance to build something
-        really impactful with this!
+        Schemes SG is ultimately what we hope to build for the community, with the community. Your continued usage, feedback, searches and contribution of crowdsourced assistance listings help this tool get better everyday.
       </>
     ),
     icon: <WbIncandescentIcon style={{ marginRight: 8 }} />,
@@ -50,32 +38,19 @@ const about = [
     name: 'What this platform tries to solve',
     description: (
       <>
-        Very serious thought was put in before investing effort to build Schemes
-        SG. My initial landscape scans and user research led me to realise:
+        Serious thought was put in before building Schemes SG. Initial landscape scans led to the realisation that:
         <br />
         <br />
-        1. Social assistance listings are piecemeal and information is
-        fragmented across multiple sites. There are several compilations, but
-        they are often PDF files hidden deep within the file repositories of
-        organisations' websites, so they may not be easy to find.
+        1. Social assistance listings were piecemeal and information was fragmented across various sites. There were some compilations, but they were often PDF files hidden within the repositories of organisations' websites, so they might not be easy to find. Search engines might also miss them.
         <br />
         <br />
-        2. Even if one can get their hands on a compilation, no one will Ctrl +
-        F all of them to find different schemes given how complex and
-        multifaceted social assistance is. The volume of information is just
-        mind-boggling.
+        2. Even if one could get their hands on a compilation, it would take a million "Ctrl + F"s and painstaking excavation to find schemes, given how complex social assistance is. The volume of information was simply mind-boggling.
         <br />
         <br />
-        3. The listings may not necessarily be updated. New versions are usually
-        held in completely different links. These PDF listings also mean that
-        social workers and volunteers have to depend on the original poster to
-        issue a new version.
+        3. The listings might not necessarily be updated. New versions were usually held in completely different links. PDF listings also meant that social workers and volunteers had to depend on the original poster to issue a new version should there be changes.
         <br />
         <br />
-        4. There are actually some intuitive directories (e.g. SupportGoWhere
-        has done a great job). But these are primarily government portals and
-        may not include NGO or VWO schemes. Again, the power of the
-        crowdsourcing could be useful here.
+        4. There were actually intuitive directories (e.g. SupportGoWhere has done a great job), but they were primarily government portals and might not include NGO or VWO schemes. Again, the power of the crowdsourcing could be useful here, given the size of the non-profit sector.
         <br />
         <br />
         This portal hopes to address the above issues by tapping on the power of
@@ -216,12 +191,7 @@ const About = () => {
               </Typography>
             </div>
             <Typography variant='h6'>
-              Our vision is to empower social workers, volunteers, and in the
-              long run even self-help users, to navigate and obtain relevant
-              information on social assistance in Singapore quickly, easily and
-              accurately. We tap on the power of crowdsourcing to keep
-              information comprehensive and updated. We then leverage technology
-              to make this information more navigable.
+              Our vision is to empower social workers, volunteers, and in the long run self-help users, to obtain relevant information on social assistance in Singapore quickly, easily and accurately. We tap on the power of crowdsourcing to keep information comprehensive and updated, and leverage technology to make this information navigable.
             </Typography>
 
             <div className='About-accordions'>
