@@ -9,7 +9,7 @@ import {
   Button,
   Paper,
 } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Layout from '../components/Layout/Layout';
 import PageHero from '../components/Sections/PageHero';
 import IconContainer from '../components/Container/IconContainer';
@@ -20,6 +20,7 @@ import { colors } from '../constants/design';
 import SchemeResultCard from '../components/Card/SchemeResultCard';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { createFormData } from '../utils';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
@@ -32,7 +33,16 @@ const LightTooltip = withStyles((theme) => ({
   },
 }))(Tooltip);
 
+const useStyles = makeStyles(() => ({
+  btnText: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+}));
+
 const Pal = ({ queryResults, query }) => {
+  const classes = useStyles();
   const [searchResults, setSearchResults] = React.useState(queryResults);
   const [loading, setLoading] = React.useState(false);
   const [value, setValue] = React.useState('');
@@ -176,8 +186,11 @@ const Pal = ({ queryResults, query }) => {
                     variant='contained'
                     color='primary'
                     disableElevation
-                    style={{ marginTop: '1rem' }}>
-                    <Typography variant='subtitle1'>Search</Typography>
+                    style={{ marginTop: '1rem' }}
+                    disabled={loading}>
+                    <Typography variant='subtitle1' className={classes.btnText}>
+                      {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Search"}
+                    </Typography>
                   </Button>
                 </form>
               </Paper>

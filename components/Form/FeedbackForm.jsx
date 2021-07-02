@@ -12,10 +12,16 @@ import {
 import MuiAlert from '@material-ui/lab/Alert';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(() => ({
   formControl: {
     width: '100%',
+  },
+  btnText: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 }));
 
@@ -29,6 +35,7 @@ const FeedbackForm = () => {
   const [form, setForm] = React.useState({ NPS: '5' });
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClose = () => {
     setOpen(false);
@@ -40,6 +47,7 @@ const FeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const scriptURLfeedback =
       'https://script.google.com/macros/s/AKfycbwN3CXj_MHbWqSU_HuoIMUbjrPFZc0WKKs6d0HLiW2qXZ0ih_5G/exec';
 
@@ -51,15 +59,18 @@ const FeedbackForm = () => {
         if (response.status == 200) {
           setOpen(true);
           setSuccess(true);
+          setLoading(false);
         } else {
           setOpen(true);
           setSuccess(false);
+          setLoading(false);
         }
       })
       .catch((error) => {
         console.error('Error!', error.message);
         setOpen(true);
         setSuccess(false);
+        setLoading(false);
       });
   };
   return (
@@ -147,8 +158,11 @@ const FeedbackForm = () => {
           variant='contained'
           color='primary'
           style={{ marginTop: 16 }}
-          disableElevation>
-          <Typography variant='subtitle1'>Submit Feedback</Typography>
+          disableElevation
+          disabled={loading}>
+          <Typography variant='subtitle1' className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Submit Feedback"}
+          </Typography>
         </Button>
       </form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

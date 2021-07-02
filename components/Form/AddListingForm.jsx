@@ -1,18 +1,30 @@
 import React from 'react';
 // import axios from 'axios';
 import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant='filled' {...props} />;
 }
 
+const useStyles = makeStyles(() => ({
+  btnText: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}));
+
 const AddListingForm = () => {
+  const classes = useStyles();
   const [form, setForm] = React.useState({});
   const [open, setOpen] = React.useState(false);
   const [success, setSuccess] = React.useState(true);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClose = () => {
     setOpen(false);
@@ -24,6 +36,7 @@ const AddListingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const scriptURLadd =
       'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
 
@@ -35,15 +48,18 @@ const AddListingForm = () => {
         if (response.status == 200) {
           setOpen(true);
           setSuccess(true);
+          setLoading(false);
         } else {
           setOpen(true);
           setSuccess(false);
+          setLoading(false);
         }
       })
       .catch((error) => {
         console.error('Error!', error.message);
         setOpen(true);
         setSuccess(false);
+        setLoading(false);
       });
   };
   return (
@@ -152,8 +168,11 @@ const AddListingForm = () => {
           variant='contained'
           color='primary'
           style={{ marginTop: 16 }}
-          disableElevation>
-          <Typography variant='subtitle1'>Add Listing</Typography>
+          disableElevation
+          disabled={loading}>
+          <Typography variant='subtitle1' className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Add Listing"}
+          </Typography>
         </Button>
       </form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
