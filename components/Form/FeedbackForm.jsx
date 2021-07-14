@@ -10,9 +10,9 @@ import {
   InputLabel,
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(() => ({
   formControl: {
@@ -26,7 +26,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const FeedbackForm = () => {
@@ -48,15 +48,14 @@ const FeedbackForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const scriptURLfeedback =
-      'https://script.google.com/macros/s/AKfycbwN3CXj_MHbWqSU_HuoIMUbjrPFZc0WKKs6d0HLiW2qXZ0ih_5G/exec';
+    const scriptURLfeedback = 'https://script.google.com/macros/s/AKfycbwN3CXj_MHbWqSU_HuoIMUbjrPFZc0WKKs6d0HLiW2qXZ0ih_5G/exec';
 
     fetch(scriptURLfeedback, {
       method: 'POST',
       body: createFormData(form),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -75,93 +74,96 @@ const FeedbackForm = () => {
   };
   return (
     <>
-      <form className='FeedbackForm-root' onSubmit={handleSubmit}>
+      <form className="FeedbackForm-root" onSubmit={handleSubmit}>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label='Name'
-          placeholder='e.g. John Tan'
+          label="Name"
+          placeholder="e.g. John Tan"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Name'
+          name="Name"
         />
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label='Email (optional, if you want us to reply you)'
-          type='email'
-          placeholder='e.g. abc@123.com'
+          label="Email (optional, if you want us to reply you)"
+          type="email"
+          placeholder="e.g. abc@123.com"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
-          name='Email'
+          variant="outlined"
+          name="Email"
         />
         <FormControl
-          variant='outlined'
-          margin='normal'
-          className={classes.formControl}>
-          <InputLabel htmlFor='nps-field-label'>
+          variant="outlined"
+          margin="normal"
+          className={classes.formControl}
+        >
+          <InputLabel htmlFor="nps-field-label">
             From 1 (least likely) to 10 (most likely), how likely are you to
             recommend this app to someone else?
           </InputLabel>
           <Select
             native
-            name='NPS'
+            name="NPS"
             value={form.NPS}
             onChange={handleChange}
-            label='From 1 (least likely) to 10 (most likely), how likely are you to
-            recommend this app to someone else?'
+            label="From 1 (least likely) to 10 (most likely), how likely are you to
+            recommend this app to someone else?"
             inputProps={{
               name: 'NPS',
               id: 'nps-field-label',
-            }}>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option selected value='5'>
+            }}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option selected value="5">
               5
             </option>
-            <option value='6'>6</option>
-            <option value='7'>7</option>
-            <option value='8'>8</option>
-            <option value='9'>9</option>
-            <option value='10'>10</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
           </Select>
         </FormControl>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label='Feedback'
-          placeholder='Any other general feedback for us?'
+          label="Feedback"
+          placeholder="Any other general feedback for us?"
           multiline
           rows={3}
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Feedback'
+          name="Feedback"
         />
         <Button
-          type='submit'
-          variant='contained'
-          color='primary'
+          type="submit"
+          variant="contained"
+          color="primary"
           style={{ marginTop: 16 }}
           disableElevation
-          disabled={loading}>
-          <Typography variant='subtitle1' className={classes.btnText}>
-            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Submit Feedback"}
+          disabled={loading}
+        >
+          <Typography variant="subtitle1" className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Submit Feedback'}
           </Typography>
         </Button>
       </form>

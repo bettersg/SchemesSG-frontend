@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import {
   AppBar,
@@ -16,9 +17,9 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Link from 'next/link';
 import TextLink from '../Links/TextLink';
 import ImgLink from '../Links/ImgLink';
-import Link from 'next/link';
 
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
@@ -32,27 +33,28 @@ const Navbar = () => {
     setAnchorEl(null);
   };
   return (
-    <div className='navbar-root'>
-      <AppBar position='static' elevation={0} color='transparent'>
-        <Container maxWidth='lg'>
-          <div className='navbar-flexbox'>
+    <div className="navbar-root">
+      <AppBar position="static" elevation={0} color="transparent">
+        <Container maxWidth="lg">
+          <div className="navbar-flexbox">
             <ImgLink
-              href='/'
-              img='/static/logos/dark.svg'
-              alt='Schemes SG Logo'
-              height='27'
-              width='130'
+              href="/"
+              img="/static/logos/dark.svg"
+              alt="Schemes SG Logo"
+              height="27"
+              width="130"
             />
 
             <Hidden smDown>
-              <ul className='navs'>
+              <ul className="navs">
                 <li onMouseEnter={handleClick}>
                   <Typography
-                    variant='subtitle1'
-                    color='textSecondary'
-                    aria-controls='simple-menu'
-                    aria-haspopup='true'
-                    onClick={handleClick}>
+                    variant="subtitle1"
+                    color="textSecondary"
+                    aria-controls="simple-menu"
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                  >
                     <span>
                       Products
                       <KeyboardArrowDownIcon
@@ -61,52 +63,54 @@ const Navbar = () => {
                     </span>
                   </Typography>
                   <Menu
-                    id='simple-menu'
+                    id="simple-menu"
                     anchorEl={anchorEl}
                     keepMounted
                     autoFocus={false}
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
-                    MenuListProps={{ onMouseLeave: handleClose }}>
-                    <Link href='/pal' passHref>
+                    MenuListProps={{ onMouseLeave: handleClose }}
+                  >
+                    <Link href="/pal" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text='Schemes Pal' href='/pal' />
+                          <TextLink text="Schemes Pal" href="/pal" />
                         </MenuItem>
                       </a>
                     </Link>
-                    <Link href='/bank' passHref>
+                    <Link href="/bank" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text='Schemes Bank' href='/bank' />
+                          <TextLink text="Schemes Bank" href="/bank" />
                         </MenuItem>
                       </a>
                     </Link>
-                    <Link href='/case' passHref>
+                    <Link href="/case" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text='Schemes Case' href='/case' />
+                          <TextLink text="Schemes Case" href="/case" />
                         </MenuItem>
                       </a>
                     </Link>
                   </Menu>
                 </li>
                 <li>
-                  <TextLink text='About' href='/about' />
+                  <TextLink text="About" href="/about" />
                 </li>
                 <li>
-                  <TextLink text='Our Team' href='/team' />
+                  <TextLink text="Our Team" href="/team" />
                 </li>
                 <li>
-                  <TextLink text='Blog' href='/blog' />
+                  <TextLink text="Blog" href="/blog" />
                 </li>
                 <li>
                   <Button
-                    href='/listing'
-                    variant='contained'
-                    color='primary'
-                    disableElevation>
-                    <Typography variant='subtitle1' color='white'>
+                    href="/listing"
+                    variant="contained"
+                    color="primary"
+                    disableElevation
+                  >
+                    <Typography variant="subtitle1" color="white">
                       Add Listing
                     </Typography>
                   </Button>
@@ -116,10 +120,11 @@ const Navbar = () => {
             <Hidden mdUp>
               {' '}
               <IconButton
-                color='textSecondary'
-                aria-label='open drawer'
+                color="textSecondary"
+                aria-label="open drawer"
                 onClick={() => setSideMenu(true)}
-                edge='start'>
+                edge="start"
+              >
                 <MenuIcon
                   style={{
                     fontSize: '1.8rem',
@@ -130,16 +135,16 @@ const Navbar = () => {
                 <List>
                   <ListItem onClick={() => setSideMenu(false)}>
                     <ImgLink
-                      href='/'
-                      img='/static/logos/dark.svg'
-                      alt='Schemes SG Logo'
-                      height='27'
-                      width='130'
+                      href="/"
+                      img="/static/logos/dark.svg"
+                      alt="Schemes SG Logo"
+                      height="27"
+                      width="130"
                     />
                   </ListItem>
 
                   <ListItem onClick={() => setOpen(!open)}>
-                    <Typography variant='subtitle1' color='textSecondary'>
+                    <Typography variant="subtitle1" color="textSecondary">
                       <span>
                         Products
                         {open ? (
@@ -155,36 +160,37 @@ const Navbar = () => {
                     </Typography>
                   </ListItem>
 
-                  <Collapse in={open} timeout='auto' unmountOnExit>
+                  <Collapse in={open} timeout="auto" unmountOnExit>
                     <List disablePadding style={{ paddingLeft: 12 }}>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text='Schemes Pal' href='/pal' />
+                        <TextLink text="Schemes Pal" href="/pal" />
                       </ListItem>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text='Schemes Bank' href='/bank' />
+                        <TextLink text="Schemes Bank" href="/bank" />
                       </ListItem>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text='Schemes Case' href='/case' />
+                        <TextLink text="Schemes Case" href="/case" />
                       </ListItem>
                     </List>
                   </Collapse>
 
                   <ListItem onClick={() => setSideMenu(false)}>
-                    <TextLink text='About' href='/about' />
+                    <TextLink text="About" href="/about" />
                   </ListItem>
                   <ListItem onClick={() => setSideMenu(false)}>
-                    <TextLink text='Our Team' href='/team' />
+                    <TextLink text="Our Team" href="/team" />
                   </ListItem>
                   <ListItem onClick={() => setSideMenu(false)}>
-                    <TextLink text='Blog' href='/blog' />
+                    <TextLink text="Blog" href="/blog" />
                   </ListItem>
                   <ListItem onClick={() => setSideMenu(false)}>
                     <Button
-                      href='/listing'
-                      variant='contained'
-                      color='primary'
-                      disableElevation>
-                      <Typography variant='subtitle1' color='white'>
+                      href="/listing"
+                      variant="contained"
+                      color="primary"
+                      disableElevation
+                    >
+                      <Typography variant="subtitle1" color="white">
                         Add Listing
                       </Typography>
                     </Button>
