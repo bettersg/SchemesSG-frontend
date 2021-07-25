@@ -3,6 +3,7 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable no-nested-ternary */
 import React from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import Link from 'next/link';
 import {
@@ -58,26 +59,14 @@ const marks = [
   },
 ];
 
-const Pal = ({ queryResults, query }) => {
+const Pal = () => {
+  const { query } = useRouter();
   const classes = useStyles();
-  const [searchResults, setSearchResults] = React.useState(queryResults);
+  const [searchResults, setSearchResults] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [value, setValue] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [relevanceScore, setRelevanceScore] = React.useState(20);
-
-  React.useEffect(async () => {
-    if (query) {
-      const scriptURLpalquery = 'https://script.google.com/macros/s/AKfycbwgKnPhUBHnlGJ3YudlSeaMfjUe9mPaI-N3Sbz9uar52oDDFf0/exec';
-
-      fetch(scriptURLpalquery, {
-        method: 'POST',
-        body: createFormData({ Query: query, relevance: relevanceScore }),
-      })
-        .then((response) => console.log('Done!', response))
-        .catch((error) => console.error('Error!', error.message));
-    }
-  }, []);
 
   const handleTooltipClose = () => {
     setOpen(false);
@@ -91,12 +80,15 @@ const Pal = ({ queryResults, query }) => {
     setValue(event.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e, queryParams) => {
+    if (e) e.preventDefault();
+
+    const searchValue = queryParams || value;
+
     setLoading(true);
     const res = await axios.post(
       'https://schemessg-v2.herokuapp.com/schemespredict',
-      { query: value, relevance: relevanceScore },
+      { query: searchValue, relevance: relevanceScore },
     );
 
     const data = await res.data;
@@ -108,16 +100,33 @@ const Pal = ({ queryResults, query }) => {
 
     fetch(scriptURLpalquery, {
       method: 'POST',
-      body: createFormData({ Query: value, relevance: relevanceScore }),
+      body: createFormData({ Query: searchValue, relevance: relevanceScore }),
     })
       .then((response) => console.log('Done!', response.status))
       .catch((error) => console.error('Error!', error.message));
 
     const url = new URL(window.location);
-    url.searchParams.set('query', value);
+    url.searchParams.set('query', searchValue);
     url.searchParams.set('relevance', relevanceScore);
     window.history.pushState({}, '', url);
   };
+
+  React.useEffect(async () => {
+    if (query.query) {
+      setValue(query.query);
+      handleSubmit(null, query.query);
+      // setLoading(true);
+      // const scriptURLpalquery = 'https://script.google.com/macros/s/AKfycbwgKnPhUBHnlGJ3YudlSeaMfjUe9mPaI-N3Sbz9uar52oDDFf0/exec';
+
+      // fetch(scriptURLpalquery, {
+      //   method: 'POST',
+      //   body: createFormData({ Query: query, relevance: relevanceScore }),
+      // })
+      //   .then((response) => console.log('Done!', response))
+      //   .catch((error) => console.error('Error!', error.message))
+      //   .finally(() => setLoading(false));
+    }
+  }, [query]);
 
   return (
     <>
@@ -412,17 +421,17 @@ const Pal = ({ queryResults, query }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const queryWithRelevance = { ...context.query, relevance: 20 };
-  const res = await axios.post('https://schemessg-v2.herokuapp.com/schemespredict', queryWithRelevance);
+// export async function getServerSideProps(context) {
+//   const queryWithRelevance = { ...context.query, relevance: 20 };
+//   const res = await axios.post('https://schemessg-v2.herokuapp.com/schemespredict', queryWithRelevance);
 
-  const queryResults = await res.data;
-  return {
-    props: {
-      queryResults,
-      query: context.query.query ? { Query: queryWithRelevance } : null,
-    },
-  };
-}
+//   const queryResults = await res.data;
+//   return {
+//     props: {
+//       queryResults,
+//       query: context.query.query ? { Query: queryWithRelevance } : null,
+//     },
+//   };
+// }
 
 export default Pal;

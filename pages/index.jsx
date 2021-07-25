@@ -3,28 +3,26 @@ import Layout from '../components/Layout/Layout';
 import HomepageHero from '../components/Sections/Homepage/HomepageHero';
 import ProductsIntro from '../components/Sections/Homepage/ProductsIntro';
 
-const Index = () => {
-  return (
-    <>
-      <Layout title='Schemes SG'>
-        <HomepageHero />
-        <div className='products-intro-container'>
-          <ProductsIntro />
-        </div>
-      </Layout>
+const Index = () => (
+  <>
+    <Layout title="Schemes SG">
+      <HomepageHero />
+      <div className="products-intro-container">
+        <ProductsIntro />
+      </div>
+    </Layout>
 
-      <style jsx>
-        {`
-          .index-root {
-            position: relative;
-          }
+    <style jsx>
+      {`
+        .index-root {
+          position: relative;
+        }
 
-          .products-intro-container {
-          }
-        `}
-      </style>
-    </>
-  );
-};
+        .products-intro-container {
+        }
+      `}
+    </style>
+  </>
+);
 
 export default Index;

@@ -8,13 +8,13 @@ import {
   AccordionDetails,
 } from '@material-ui/core';
 
-import Layout from '../components/Layout/Layout';
-import PageHero from '../components/Sections/PageHero';
-import { colors } from '../constants/design';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import { colors } from '../constants/design';
+import PageHero from '../components/Sections/PageHero';
+import Layout from '../components/Layout/Layout';
 import AddListingForm from '../components/Form/AddListingForm';
 import EditListingForm from '../components/Form/EditListingForm';
 import FeedbackForm from '../components/Form/FeedbackForm';
@@ -38,64 +38,75 @@ const forms = [
 ];
 
 const Listing = ({ form }) => {
-  const [expanded, setExpanded] = React.useState(form === "feedback" ? 2 : 0);
+  const [expanded, setExpanded] = React.useState(form === 'feedback' ? 2 : 0);
 
   const handleAccordion = (panel) => (isExpanded) => {
     setExpanded(isExpanded ? panel : 0);
   };
   return (
     <>
-      <Layout title='Listing | Schemes SG'>
+      <Layout title="Listing | Schemes SG">
         <PageHero
-          title='Add or Edit a Listing'
-          subtitle='Help us make the Schemes Bank more complete and accurate, and improve Schemes SG on the whole.'
+          title="Add or Edit a Listing"
+          subtitle="Help us make the Schemes Bank more complete and accurate, and improve Schemes SG on the whole."
         />
         <Container
-          maxWidth='lg'
-          style={{ paddingTop: '3rem', paddingBottom: '3rem' }}>
-          <div className='Listing-accordions'>
-            {forms.map((form, i) => (
+          maxWidth="lg"
+          style={{ paddingTop: '3rem', paddingBottom: '3rem' }}
+        >
+          <div className="Listing-accordions">
+            {forms.map((f, i) => (
               <Accordion
                 elevation={3}
                 expanded={expanded === i}
                 onChange={handleAccordion(i)}
-                key={form.name}
+                key={f.name}
                 style={{ margin: '16px 0' }}
-                id={i === 2 ? "feedback" : ""}
+                id={i === 2 ? 'feedback' : ''}
               >
                 <AccordionSummary
                   expandIcon={expanded !== i && <ExpandMoreIcon />}
-                  aria-controls='panel1bh-content'
-                  id='panel1bh-header'>
+                  aria-controls="panel1bh-content"
+                  id="panel1bh-header"
+                >
                   <Typography
-                    variant='h6'
+                    variant="h6"
                     style={{
                       color: colors.primary.dark,
                       display: 'flex',
                       alignItems: 'center',
-                    }}>
-                    {form.icon} {form.name}
+                    }}
+                  >
+                    {f.icon}
+                    {' '}
+                    {f.name}
                   </Typography>
                 </AccordionSummary>
-                <AccordionDetails>{form.form}</AccordionDetails>
+                <AccordionDetails>{f.form}</AccordionDetails>
               </Accordion>
             ))}
           </div>
         </Container>
-        <Container maxWidth='lg'>
-          <div className='disclaimer'>
-            <Typography variant='h6' style={{ fontWeight: 700 }}>
+        <Container maxWidth="lg">
+          <div className="disclaimer">
+            <Typography variant="h6" style={{ fontWeight: 700 }}>
               Please note
             </Typography>
-            <Typography variant='body1'>
-              Schemes SG is only an <strong>aggregator</strong> of public domain
+            <Typography variant="body1">
+              Schemes SG is only an
+              {' '}
+              <strong>aggregator</strong>
+              {' '}
+              of public domain
               listings and crowdsourcing. We are not a VWO, nor any
               assistance-giving body, and we do not guarantee successful
               application of any schemes listed above. For more info on the
-              listings and the thinking process behind their inclusion, see our{' '}
-              <Link href='/about' passHref>
-                <a href='/about'>"About"</a>
-              </Link>{' '}
+              listings and the thinking process behind their inclusion, see our
+              {' '}
+              <Link href="/about" passHref>
+                <a href="/about">"About"</a>
+              </Link>
+              {' '}
               page.
             </Typography>
           </div>
@@ -121,11 +132,5 @@ const Listing = ({ form }) => {
     </>
   );
 };
-
-export async function getServerSideProps(context) {
-  return {
-    props: context.query, 
-  }
-}
 
 export default Listing;

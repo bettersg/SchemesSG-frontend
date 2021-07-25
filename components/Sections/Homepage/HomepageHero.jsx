@@ -32,7 +32,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 const HomepageHero = () => {
   const sm = useMediaQuery(`(max-width: ${breakpoints.width.sm}px)`);
@@ -46,50 +46,55 @@ const HomepageHero = () => {
   };
   return (
     <>
-      <section className='HomepageHero-root'>
-        <Container maxWidth='lg'>
-          <Grid container spacing={2} alignItems='center'>
+      <section className="HomepageHero-root">
+        <Container maxWidth="lg">
+          <Grid container spacing={2} alignItems="center">
             <Grid item md={6} xs={12}>
               <Typography
-                variant='h2'
+                variant="h2"
                 variantMapping={{ h2: 'h1' }}
-                color='inherit'
+                color="inherit"
                 style={{ fontWeight: 700 }}
-                gutterBottom>
-                Schemes <span className='ss-blue'>SG</span>
+                gutterBottom
+              >
+                Schemes
+                {' '}
+                <span className="ss-blue">SG</span>
               </Typography>
 
-              <Typography variant='h6' className={classes.mgBtm}>
+              <Typography variant="h6" className={classes.mgBtm}>
                 One stop directory to quickly search for assistance schemes in
                 Singapore, from government agencies, to VWOs, charities,
                 self-help groups and more.
               </Typography>
-              <form 
-                className='query-container'
-                action='/pal#search-results'
-                onSubmit={() => setLoading(true)}>
+              <form
+                className="query-container"
+                action="/pal#search-results"
+                onSubmit={() => setLoading(true)}
+              >
                 <TextField
                   className={sm ? classes.smInput : classes.input}
-                  id='query-input'
-                  label='Enter your query'
-                  name='query'
+                  id="query-input"
+                  label="Enter your query"
+                  name="query"
                   value={value}
                   onChange={handleChange}
-                  variant='outlined'
+                  variant="outlined"
                 />
                 <Button
                   className={sm ? classes.smButton : ''}
-                  type='submit'
-                  variant='contained'
-                  color='primary'
+                  type="submit"
+                  variant="contained"
+                  color="primary"
                   disableElevation
-                  disabled={loading}>
-                  <Typography variant='subtitle1' className={classes.btnText}>
-                    {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Search"}
+                  disabled={loading}
+                >
+                  <Typography variant="subtitle1" className={classes.btnText}>
+                    {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Search'}
                   </Typography>
                 </Button>
               </form>
-              <Typography variant='body2' color='textSecondary'>
+              <Typography variant="body2" color="textSecondary">
                 e.g. "financial assistance for dialysis"
               </Typography>
             </Grid>
@@ -97,8 +102,8 @@ const HomepageHero = () => {
             <Hidden smDown>
               <Grid item md={6}>
                 <img
-                  alt='Image placeholder'
-                  src='/static/images/homepage/undraw_back_to_school_inwc (1).svg'
+                  alt="placeholder"
+                  src="/static/images/homepage/undraw_back_to_school_inwc (1).svg"
                 />
               </Grid>
             </Hidden>
