@@ -48,11 +48,15 @@ const CaseForm = () => {
   return (
     <>
       <form className='CaseForm-root' onSubmit={handleSubmit}>
+        <Typography variant='body1' style={{ textAlign: 'left'}}>
+          Name
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Name'
+          label=''
           placeholder='e.g. John Tan'
+          style={{ marginTop: 5, marginBottom: 15}}
           fullWidth
           margin='normal'
           InputLabelProps={{
@@ -62,13 +66,17 @@ const CaseForm = () => {
           required
           name='Name'
         />
+        <Typography variant='body1' style={{ textAlign: 'left'}}>
+          Email (optional, if you want us to reach you)
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Email (optional, if you want us to reply you)'
+          label=''
           type='email'
           placeholder='e.g. abc@123.com'
           fullWidth
+          style={{ marginTop: 5, marginBottom: 15}}
           margin='normal'
           InputLabelProps={{
             shrink: true,
@@ -76,14 +84,18 @@ const CaseForm = () => {
           variant='outlined'
           name='Email'
         />
+        <Typography variant='body1' style={{ textAlign: 'left'}}>
+          What area requires more research?
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='What area of need do you think needs more research in?'
+          label=''
           placeholder="e.g. I can't find schemes for caregivers with chronic conditions etc..."
           multiline
           rows={3}
           fullWidth
+          style={{ marginTop: 5, marginBottom: 15}}
           margin='normal'
           InputLabelProps={{
             shrink: true,
@@ -96,7 +108,6 @@ const CaseForm = () => {
           type='submit'
           variant='contained'
           color='primary'
-          style={{ marginTop: 16 }}
           disableElevation>
           <Typography variant='subtitle1'>Submit</Typography>
         </Button>
@@ -104,15 +115,14 @@ const CaseForm = () => {
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={success ? 'success' : 'error'}>
           {success
-            ? 'Case received!'
-            : 'Apologies! An error occur during submission'}
+            ? 'We have received your message!'
+            : 'Apologies! An error occurred during submission'}
         </Alert>
       </Snackbar>
       <style jsx>
         {`
           .CaseForm-root {
-            width: 100%;
-            padding: 2rem;
+            padding: 1rem;
             text-align: center;
           }
         `}

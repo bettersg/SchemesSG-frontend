@@ -1,7 +1,10 @@
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
+import IconContainer from '../../Container/IconContainer';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { Info, RecordVoiceOver, Search } from '@material-ui/icons';
+import InputAdornment from "@material-ui/core/InputAdornment";
 
 import {
   Typography,
@@ -63,9 +66,8 @@ const HomepageHero = () => {
               </Typography>
 
               <Typography variant="h6" className={classes.mgBtm}>
-                One stop directory to quickly search for assistance schemes in
-                Singapore, from government agencies, to VWOs, charities,
-                self-help groups and more.
+                Search for assistance schemes in
+                Singapore easily.
               </Typography>
               <form
                 className="query-container"
@@ -75,28 +77,53 @@ const HomepageHero = () => {
                 <TextField
                   className={sm ? classes.smInput : classes.input}
                   id="query-input"
-                  label="Enter your query"
+                  label=""
+                  placeholder="Dialysis patient need financial assistance and food after being retrenched due to COVID 19"
                   name="query"
                   value={value}
                   onChange={handleChange}
                   variant="outlined"
+                  style={{ width: 450}}
+                  multiline
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="start">
+                        <Button
+                          className={sm ? classes.smButton : ''}
+                          type="submit"
+                          variant="contained"
+                          color="primary"
+                          disableElevation
+                          disabled={loading}
+                        >
+                          <Typography variant="subtitle1" className={classes.btnText}>
+                            {loading ? <CircularProgress style={{ height: 32, width: 32 }} /> : <IconContainer icon={<Search style={{ width: 20 }} />} />}
+                          </Typography>
+                        </Button>
+                      </InputAdornment>
+                    )
+                  }}
                 />
-                <Button
-                  className={sm ? classes.smButton : ''}
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  disableElevation
-                  disabled={loading}
-                >
-                  <Typography variant="subtitle1" className={classes.btnText}>
-                    {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Search'}
-                  </Typography>
-                </Button>
+
               </form>
-              <Typography variant="body2" color="textSecondary">
-                e.g. "financial assistance for dialysis"
-              </Typography>
+
+
+              <div className='feature-description'>
+                <IconContainer
+                  icon={<RecordVoiceOver style={{ width: 20 }} />}
+                />
+                <Typography variant='body1' style={{ marginLeft: 12 }}>
+                  Tell us the help you need.
+                </Typography>
+              </div>
+              <div className='feature-description'>
+                <IconContainer icon={<Info style={{ width: 20 }} />} />
+                <Typography variant='body1' style={{ marginLeft: 12 }}>
+                  Be specific (see e.g. above). Don't give identifiable info.
+                </Typography>
+              </div>
+
+
             </Grid>
 
             <Hidden smDown>
@@ -115,6 +142,14 @@ const HomepageHero = () => {
         {`
           .HomepageHero-root {
             position: relative;
+            background-color: #fafafa
+          }
+
+          .feature-description {
+            display: flex;
+            align-items: center;
+            margin: 1rem auto;
+            text-align: left;
           }
 
           .HomepageHero-content {

@@ -13,8 +13,8 @@ const IconContainer = ({ icon }) => {
             border-radius: 50%;
             background-color: ${colors.primary.main};
             color: #fff;
-            width: 34px;
-            height: 34px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;

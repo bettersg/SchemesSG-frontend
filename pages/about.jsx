@@ -21,15 +21,15 @@ const about = [
     name: 'How it started',
     description: (
       <>
-        Schemes SG started as a side project by our product lead. A long-time volunteer with various VWOs, he collated a "help-list" to facilitate referral work and built a quick front-end to share these resources with his friends. The resource gained unexpected traction with social workers and volunteers. Sensing that a consolidated directory could address care workers' pain point of having to navigate the confusing social assistance landscape, he gathered like-minded individuals from friends and the
+        Schemes SG started as a side project by our product lead. A long-time volunteer, he collated a "help-list" to facilitate referral work and built a front-end to share these resources. The tool gained unexpected traction with social workers and volunteers. Sensing that this could address care workers' pain point of navigating the confusing social assistance landscape, he gathered like-minded individuals from the
         <a href='https://better.sg' target='_blank' rel='noopener noreferrer'> better.sg </a>
         tech community to improve the tool.
         <br />
         <br />
-        The team engaged social workers, caregivers and friends to understand lived experiences and help-seeking practices. They found that social needs are often intertwined, and if technology could improve the search process by making sense of the entangled issues that people face, it would immensely alleviate mental burden faced by help-seekers and professionals. This inspired our natural language search tool and tagging system.
+        The team engaged social workers, caregivers and friends to understand lived experiences and help-seeking practices. They found that social needs are often intertwined, and if technology could improve the search process by making sense of the entangled issues that people face, it would immensely reduce help-seekers' mental burden. This inspired our natural language tool and indexing.
         <br />
         <br />
-        Schemes SG is ultimately what we hope to build for the community, with the community. Your continued usage, feedback, searches and contribution of crowdsourced assistance listings help this tool get better everyday.
+        Schemes SG is ultimately built for the community, with the community. Your continued usage, feedback, searches and contribution of crowdsourced assistance info help this tool get better everyday.
       </>
     ),
     icon: <WbIncandescentIcon style={{ marginRight: 8 }} />,
@@ -38,19 +38,19 @@ const about = [
     name: 'What this platform tries to solve',
     description: (
       <>
-        Serious thought was put in before building Schemes SG. Initial landscape scans led to the realisation that:
+        Serious thought was put in before building Schemes SG. Our landscape scans helped us realise that:
         <br />
         <br />
-        1. Social assistance listings were piecemeal and information was fragmented across various sites. There were some compilations, but they were often PDF files hidden within the repositories of organisations' websites, so they might not be easy to find. Search engines might also miss them.
+        1. Social assistance information was often piecemeal and fragmented across various sites. There were some compilations, but they were often PDF files hidden within the repositories of organisations' websites, and were hard to find. Search engines might also miss them.
         <br />
         <br />
-        2. Even if one could get their hands on a compilation, it would take a million "Ctrl + F"s and painstaking excavation to find schemes, given how complex social assistance is. The volume of information was simply mind-boggling.
+        2. Even if one could get their hands on a compilation, it would take painstaking "Ctrl + F" excavation to find schemes, given how complex social assistance is. The volume of information was simply mind-boggling.
         <br />
         <br />
-        3. The listings might not necessarily be updated. New versions were usually held in completely different links. PDF listings also meant that social workers and volunteers had to depend on the original poster to issue a new version should there be changes.
+        3. The listings might not necessarily be updated. New versions were usually held in completely different links. PDF listings also meant that social workers and volunteers depended on the original compiler to issue a new version when things changed.
         <br />
         <br />
-        4. There were actually intuitive directories (e.g. SupportGoWhere has done a great job), but they were primarily government portals and might not include NGO or VWO schemes. Again, the power of the crowdsourcing could be useful here, given the size of the non-profit sector.
+        4. There were intuitive directories (e.g. SupportGoWhere has done a great job), but they were primarily government portals and might not include NGO or VWO schemes. Again, the power of the crowdsourcing could be useful here, given the size of the non-profit sector.
         <br />
         <br />
         This portal hopes to address the above issues by tapping on the power of
@@ -191,7 +191,7 @@ const About = () => {
               </Typography>
             </div>
             <Typography variant='h6'>
-              Our vision is to empower social workers, volunteers, and in the long run self-help users, to obtain relevant information on social assistance in Singapore quickly, easily and accurately. We tap on the power of crowdsourcing to keep information comprehensive and updated, and leverage technology to make this information navigable.
+              We want to empower social workers, volunteers and vulnerable groups in Singapore to find relevant social assistance quickly, easily and accurately. We tap on crowdsourcing to keep information comprehensive and updated, and use AI to help users better navigate all this information.
             </Typography>
 
             <div className='About-accordions'>
