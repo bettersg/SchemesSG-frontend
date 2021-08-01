@@ -105,7 +105,7 @@ const Team = () => {
 
 
             <Typography
-              variant='body1' style={{ textAlign: 'left', marginBottom: '3rem' }}>
+              variant='body1' style={{ textAlign: 'left', marginTop: '3rem', marginBottom: '3rem' }}>
               <b>The Schemes SG app would not be possible without the tireless work of our researchers. Without a comprehensive backend repository of social assistance schemes in Singapore, put together by dedicated searching and ground experience, the best algorithm and data tools would mean nothing. These lovely individuals have availed their time, strength and heart to build this:</b>
             </Typography>
 
