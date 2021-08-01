@@ -31,6 +31,6 @@ export const colors = {
 
 export const updateColors = {
   'Add listing': '#008aff',
-  'Edit listing': '#567568',
+  'Edit listing': '#ffb302',
   'System update': '#f25767',
 };

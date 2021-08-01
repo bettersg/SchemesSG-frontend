@@ -75,10 +75,13 @@ const FeedbackForm = () => {
   return (
     <>
       <form className="FeedbackForm-root" onSubmit={handleSubmit}>
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+          Name
+        </Typography>
         <TextField
           id="outlined-full-width"
           onChange={handleChange}
-          label="Name"
+          label=""
           placeholder="e.g. John Tan"
           fullWidth
           margin="normal"
@@ -86,13 +89,17 @@ const FeedbackForm = () => {
             shrink: true,
           }}
           variant="outlined"
+          style={{ marginTop: 5, marginBottom: 15 }}
           required
           name="Name"
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        Email (optional, if you want us to reply you)
+        </Typography>
         <TextField
           id="outlined-full-width"
           onChange={handleChange}
-          label="Email (optional, if you want us to reply you)"
+          label=""
           type="email"
           placeholder="e.g. abc@123.com"
           fullWidth
@@ -100,25 +107,25 @@ const FeedbackForm = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant="outlined"
           name="Email"
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        From 1 (least likely) to 10 (most likely), how likely are you to
+            recommend this app to someone else?
+        </Typography>
         <FormControl
           variant="outlined"
           margin="normal"
           className={classes.formControl}
         >
-          <InputLabel htmlFor="nps-field-label">
-            From 1 (least likely) to 10 (most likely), how likely are you to
-            recommend this app to someone else?
-          </InputLabel>
           <Select
             native
             name="NPS"
             value={form.NPS}
             onChange={handleChange}
-            label="From 1 (least likely) to 10 (most likely), how likely are you to
-            recommend this app to someone else?"
+            style={{ marginTop: -8, marginBottom: 8 }}
             inputProps={{
               name: 'NPS',
               id: 'nps-field-label',
@@ -138,10 +145,13 @@ const FeedbackForm = () => {
             <option value="10">10</option>
           </Select>
         </FormControl>
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        Feedback
+        </Typography>
         <TextField
           id="outlined-full-width"
           onChange={handleChange}
-          label="Feedback"
+          label=""
           placeholder="Any other general feedback for us?"
           multiline
           rows={3}
@@ -150,6 +160,7 @@ const FeedbackForm = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant="outlined"
           required
           name="Feedback"

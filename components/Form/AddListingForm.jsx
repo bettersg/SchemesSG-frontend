@@ -65,24 +65,31 @@ const AddListingForm = () => {
   return (
     <>
       <form className='AddListingForm-root' onSubmit={handleSubmit}>
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+          Name
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Name'
+          label=''
           placeholder='e.g. John Tan'
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           required
           name='Name'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        Email (optional, if you want us to reply you)
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Email (optional, if you want us to reply you)'
+          label=''
           type='email'
           placeholder='e.g. abc@123.com'
           fullWidth
@@ -90,27 +97,35 @@ const AddListingForm = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           name='Email'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        Scheme Name
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Scheme Name'
+          label=''
           placeholder='e.g. ABC Financial Assistance'
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           required
           name='Scheme'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        Providing Agency
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Providing Agency'
+          label=''
           placeholder='e.g. ABC Charity Singapore'
           fullWidth
           margin='normal'
@@ -118,13 +133,17 @@ const AddListingForm = () => {
             shrink: true,
           }}
           variant='outlined'
+          style={{ marginTop: 5, marginBottom: 15 }}
           required
           name='Agency'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        Description of the scheme
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Description of the scheme'
+          label=''
           placeholder='e.g. Financial assistance for low income, etc.'
           fullWidth
           margin='normal'
@@ -132,33 +151,42 @@ const AddListingForm = () => {
             shrink: true,
           }}
           variant='outlined'
+          style={{ marginTop: 5, marginBottom: 15 }}
           required
           name='Description'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        URL
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='URL'
+          label=''
           placeholder='e.g. http://www.abccharity.com.sg'
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           required
           name='URL'
         />
+         <Typography variant='body1' style={{ textAlign: 'left' }}>
+         Help us add a few keywords so that we can organise our data systems
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Help us add a few keywords so that we can organise our data systems'
+          label=''
           placeholder='e.g. Low Income, Healthcare'
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           required
           name='Tags'

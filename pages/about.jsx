@@ -201,7 +201,8 @@ const About = () => {
                   expanded={expanded === i}
                   onChange={handleChange(i)}
                   key={a.name}
-                  style={{ margin: '16px 0' }}>
+                  style={{ margin: '16px 0' }}
+                  TransitionProps={{timeout: 0}}>
                   <AccordionSummary
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls='panel1bh-content'

@@ -25,18 +25,19 @@ const Case = () => {
               <Typography variant='h4' gutterBottom>
                 Reach out to us
               </Typography>
+              <Typography variant='body1' gutterBottom>
+              Can't find relevant assistance through the AI or even by manually filtering?
+              </Typography>
               <div className='feature-description'>
                 <IconContainer icon={<PanToolIcon style={{ width: 20 }} />} />
                 <Typography variant='body1' style={{ marginLeft: 12 }}>
-                  Tell us abit about the area you require assistance in, but
-                  could not find help in Schemes Pal or Schemes Case.
+                  Our volunteers can help you to search. If possible, include the search term that you used in the AI tool.
                 </Typography>
               </div>
               <div className='feature-description'>
                 <IconContainer icon={<SearchIcon style={{ width: 20 }} />} />
                 <Typography variant='body1' style={{ marginLeft: 12 }}>
-                  If possible, include the search term that you used in Schemes
-                  Pal too.
+                If it is an unmet social need, we might also conduct further research.
                 </Typography>
               </div>
             </Grid>

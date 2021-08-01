@@ -63,11 +63,11 @@ const Listing = ({ form }) => {
                 key={f.name}
                 style={{ margin: '16px 0' }}
                 id={i === 2 ? 'feedback' : ''}
-                TransitionProps={{ unmountOnExit: true }}
+                TransitionProps={{ timeout: 0, unmountOnExit: true }} 
               >
                 <AccordionSummary
                   expandIcon={expanded !== i && <ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
+                  aria-controls="panel1bh-content"  
                   id="panel1bh-header"
                 >
                   <Typography

@@ -18,6 +18,7 @@ import {
 } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import PersonIcon from '@material-ui/icons/Person';
+import InfoIcon from '@material-ui/icons/Info';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
@@ -145,225 +146,215 @@ const Pal = () => {
                 How to use
               </Typography>
               <div className="feature-description">
-                <IconContainer icon={<PersonIcon style={{ width: 20 }} />} />
-                <Typography variant="body1" style={{ marginLeft: 12 }}>
-                  Indicate your beneficiary&apos;s/your profile (e.g. &quot;elderly with
-                  healthcare needs&quot;).
-                  <br />
-                  <strong>DO NOT</strong>
-                  {' '}
-                  give identifiable info like NRIC or
-                  name.
-                  {' '}
-                  <ClickAwayListener onClickAway={handleTooltipClose}>
-                    <LightTooltip
-                      title="We record the query text but only for a short period of time. This is to train the AI model and improve its accuracy to serve you better. We are unable to identify the individuals who entered the query or who it refers to. You can help us ensure an even greater level of security by not providing names or identifiable detail."
-                      placement="right"
-                      onClose={handleTooltipClose}
-                      open={open}
-                      disableFocusListener
-                      disableHoverListener
-                      disableTouchListener
-                    >
-                      <span
-                        className="tooltip-text"
-                        onClick={handleTooltipOpen}
-                      >
-                        Important: please read this.
-                      </span>
-                    </LightTooltip>
-                  </ClickAwayListener>
-                </Typography>
-              </div>
-              <div className="feature-description">
+
+
                 <IconContainer
                   icon={<RecordVoiceOverIcon style={{ width: 20 }} />}
                 />
-                <Typography variant="body1" style={{ marginLeft: 12 }}>
-                  Tell us the assistance you need.
-                  <br />
-                  The more specific you are (e.g. &quot;financial assistance for
-                  dialysis&quot;), the better the search.
+                <Typography variant='body1' style={{ marginLeft: 12 }}>
+                  Tell us the help you need. Be specific (see the example in the box).
                 </Typography>
               </div>
-              <div className="feature-description">
-                <IconContainer icon={<ThumbUpIcon style={{ width: 20 }} />} />
-                <Typography variant="body1" style={{ marginLeft: 12 }}>
-                  Example of a good search:
-                  <br />
-                  &quot;
-                  <u>
-                    My client needs assistance as a dialysis patient. She is
-                    also in need of a job and financial support after COVID 19
-                    has caused her to be retrenched.
-                  </u>
-                </Typography>
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Paper elevation={3}>
-                <form className="query-container" onSubmit={handleSubmit}>
-                  <TextField
-                    id="outlined-full-width"
-                    label="Tell us a few word"
-                    rows={5}
-                    multiline
-                    name="query"
-                    value={value}
-                    onChange={handleChange}
-                    variant="outlined"
-                    fullWidth
-                  />
-                  <div className="slider-container">
-                    <Typography id="discrete-slider-custom" gutterBottom>
-                      Show me schemes above relevance score of:
-                      {' '}
-                      <strong>{`${relevanceScore}`}</strong>
-                    </Typography>
-                    <Slider
-                      value={relevanceScore}
-                      onChange={(e, newValue) => {
-                        setRelevanceScore(newValue);
-                      }}
-                      aria-labelledby="discrete-slider-custom"
-                      valueLabelDisplay="auto"
-                      marks={marks}
-                    />
-                  </div>
 
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    disableElevation
-                    disabled={loading}
-                  >
-                    <Typography variant="subtitle1" className={classes.btnText}>
-                      {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Search'}
-                    </Typography>
-                  </Button>
-                </form>
-              </Paper>
+                <div className='feature-description'>
+                  <IconContainer icon={<InfoIcon style={{ width: 20 }} />} />
+                  <Typography variant="body1" style={{ marginLeft: 12 }}>
+                    <strong>DO NOT</strong>
+                    {' '}
+                    give identifiable info like NRIC or
+                    name. The AI does not need it.
+                    {' '}
+                    <ClickAwayListener onClickAway={handleTooltipClose}>
+                      <LightTooltip
+                        title="We record the query text to train the AI model and improve its accuracy to serve you better. We are unable to identify the individuals who entered the query or who it refers to. You can help us ensure an even greater level of security by not providing names or identifiable detail."
+                        placement="right"
+                        onClose={handleTooltipClose}
+                        open={open}
+                        disableFocusListener
+                        disableHoverListener
+                        disableTouchListener
+                      >
+                        <span
+                          className="tooltip-text"
+                          onClick={handleTooltipOpen}
+                        >
+                          Important: please read this.
+                        </span>
+                      </LightTooltip>
+                    </ClickAwayListener>
+                  </Typography>
+                </div>
             </Grid>
-          </Grid>
+              <Grid item xs={12} md={6}>
+                <Paper elevation={3}>
+                  <form className="query-container" onSubmit={handleSubmit}>
+                    <Typography variant='body1' style={{ textAlign: 'left' }}>
+                      Tell us about your needs:
+                    </Typography>
+                    <TextField
+                      id="outlined-full-width"
+                      label=""
+                      rows={5}
+                      multiline
+                      name="query"
+                      placeholder="Example of a good search: Dialysis patient, need job, food and financial support after being retrenched."
+                      value={value}
+                      onChange={handleChange}
+                      variant="outlined"
+                      style={{ marginTop: 5, marginBottom: 8 }}
+                      fullWidth
+                    />
+                    <div className="slider-container">
+                      <Typography id="discrete-slider-custom" gutterBottom>
+                        Show me schemes above relevance score of:
+                        {' '}
+                        <strong>{`${relevanceScore}`}</strong>
+                      </Typography>
+                      <Slider
+                        value={relevanceScore}
+                        onChange={(e, newValue) => {
+                          setRelevanceScore(newValue);
+                        }}
+                        aria-labelledby="discrete-slider-custom"
+                        valueLabelDisplay="auto"
+                        marks={marks}
+                        style={{ marginBottom: 10 }}
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      disableElevation
+                      disabled={loading}
+                    >
+                      <Typography variant="subtitle1" className={classes.btnText}>
+                        {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Search'}
+                      </Typography>
+                    </Button>
+                  </form>
+                </Paper>
+              </Grid>
+            </Grid>
         </Container>
-        {!!searchResults && searchResults !== 'nil' && searchResults.data && (
-          <div className="search-results-container" id="search-results">
-            {loading ? (
-              <Typography
-                variant="p"
-                color="primary"
-              >
-                Loading your search results
-              </Typography>
-            ) : (
-              searchResults.data.length > 0 ? (
-                <Container maxWidth="lg">
+          {!!searchResults && searchResults !== 'nil' && searchResults.data && (
+            <div className="search-results-container" id="search-results">
+              {loading ? (
+                <Typography
+                  variant="p"
+                  color="primary"
+                >
+                  Loading your search results
+                </Typography>
+              ) : (
+                searchResults.data.length > 0 ? (
+                  <Container maxWidth="lg">
+                    <Typography
+                      variant="h5"
+                      color="primary"
+                      style={{ fontWeight: 700, marginBottom: '1rem' }}
+                    >
+                      Search Results
+                    </Typography>
+                    <Grid container spacing={3}>
+                      {searchResults.data.map((result) => (
+                        <Grid item xs={12} sm={6} lg={4} key={result.Scheme}>
+                          <SchemeResultCard
+                            scheme={result.Scheme}
+                            agency={result.Agency}
+                            description={result.Description}
+                            image={result.Image}
+                            link={result.Link}
+                            relevance={result.Relevance}
+                          />
+                        </Grid>
+                      ))}
+                    </Grid>
+                    <Button
+                      type="button"
+                      variant="outlined"
+                      color="primary"
+                      disableElevation
+                      onClick={() => window.scrollTo({ top: 0 })}
+                      style={{ marginTop: '2rem' }}
+                    >
+                      <Typography variant="subtitle1">Back to Top</Typography>
+                    </Button>
+                    <div className="buttons-container">
+                      <Link href="/bank" passHref>
+                        <Button
+                          href="/bank"
+                          type="button"
+                          variant="outlined"
+                          style={{ backgroundColor: '#fff', color: '#f25767', borderColor: '#f25767' }}
+                          disableElevation
+                        >
+                          <Typography variant="subtitle1">
+                            Searches not matching your needs? You can
+                            {' '}
+                            <strong>explore our repository manually</strong>
+                          </Typography>
+                        </Button>
+                      </Link>
+                      <Link href="/case" passHref>
+                        <Button
+                          href="/case"
+                          type="button"
+                          variant="outlined"
+                          style={{
+                            backgroundColor: '#fff', color: '#f25767', borderColor: '#f25767', marginTop: '1rem',
+                          }}
+                          disableElevation
+                        >
+                          <Typography variant="subtitle1">
+                            Or you can
+                            {' '}
+                            <strong>engage our volunteers</strong>
+                          </Typography>
+                        </Button>
+                      </Link>
+                    </div>
+
+                  </Container>
+                ) : (
                   <Typography
                     variant="h5"
                     color="primary"
-                    style={{ fontWeight: 700, marginBottom: '1rem' }}
+                    style={{ fontWeight: 700 }}
                   >
-                    Search Results
+                    No results matching your search.
                   </Typography>
-                  <Grid container spacing={3}>
-                    {searchResults.data.map((result) => (
-                      <Grid item xs={12} sm={6} lg={4} key={result.Scheme}>
-                        <SchemeResultCard
-                          scheme={result.Scheme}
-                          agency={result.Agency}
-                          description={result.Description}
-                          image={result.Image}
-                          link={result.Link}
-                          relevance={result.Relevance}
-                        />
-                      </Grid>
-                    ))}
-                  </Grid>
-                  <Button
-                    type="button"
-                    variant="outlined"
-                    color="primary"
-                    disableElevation
-                    onClick={() => window.scrollTo({ top: 0 })}
-                    style={{ marginTop: '2rem' }}
-                  >
-                    <Typography variant="subtitle1">Back to Top</Typography>
-                  </Button>
-                  <div className="buttons-container">
-                    <Link href="/bank" passHref>
-                      <Button
-                        href="/bank"
-                        type="button"
-                        variant="outlined"
-                        style={{ backgroundColor: '#fff', color: '#f25767', borderColor: '#f25767' }}
-                        disableElevation
-                      >
-                        <Typography variant="subtitle1">
-                          Searches not matching your needs? You can
-                          {' '}
-                          <strong>explore our repository manually</strong>
-                        </Typography>
-                      </Button>
-                    </Link>
-                    <Link href="/case" passHref>
-                      <Button
-                        href="/case"
-                        type="button"
-                        variant="outlined"
-                        style={{
-                          backgroundColor: '#fff', color: '#f25767', borderColor: '#f25767', marginTop: '1rem',
-                        }}
-                        disableElevation
-                      >
-                        <Typography variant="subtitle1">
-                          Or you can
-                          {' '}
-                          <strong>engage our volunteers</strong>
-                        </Typography>
-                      </Button>
-                    </Link>
-                  </div>
-
-                </Container>
-              ) : (
-                <Typography
-                  variant="h5"
-                  color="primary"
-                  style={{ fontWeight: 700 }}
-                >
-                  No results matching your search.
-                </Typography>
-              )
-            )}
-          </div>
-        )}
-        <Container maxWidth="lg">
-          <div className="disclaimer">
-            <Typography variant="h6" style={{ fontWeight: 700 }}>
-              Please note
-            </Typography>
-            <Typography variant="body1">
-              Schemes SG is only an
-              {' '}
-              <strong>aggregator</strong>
-              {' '}
-              of public domain
-              listings and crowdsourcing. We are not a VWO, nor any
-              assistance-giving body, and we do not guarantee successful
-              application of any schemes listed above. Schemes Pal only serves
-              to help you make sense of existing schemes out there. The Schemes
-              Pal engine is
-              {' '}
-              <strong>still being upgraded</strong>
-              .
-            </Typography>
-          </div>
-        </Container>
+                )
+              )}
+            </div>
+          )}
+          <Container maxWidth="lg">
+            <div className="disclaimer">
+              <Typography variant="h6" style={{ fontWeight: 700 }}>
+                Please note
+              </Typography>
+              <Typography variant="body1">
+                Schemes SG is only an
+                {' '}
+                <strong>aggregator</strong>
+                {' '}
+                of public domain
+                listings and crowdsourcing. We are not a VWO, nor any
+                assistance-giving body, and we do not guarantee successful
+                application of any schemes listed above. Schemes Pal only serves
+                to help you make sense of existing schemes out there. The Schemes
+                Pal engine is
+                {' '}
+                <strong>still being upgraded</strong>
+                .
+              </Typography>
+            </div>
+          </Container>
       </Layout>
 
-      <style jsx>
-        {`
+        <style jsx>
+          {`
           .Pal-root {
             position: relative;
           }
@@ -385,7 +376,7 @@ const Pal = () => {
           }
 
           form {
-            padding: 2rem;
+            padding: 1.1rem;
             text-align: center;
           }
 
@@ -416,20 +407,20 @@ const Pal = () => {
             padding: 0 20%;
           }
         `}
-      </style>
+        </style>
     </>
-  );
+      );
 };
 
 // export async function getServerSideProps(context) {
-//   const queryWithRelevance = { ...context.query, relevance: 20 };
+//   const queryWithRelevance = {...context.query, relevance: 20 };
 //   const res = await axios.post('https://schemessg-v2.herokuapp.com/schemespredict', queryWithRelevance);
 
 //   const queryResults = await res.data;
 //   return {
 //     props: {
 //       queryResults,
-//       query: context.query.query ? { Query: queryWithRelevance } : null,
+//       query: context.query.query ? {Query: queryWithRelevance } : null,
 //     },
 //   };
 // }

@@ -26,6 +26,12 @@ const team = [
     url: 'https://www.linkedin.com/in/joelkek',
   },
   {
+    name: 'Quintus',
+    role: 'ML Engineer',
+    img: '/static/images/team/quintus.jpg',
+    url: 'https://www.linkedin.com/in/quintus-lim-94379110a/',
+  },
+  {
     name: 'Jian Yang',
     role: 'ML Engineer',
     img: '/static/images/team/jianyang.jpg',
@@ -38,20 +44,21 @@ const team = [
     url: 'https://www.linkedin.com/in/karnmalhotra',
   },
   {
+    name: 'Catrina',
+    role: 'Comms and Outreach Strategy',
+    img: '/static/images/team/catrina.jpg',
+    url: 'https://www.linkedin.com/in/catrina-lim/',
+  },
+  {
     name: 'Kenneth',
-    role: 'Schemes Research',
+    role: 'Schemes Research I/C',
     img: '/static/images/team/kenneth.jpg',
     url: 'https://www.linkedin.com/in/kenneth-chong-1330b5123/',
   },
-  {
-    name: 'Joanne',
-    role: 'Schemes Research',
-    img: '/static/images/team/joanne.jpg',
-    url: 'https://www.linkedin.com/in/joannebergenwall',
-  },
+
   {
     name: 'Karthig',
-    role: 'Schemes Research',
+    role: 'Schemes Research I/C 2',
     img: '/static/images/team/karthig.jpg',
     url: 'https://www.linkedin.com/in/ramakrishnan-karthigayan-17980974',
   },
@@ -86,6 +93,37 @@ const Team = () => {
                 </Grid>
               ))}
             </Grid>
+
+
+
+            <Typography
+              variant='h4'
+              color='primary'
+              style={{ fontWeight: 700, marginBottom: '3rem' }}>
+              Our researchers
+            </Typography>
+
+
+            <Typography
+              variant='body1' style={{ textAlign: 'left', marginBottom: '3rem' }}>
+              <b>The Schemes SG app would not be possible without the tireless work of our researchers. Without a comprehensive backend repository of social assistance schemes in Singapore, put together by dedicated searching and ground experience, the best algorithm and data tools would mean nothing. These lovely individuals have availed their time, strength and heart to build this:</b>
+            </Typography>
+
+            <Typography
+              variant='body1' style={{ marginBottom: '3rem' }}>
+              Phyllis Brown<br></br>
+              Alex Ang<br></br>
+              Ruth Tan<br></br>
+              Neo Loo Seng<br></br>
+              Shelly Kwa<br></br>
+              Ben Liu<br></br>
+              Peggy Chong<br></br>
+              Philip Tanpoco<br></br>
+              Tnia Jun Peng<br></br>
+              Ng Zhuo Wei<br></br>
+              Phua Ying Jie<br></br>
+            </Typography>
+
 
             <div className='disclaimer'>
               <Typography variant='h6' style={{ fontWeight: 700 }}>

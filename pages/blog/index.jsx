@@ -51,7 +51,7 @@ const Blog = ({ posts, updates }) => {
               variant='h6'
               gutterBottom
               style={{ marginBottom: '2rem' }}>
-              Showing{' '}
+              Update Type:{' '}
               <span
                 className='updates-select'
                 style={{
@@ -61,8 +61,7 @@ const Blog = ({ posts, updates }) => {
                 onClick={handleClick}>
                 {' '}
                 {options[selectedIndex]}
-              </span>{' '}
-              updates
+              </span>
             </Typography>
             <Menu
               id='lock-menu'

@@ -65,24 +65,31 @@ const EditListingForm = () => {
   return (
     <>
       <form className='EditListingForm-root' onSubmit={handleSubmit}>
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+          Name
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Name'
+          label=''
           placeholder='e.g. John Tan'
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           required
           name='Name'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+          Email (optional, if you want us to reply you)
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Email (optional, if you want us to reply you)'
+          label=''
           type='email'
           placeholder='e.g. abc@123.com'
           fullWidth
@@ -90,27 +97,35 @@ const EditListingForm = () => {
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           name='Email'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+          Name of Scheme to Edit
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Name of Scheme to Edit'
+          label=''
           placeholder='e.g. ABC Financial Assistance'
           fullWidth
           margin='normal'
           InputLabelProps={{
             shrink: true,
           }}
+          style={{ marginTop: 5, marginBottom: 15 }}
           variant='outlined'
           required
           name='Scheme'
         />
+        <Typography variant='body1' style={{ textAlign: 'left' }}>
+          Updated name/description/organisation info of the scheme
+        </Typography>
         <TextField
           id='outlined-full-width'
           onChange={handleChange}
-          label='Updated name/description/organisation info of the scheme'
+          label=''
           placeholder='e.g. Original listing mentions that this scheme provides X. Actually it provides Y instead etc.'
           fullWidth
           margin='normal'
