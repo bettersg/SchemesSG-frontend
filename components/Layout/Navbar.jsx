@@ -56,7 +56,7 @@ const Navbar = () => {
                     onClick={handleClick}
                   >
                     <span>
-                      Products
+                      Find schemes!
                       <KeyboardArrowDownIcon
                         style={{ height: 20, width: 20, marginLeft: 2 }}
                       />
@@ -74,21 +74,21 @@ const Navbar = () => {
                     <Link href="/pal" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text="Schemes Pal" href="/pal" />
+                          <TextLink text="Use AI" href="/pal" />
                         </MenuItem>
                       </a>
                     </Link>
                     <Link href="/bank" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text="Schemes Bank" href="/bank" />
+                          <TextLink text="Explore listings" href="/bank" />
                         </MenuItem>
                       </a>
                     </Link>
                     <Link href="/case" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text="Schemes Case" href="/case" />
+                          <TextLink text="Ask a volunteer" href="/case" />
                         </MenuItem>
                       </a>
                     </Link>
@@ -146,7 +146,7 @@ const Navbar = () => {
                   <ListItem onClick={() => setOpen(!open)}>
                     <Typography variant="subtitle1" color="textSecondary">
                       <span>
-                        Products
+                        Find schemes!
                         {open ? (
                           <KeyboardArrowUpIcon
                             style={{ height: 20, width: 20, marginLeft: 2 }}
@@ -163,13 +163,13 @@ const Navbar = () => {
                   <Collapse in={open} timeout="auto" unmountOnExit>
                     <List disablePadding style={{ paddingLeft: 12 }}>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text="Schemes Pal" href="/pal" />
+                        <TextLink text="Use AI" href="/pal" />
                       </ListItem>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text="Schemes Bank" href="/bank" />
+                        <TextLink text="Explore listings" href="/bank" />
                       </ListItem>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text="Schemes Case" href="/case" />
+                        <TextLink text="Ask a volunteer" href="/case" />
                       </ListItem>
                     </List>
                   </Collapse>

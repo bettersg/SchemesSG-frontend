@@ -63,6 +63,7 @@ const Listing = ({ form }) => {
                 key={f.name}
                 style={{ margin: '16px 0' }}
                 id={i === 2 ? 'feedback' : ''}
+                TransitionProps={{ unmountOnExit: true }}
               >
                 <AccordionSummary
                   expandIcon={expanded !== i && <ExpandMoreIcon />}

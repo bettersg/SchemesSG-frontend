@@ -49,6 +49,19 @@ const HomepageHero = () => {
   };
   return (
     <>
+      <section className='mobile-image-center-shrink'>
+        <Hidden smUp>
+          <Grid item md={6}>
+            <img
+              alt="placeholder"
+              src="/static/images/homepage/undraw_back_to_school_inwc (1).svg"
+              style={{ width: '75%', backgroundColor: '#fafafa' }}
+            />
+          </Grid>
+        </Hidden>
+
+      </section>
+
       <section className="HomepageHero-root">
         <Container maxWidth="lg">
           <Grid container spacing={2} alignItems="center">
@@ -69,6 +82,7 @@ const HomepageHero = () => {
                 Search for assistance schemes in
                 Singapore easily.
               </Typography>
+
               <form
                 className="query-container"
                 action="/pal#search-results"
@@ -83,7 +97,7 @@ const HomepageHero = () => {
                   value={value}
                   onChange={handleChange}
                   variant="outlined"
-                  style={{ width: 450}}
+                  style={{ width: 450 }}
                   multiline
                   InputProps={{
                     endAdornment: (
@@ -142,7 +156,15 @@ const HomepageHero = () => {
         {`
           .HomepageHero-root {
             position: relative;
-            background-color: #fafafa
+            background-color: #fafafa;
+          }
+
+          .mobile-image-center-shrink {
+            text-align: center;
+            width: 100%;
+            background-color: #fafafa;
+            margin:0;
+            padding-bottom: 0;
           }
 
           .feature-description {

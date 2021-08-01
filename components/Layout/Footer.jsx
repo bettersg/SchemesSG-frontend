@@ -28,9 +28,7 @@ const Footer = () => {
               <Grid item md={4} xs={12}>
                 <div className='address'>
                   <Typography variant='body1'>
-                    <b>Schemes SG</b> is a product made by someone who cares
-                    about the social sector and wants to help those in need
-                    access assistance more quickly. We hope you find it helpful!
+                    <b>Schemes SG</b> is a product from better.sg, Singapore's open-source public #techforgood movement. We hope you find it helpful!
                   </Typography>
                 </div>
               </Grid>
@@ -39,12 +37,12 @@ const Footer = () => {
               </Hidden>
               <Grid item md={2} xs={4}>
                 <Typography variant='h6' className={classes.footerHeader}>
-                  Products
+                  Find schemes!
                 </Typography>
                 <div className='footer-links-container'>
                   <div>
                     <TextLink
-                      text='Schemes Pal'
+                      text='Use AI'
                       href='/pal'
                       color='inherit'
                       variant='body1'
@@ -52,7 +50,7 @@ const Footer = () => {
                   </div>
                   <div>
                     <TextLink
-                      text='Schemes Bank'
+                      text='Explore listings'
                       href='/bank'
                       color='inherit'
                       variant='body1'
@@ -60,7 +58,7 @@ const Footer = () => {
                   </div>
                   <div>
                     <TextLink
-                      text='Schemes Case'
+                      text='Ask a volunteer'
                       href='/case'
                       color='inherit'
                       variant='body1'

@@ -191,7 +191,7 @@ const About = () => {
               </Typography>
             </div>
             <Typography variant='h6'>
-              We want to empower social workers, volunteers and vulnerable groups in Singapore to find relevant social assistance quickly, easily and accurately. We tap on crowdsourcing to keep information comprehensive and updated, and use AI to help users better navigate all this information.
+              To empower social workers, volunteers and vulnerable groups in Singapore to find relevant social assistance quickly, easily and accurately. We tap on crowdsourcing to keep information updated, and use AI to help users better navigate all this information.
             </Typography>
 
             <div className='About-accordions'>

@@ -26,7 +26,7 @@ const ProductsIntro = () => {
 
           <div className='product-intro-container'>
             <Typography variant='h4' color='primary' gutterBottom>
-              <b>Explore</b> our listings
+              <b>Explore our listings</b>
             </Typography>
             <div className='feature-description bank-subtitle'>
               <Typography variant='body1'>
@@ -58,7 +58,7 @@ const ProductsIntro = () => {
                 style={{ display: 'flex', alignItems: 'center' }}>
                 <div className='content'>
                   <Typography variant='h4' color='primary' gutterBottom>
-                    <b>Engage</b> our volunteers
+                    <b>Ask our volunteers</b>
                   </Typography>
                   <Typography variant='body1'>
                     Can't find relevant assistance through the AI or even by manually filtering?
