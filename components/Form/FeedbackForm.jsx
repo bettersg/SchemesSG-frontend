@@ -7,7 +7,6 @@ import {
   Snackbar,
   Select,
   FormControl,
-  InputLabel,
 } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';

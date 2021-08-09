@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   Typography,
   Container,
@@ -22,7 +23,7 @@ const about = [
     description: (
       <>
         Schemes SG started as a side project by our product lead. A long-time volunteer, he collated a "help-list" to facilitate referral work and built a front-end to share these resources. The tool gained unexpected traction with social workers and volunteers. Sensing that this could address care workers' pain point of navigating the confusing social assistance landscape, he gathered like-minded individuals from the
-        <a href='https://better.sg' target='_blank' rel='noopener noreferrer'> better.sg </a>
+        <a href="https://better.sg" target="_blank" rel="noopener noreferrer"> better.sg </a>
         tech community to improve the tool.
         <br />
         <br />
@@ -54,10 +55,20 @@ const about = [
         <br />
         <br />
         This portal hopes to address the above issues by tapping on the power of
-        the crowd to make social assistance info{' '}
-        <strong>1) comprehensive</strong> and <strong>2) updated</strong>, and
+        the crowd to make social assistance info
+        {' '}
+        <strong>1) comprehensive</strong>
+        {' '}
+        and
+        {' '}
+        <strong>2) updated</strong>
+        , and
         then using technologies like AI/NLP and filters in data visualisation to
-        make this info <strong>3) navigable.</strong> 😊
+        make this info
+        {' '}
+        <strong>3) navigable.</strong>
+        {' '}
+        😊
       </>
     ),
     icon: <LockOpenIcon style={{ marginRight: 8 }} />,
@@ -66,28 +77,43 @@ const about = [
     name: 'Considerations behind the listings',
     description: (
       <>
-        <u>Here are the parameters behind how the Bank was populated</u>:<br />
+        <u>Here are the parameters behind how the Bank was populated</u>
+        :
         <br />
-        1. All information is <strong>public-domain</strong>. Schemes SG only
+        <br />
+        1. All information is
+        {' '}
+        <strong>public-domain</strong>
+        . Schemes SG only
         agglomerates info that is out there to help navigate complexity. Where
         individual schemes are concerned, we think the best descriptions come
         from the organisations themselves and use their writeups wherever
         possible to avoid misrepresenting their good work :) If we make edits,
         it is to improve search functionality, and we ensure they are minor and
-        factually accurate. <br />
+        factually accurate.
+        {' '}
         <br />
-        2. Currently, Schemes SG only lists schemes that{' '}
-        <strong>provide benefits</strong> in cash (financial assistance,
+        <br />
+        2. Currently, Schemes SG only lists schemes that
+        {' '}
+        <strong>provide benefits</strong>
+        {' '}
+        in cash (financial assistance,
         subsidies) or in kind (free food, food vouchers, free clinics, special
-        cards which ascribe certain benefits). While <strong>services</strong>
+        cards which ascribe certain benefits). While
+        {' '}
+        <strong>services</strong>
         (e.g. subsidised special education) are not yet included, we may start
         to look into it in the near future once the team has more capacity.
         <br />
         <br />
-        <u>Schemes SG does not include</u>:
+        <u>Schemes SG does not include</u>
+        :
         <br />
         <br />
-        1.<strong> Auto-inclusion schemes</strong>. The purpose of a
+        1.
+        <strong> Auto-inclusion schemes</strong>
+        . The purpose of a
         consolidated public aid portal is to help reduce bandwidth tax, so we
         see no need to put in extra information that social workers and
         volunteers have no requirement to act on.
@@ -115,42 +141,53 @@ const about = [
       <>
         If you are interested, Schemes Pal's natural language model involves the
         following transformation: Bag of Words (BoW) -&gt; TF-IDF -&gt; latent
-        semantic indexing (LSI). Some resources that I used include{' '}
+        semantic indexing (LSI). Some resources that I used include
+        {' '}
         <a
-          href='https://radimrehurek.com/gensim/auto_examples/core/run_topics_and_transformations.html'
-          target='_blank'
-          rel='noopener noreferrer'>
+          href="https://radimrehurek.com/gensim/auto_examples/core/run_topics_and_transformations.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           this
         </a>
-        ,{' '}
+        ,
+        {' '}
         <a
-          href='https://markroxor.github.io/gensim/static/notebooks/Topics_and_Transformations.html'
-          target='_blank'
-          rel='noopener noreferrer'>
+          href="https://markroxor.github.io/gensim/static/notebooks/Topics_and_Transformations.html"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           this
-        </a>{' '}
-        and{' '}
+        </a>
+        {' '}
+        and
+        {' '}
         <a
-          href='https://www.kaggle.com/devendra45/movies-similarity'
-          target='_blank'
-          rel='noopener noreferrer'>
+          href="https://www.kaggle.com/devendra45/movies-similarity"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           this
         </a>
         . I am still experimenting if this is the most appropriate for our use
         case. If you have any ideas on model improvement, tuning or other
         aspects that could help users get more accurate listings, reach out via
-        the{' '}
-        <a href='/listing' target='_blank' rel='noopener noreferrer'>
+        the
+        {' '}
+        <a href="/listing" target="_blank" rel="noopener noreferrer">
           "Feedback"
-        </a>{' '}
+        </a>
+        {' '}
         form.
         <br />
         <br />
-        The envisioned technical steady-state is a{' '}
+        The envisioned technical steady-state is a
+        {' '}
         <a
-          href='https://towardsdatascience.com/the-virtuous-cycle-of-ai-driven-growth-c3fbf35f70c'
-          target='_blank'
-          rel='noopener noreferrer'>
+          href="https://towardsdatascience.com/the-virtuous-cycle-of-ai-driven-growth-c3fbf35f70c"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           virtuous data cycle
         </a>
         . As the user base grows, we get more Schemes Bank contributions and
@@ -175,54 +212,62 @@ const About = () => {
   };
   return (
     <>
-      <Layout title='About | Schemes SG'>
+      <Layout title="About | Schemes SG">
         <PageHero
-          title='About'
-          subtitle='A little more information about how Schemes SG came to be and thinking behind it.'
+          title="About"
+          subtitle="A little more information about how Schemes SG came to be and thinking behind it."
         />
-        <section className='About-content'>
-          <Container maxWidth='lg'>
-            <div className='vision-container'>
+        <section className="About-content">
+          <Container maxWidth="lg">
+            <div className="vision-container">
               <Typography
-                variant='h5'
-                color='primary'
-                style={{ fontWeight: 700 }}>
+                variant="h5"
+                color="primary"
+                style={{ fontWeight: 700 }}
+              >
                 Our vision
               </Typography>
             </div>
-            <Typography variant='h6'>
+            <Typography variant="h6">
               To empower social workers, volunteers and vulnerable groups in Singapore to find relevant social assistance quickly, easily and accurately. We tap on crowdsourcing to keep information updated, and use AI to help users better navigate all this information.
             </Typography>
 
-            <div className='About-accordions'>
+            <div className="About-accordions" id="accordions">
               {about.map((a, i) => (
-                <Accordion
-                  elevation={3}
-                  expanded={expanded === i}
-                  onChange={handleChange(i)}
-                  key={a.name}
-                  style={{ margin: '16px 0' }}
-                  TransitionProps={{timeout: 0}}>
-                  <AccordionSummary
-                    expandIcon={expanded !== i && <ExpandMoreIcon />}
-                    aria-controls='panel1bh-content'
-                    id='panel1bh-header'>
-                    <Typography
-                      variant='h6'
-                      style={{
-                        color: colors.primary.dark,
-                        display: 'flex',
-                        alignItems: 'center',
-                      }}>
-                      {a.icon} {a.name}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography variant='body1' color='textSecondary'>
-                      {a.description}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
+                <Link href="/about#accordions">
+                  <Accordion
+                    elevation={3}
+                    expanded={expanded === i}
+                    onChange={handleChange(i)}
+                    key={a.name}
+                    style={{ margin: '16px 0' }}
+                    TransitionProps={{ timeout: 0 }}
+                  >
+                    <AccordionSummary
+                      expandIcon={expanded !== i && <ExpandMoreIcon />}
+                      aria-controls="panel1bh-content"
+                      id="panel1bh-header"
+                    >
+                      <Typography
+                        variant="h6"
+                        style={{
+                          color: colors.primary.dark,
+                          display: 'flex',
+                          alignItems: 'center',
+                        }}
+                      >
+                        {a.icon}
+                        {' '}
+                        {a.name}
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography variant="body1" color="textSecondary">
+                        {a.description}
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+                </Link>
               ))}
             </div>
           </Container>
