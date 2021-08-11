@@ -70,7 +70,7 @@ const HomepageHero = () => {
                 variant="h2"
                 variantMapping={{ h2: 'h1' }}
                 color="inherit"
-                style={{ fontWeight: 700 }}
+                style={{ fontWeight: 700, fontSize: '3rem' }}
                 gutterBottom
               >
                 Schemes

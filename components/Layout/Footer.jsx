@@ -35,14 +35,14 @@ const Footer = () => {
               <Hidden smDown>
                 <Grid item md={2} />
               </Hidden>
-              <Grid item md={2} xs={4}>
+              <Grid item md={2} xs={6}>
                 <Typography variant='h6' className={classes.footerHeader}>
                   Find schemes!
                 </Typography>
                 <div className='footer-links-container'>
                   <div>
                     <TextLink
-                      text='Use AI'
+                      text='Use our AI'
                       href='/pal'
                       color='inherit'
                       variant='body1'
@@ -50,7 +50,7 @@ const Footer = () => {
                   </div>
                   <div>
                     <TextLink
-                      text='Explore listings'
+                      text='See all listings'
                       href='/bank'
                       color='inherit'
                       variant='body1'
@@ -66,7 +66,7 @@ const Footer = () => {
                   </div>
                 </div>
               </Grid>
-              <Grid item md={2} xs={4}>
+              <Grid item md={2} xs={6}>
                 <Typography variant='h6' className={classes.footerHeader}>
                   Info
                 </Typography>
@@ -97,7 +97,7 @@ const Footer = () => {
                   </div>
                 </div>
               </Grid>
-              <Grid item md={2} xs={4}>
+              <Grid item md={2} xs={6}>
                 <Typography variant='h6' className={classes.footerHeader}>
                   Contact
                 </Typography>

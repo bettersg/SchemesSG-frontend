@@ -74,14 +74,14 @@ const Navbar = () => {
                     <Link href="/pal" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text="Use AI" href="/pal" />
+                          <TextLink text="Use our AI" href="/pal" />
                         </MenuItem>
                       </a>
                     </Link>
                     <Link href="/bank" passHref>
                       <a>
                         <MenuItem onClick={handleClose}>
-                          <TextLink text="Explore listings" href="/bank" />
+                          <TextLink text="See all listings" href="/bank" />
                         </MenuItem>
                       </a>
                     </Link>
@@ -163,10 +163,10 @@ const Navbar = () => {
                   <Collapse in={open} timeout="auto" unmountOnExit>
                     <List disablePadding style={{ paddingLeft: 12 }}>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text="Use AI" href="/pal" />
+                        <TextLink text="Use our AI" href="/pal" />
                       </ListItem>
                       <ListItem onClick={() => setSideMenu(false)}>
-                        <TextLink text="Explore listings" href="/bank" />
+                        <TextLink text="See all listings" href="/bank" />
                       </ListItem>
                       <ListItem onClick={() => setSideMenu(false)}>
                         <TextLink text="Ask a volunteer" href="/case" />

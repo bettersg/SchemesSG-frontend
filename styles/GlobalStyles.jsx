@@ -24,7 +24,7 @@ const GlobalStyles = () => (
         html,
         body,
         #__next {
-          font-size: 14px;
+          font-size: 16px;
         }
       }
     `}
