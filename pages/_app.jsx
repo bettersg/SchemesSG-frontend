@@ -18,22 +18,22 @@ export default function MyApp(props) {
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       <Head>
-        <meta charSet='utf-8' />
+        <meta charSet="utf-8" />
         <meta
-          name='viewport'
-          content='width=device-width,initial-scale=1,maximum-scale=1'
+          name="viewport"
+          content="width=device-width, initial-scale=1"
         />
-        <meta property='og:type' content='website' />
-        <meta property='og:locale' content='en_SG' />
-        <meta name='twitter:card' content='summary' />
-        <link rel='shortcut icon' href='/favicon.png' />
-        <meta property='og:image' content='/static/images/og/metaimage.png' />
-        <meta name='author' content='Schemes SG team' />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_SG" />
+        <meta name="twitter:card" content="summary" />
+        <link rel="shortcut icon" href="/favicon.png" />
+        <meta property="og:image" content="/static/images/og/metaimage.png" />
+        <meta name="author" content="Schemes SG team" />
         <meta
-          name='description'
-          content='One stop directory and AI-enabled search to help make sense of assistance schemes in Singapore.'
+          name="description"
+          content="One stop directory and AI-enabled search to help make sense of assistance schemes in Singapore."
         />
         <title>Schemes SG</title>
       </Head>
@@ -44,7 +44,7 @@ export default function MyApp(props) {
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
-    </React.Fragment>
+    </>
   );
 }
 

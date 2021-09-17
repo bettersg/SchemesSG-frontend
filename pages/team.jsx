@@ -64,83 +64,95 @@ const team = [
   },
 ];
 
-const Team = () => {
-  return (
-    <>
-      <Layout title='Team | Schemes SG'>
-        <PageHero
-          title='The Schemes SG Team'
-          subtitle='We made this product with much heart.'
-        />
-        <section className='Team-content'>
-          <Container maxWidth='lg'>
-            <Typography
-              variant='h4'
-              color='primary'
-              style={{ fontWeight: 700, marginBottom: '3rem' }}>
-              The Schemes SG Team
+const Team = () => (
+  <>
+    <Layout title="Team | Schemes SG">
+      <PageHero
+        title="The Schemes SG Team"
+        subtitle="We made this product with much heart."
+      />
+      <section className="Team-content">
+        <Container maxWidth="lg">
+          <Typography
+            variant="h4"
+            color="primary"
+            style={{ fontWeight: 700, marginBottom: '3rem' }}
+          >
+            The Schemes SG Team
+          </Typography>
+
+          <Grid container spacing={4}>
+            {team.map((member) => (
+              <Grid item md={3} sm={6} xs={12} key={member.name}>
+                <TeamMemberCard
+                  name={member.name}
+                  role={member.role}
+                  img={member.img}
+                  url={member.url}
+                />
+              </Grid>
+            ))}
+          </Grid>
+
+          <Typography
+            variant="h4"
+            color="primary"
+            style={{ fontWeight: 700, marginBottom: '3rem' }}
+          >
+            Our researchers
+          </Typography>
+
+          <Typography
+            variant="body1"
+            style={{ textAlign: 'left', marginTop: '3rem', marginBottom: '3rem' }}
+          >
+            <b>The Schemes SG app would not be possible without the tireless work of our researchers. Without a comprehensive backend repository of social assistance schemes in Singapore, put together by dedicated searching and ground experience, the best algorithm and data tools would mean nothing. These lovely individuals have availed their time, strength and heart to build this:</b>
+          </Typography>
+
+          <Typography
+            variant="body1"
+            style={{ marginBottom: '3rem' }}
+          >
+            Phyllis Brown
+            <br />
+            Alex Ang
+            <br />
+            Ruth Tan
+            <br />
+            Neo Loo Seng
+            <br />
+            Shelly Kwa
+            <br />
+            Ben Liu
+            <br />
+            Peggy Chong
+            <br />
+            Philip Tanpoco
+            <br />
+            Tnia Jun Peng
+            <br />
+            Ng Zhuo Wei
+            <br />
+            Phua Ying Jie
+            <br />
+          </Typography>
+
+          <div className="disclaimer">
+            <Typography variant="h6" style={{ fontWeight: 700 }}>
+              Please note
             </Typography>
-
-            <Grid container spacing={4}>
-              {team.map((member) => (
-                <Grid item md={3} sm={6} xs={12} key={member.name}>
-                  <TeamMemberCard
-                    name={member.name}
-                    role={member.role}
-                    img={member.img}
-                    url={member.url}
-                  />
-                </Grid>
-              ))}
-            </Grid>
-
-
-
-            <Typography
-              variant='h4'
-              color='primary'
-              style={{ fontWeight: 700, marginBottom: '3rem' }}>
-              Our researchers
+            <Typography variant="body1">
+              We are a team of volunteers who wish to make a difference. As we
+              are doing this in our personal time, we might take a while to
+              respond.
             </Typography>
+          </div>
+        </Container>
+      </section>
+    </Layout>
 
-
-            <Typography
-              variant='body1' style={{ textAlign: 'left', marginTop: '3rem', marginBottom: '3rem' }}>
-              <b>The Schemes SG app would not be possible without the tireless work of our researchers. Without a comprehensive backend repository of social assistance schemes in Singapore, put together by dedicated searching and ground experience, the best algorithm and data tools would mean nothing. These lovely individuals have availed their time, strength and heart to build this:</b>
-            </Typography>
-
-            <Typography
-              variant='body1' style={{ marginBottom: '3rem' }}>
-              Phyllis Brown<br></br>
-              Alex Ang<br></br>
-              Ruth Tan<br></br>
-              Neo Loo Seng<br></br>
-              Shelly Kwa<br></br>
-              Ben Liu<br></br>
-              Peggy Chong<br></br>
-              Philip Tanpoco<br></br>
-              Tnia Jun Peng<br></br>
-              Ng Zhuo Wei<br></br>
-              Phua Ying Jie<br></br>
-            </Typography>
-
-
-            <div className='disclaimer'>
-              <Typography variant='h6' style={{ fontWeight: 700 }}>
-                Please note
-              </Typography>
-              <Typography variant='body1'>
-                We are a team of volunteers who wish to make a difference. As we
-                are doing this in our personal time, we might take a while to
-                respond.
-              </Typography>
-            </div>
-          </Container>
-        </section>
-      </Layout>
-
-      <style jsx>
-        {`
+    <style jsx>
+      {`
           .Team-root {
             position: relative;
           }
@@ -162,9 +174,8 @@ const Team = () => {
             border: 1px solid ${colors.error.main};
           }
         `}
-      </style>
-    </>
-  );
-};
+    </style>
+  </>
+);
 
 export default Team;

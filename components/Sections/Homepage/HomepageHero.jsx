@@ -1,11 +1,9 @@
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
-import IconContainer from '../../Container/IconContainer';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Info, RecordVoiceOver, Search } from '@material-ui/icons';
-import InputAdornment from "@material-ui/core/InputAdornment";
-
+import InputAdornment from '@material-ui/core/InputAdornment';
 import {
   Typography,
   Grid,
@@ -14,6 +12,8 @@ import {
   Container,
   Hidden,
 } from '@material-ui/core';
+import IconContainer from '../../Container/IconContainer';
+
 import { breakpoints } from '../../../constants/design';
 
 const useStyles = makeStyles(() => ({
@@ -49,7 +49,7 @@ const HomepageHero = () => {
   };
   return (
     <>
-      <section className='mobile-image-center-shrink'>
+      <section className="mobile-image-center-shrink">
         <Hidden smUp>
           <Grid item md={6}>
             <img
@@ -115,28 +115,26 @@ const HomepageHero = () => {
                           </Typography>
                         </Button>
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
 
               </form>
 
-
-              <div className='feature-description'>
+              <div className="feature-description">
                 <IconContainer
                   icon={<RecordVoiceOver style={{ width: 20 }} />}
                 />
-                <Typography variant='body1' style={{ marginLeft: 12 }}>
+                <Typography variant="body1" style={{ marginLeft: 12 }}>
                   Tell us the help you need.
                 </Typography>
               </div>
-              <div className='feature-description'>
+              <div className="feature-description">
                 <IconContainer icon={<Info style={{ width: 20 }} />} />
-                <Typography variant='body1' style={{ marginLeft: 12 }}>
+                <Typography variant="body1" style={{ marginLeft: 12 }}>
                   Be specific (see e.g. above). Don't give identifiable info.
                 </Typography>
               </div>
-
 
             </Grid>
 
