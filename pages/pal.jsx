@@ -88,7 +88,7 @@ const Pal = () => {
 
     setLoading(true);
     const res = await axios.post(
-      'https://schemessg-v2.herokuapp.com/schemespredict',
+      'https://schemes.sg/schemespredict',
       { query: searchValue, relevance: relevanceScore },
     );
 
