@@ -21,6 +21,8 @@ import Link from 'next/link';
 import TextLink from '../Links/TextLink';
 import ImgLink from '../Links/ImgLink';
 
+import { breakpoints } from '../../constants/design';
+
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const [sideMenu, setSideMenu] = React.useState(false);
@@ -233,6 +235,16 @@ const Navbar = () => {
           span:hover {
             opacity: 0.7;
           }
+
+          @media only screen and (max-width: ${breakpoints.width.md}px) {
+            .navbar-flexbox {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              min-height: 48px;
+            }
+          }
+
         `}
       </style>
     </div>

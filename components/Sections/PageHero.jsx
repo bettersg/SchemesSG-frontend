@@ -8,15 +8,15 @@ const HomepageHero = ({ title, subtitle }) => {
       <section className='HomepageHero-root'>
         <Container maxWidth='lg'>
           <Typography
-            variant='h2'
+            variant='h4'
             variantMapping={{ h2: 'h1' }}
             color='inherit'
-            style={{ fontWeight: 700 }}
+            style={{ fontWeight: 700, textAlign: 'center'}}
             gutterBottom>
             {title}
           </Typography>
 
-          <Typography variant='h6'>{subtitle}</Typography>
+          <Typography variant='h6' style={{textAlign: 'center'}}>{subtitle}</Typography>
         </Container>
       </section>
 

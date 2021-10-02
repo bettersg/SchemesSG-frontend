@@ -35,7 +35,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  },
+  }
 }));
 const HomepageHero = () => {
   const sm = useMediaQuery(`(max-width: ${breakpoints.width.sm}px)`);
@@ -193,6 +193,14 @@ const HomepageHero = () => {
           }
 
           @media only screen and (max-width: ${breakpoints.width.md}px) {
+            
+            .HomepageHero-root {
+              position: relative;
+              background-color: #fafafa;
+              text-align: center;
+            }
+  
+
             .HomepageHero-content {
               padding: 0 1rem;
             }
