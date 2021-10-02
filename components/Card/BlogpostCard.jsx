@@ -8,25 +8,27 @@ const BlogpostCard = ({ post }) => {
   return (
     <>
       <div className='BlogpostCard-root'>
-        <img
-          src={post.data.featured_image.url}
-          alt={post.data.featured_image.alt}
-        />
-        <div className='BlogpostCard-details'>
-          <div className='cat-and-date'>
-            {convertDate(post.data.updated_on)}
-          </div>
-          <div className='BlogpostCard-title'>
-            {RichText.asText(post.data.title)}
-          </div>
+        <Link href={`/blog/${post.uid}`} passHref>
+          <a href={`/blog/${post.uid}`}>
+            <img
+              src={post.data.featured_image.url}
+              alt={post.data.featured_image.alt}
+            />
+            <div className='BlogpostCard-details'>
+              <div className='cat-and-date'>
+                {convertDate(post.data.updated_on)}
+              </div>
+              <div className='BlogpostCard-title'>
+                {RichText.asText(post.data.title)}
+              </div>
 
-          <p className='BlogpostCard-text'>
-            {RichText.asText(post.data.excerpt)}
-          </p>
-          <Link href={`/blog/${post.uid}`} passHref>
-            <a href={`/blog/${post.uid}`}>continue reading</a>
-          </Link>
-        </div>
+              <p className='BlogpostCard-text'>
+                {RichText.asText(post.data.excerpt)}
+              </p>
+
+            </div>
+          </a>
+        </Link>
       </div>
       <style jsx>
         {`
@@ -34,6 +36,10 @@ const BlogpostCard = ({ post }) => {
             background-color: #fff;
             margin: 0.5rem 0;
             border-radius: 8px;
+          }
+
+          a:visited {
+            color: black;
           }
 
           img {
@@ -71,7 +77,7 @@ const BlogpostCard = ({ post }) => {
             font-size: 16px;
             font-weight: 500;
             letter-spacing: 0;
-            padding-bottom: 0.8rem;
+            padding-bottom: 5rem;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 4;

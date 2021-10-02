@@ -16,7 +16,7 @@ const HomepageHero = ({ title, subtitle }) => {
             {title}
           </Typography>
 
-          <Typography variant='h6' style={{textAlign: 'center'}}>{subtitle}</Typography>
+          <Typography style={{textAlign: 'center'}}>{subtitle}</Typography>
         </Container>
       </section>
 

@@ -46,8 +46,11 @@ const Blogpost = ({ post }) => {
           }
 
           section {
-            padding: 3rem 0;
+            padding: 3rem 1rem;
+            word-spacing: 3px;
+            line-height: 1.8;
           }
+
         `}
       </style>
     </>
