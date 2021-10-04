@@ -39,11 +39,11 @@ const Navbar = () => {
       <AppBar position="static" elevation={0} color="transparent">
         <Container maxWidth="lg">
           <div className="navbar-flexbox">
-            <ImgLink
+            <ImgLink 
               href="/"
-              img="/static/logos/dark.svg"
+              img="/static/logos/dark.png"
               alt="Schemes SG Logo"
-              height="27"
+              height="32"
               width="130"
             />
 
@@ -136,11 +136,11 @@ const Navbar = () => {
               <Drawer open={sideMenu} onClose={() => setSideMenu(false)}>
                 <List>
                   <ListItem onClick={() => setSideMenu(false)}>
-                    <ImgLink
+                    <ImgLink className="pic"
                       href="/"
-                      img="/static/logos/dark.svg"
+                      img="/static/logos/dark.png"
                       alt="Schemes SG Logo"
-                      height="27"
+                      height="32"
                       width="130"
                     />
                   </ListItem>

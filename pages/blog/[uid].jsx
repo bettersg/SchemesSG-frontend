@@ -6,6 +6,8 @@ import PageHero from '../../components/Sections/PageHero';
 import { Container } from '@material-ui/core';
 import { RichText } from 'prismic-reactjs';
 
+import { breakpoints } from '../../constants/design';
+
 const Blogpost = ({ post }) => {
   return (
     <>
@@ -51,6 +53,15 @@ const Blogpost = ({ post }) => {
             line-height: 1.8;
           }
 
+          @media only screen and (min-width: ${breakpoints.width.md}px) {
+            
+            section {
+              padding: 3rem 1rem;
+              word-spacing: 3px;
+              line-height: 1.8;
+              font-size: 120%
+            }
+          }
         `}
       </style>
     </>
