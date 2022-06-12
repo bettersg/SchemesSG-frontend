@@ -20,9 +20,6 @@ const useStyles = makeStyles(() => ({
 
 const Footer = () => {
   const classes = useStyles();
-  const pushPropTest = () => {
-    console.log('pushProp Test');
-  };
   return (
     <footer className="footer-root">
       <AppBar position="static" elevation={0} color="transparent">
