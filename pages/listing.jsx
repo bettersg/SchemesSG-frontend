@@ -14,7 +14,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FeedbackIcon from '@material-ui/icons/Feedback';
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 import { colors } from '../constants/design';
 import PageHero from '../components/Sections/PageHero';
 import Layout from '../components/Layout/Layout';
@@ -98,7 +98,7 @@ const Listing = () => {
           {/* accordion grp uses #edit tag so that other accordion summaries can be seen  */}
           <div className="Listing-accordions" id="edit">
             {forms.map((f, i) => (
-              <Link href="/listing#listaccordions" key={uuid()} id={i === 1 ? 'editListing' : f.hashLoc}>
+              <Link href="/listing#listaccordions" key={uuidv4()} id={i === 1 ? 'editListing' : f.hashLoc}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
