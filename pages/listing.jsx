@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -26,23 +27,26 @@ const forms = [
     name: 'Add a listing',
     icon: <AddIcon style={{ marginRight: 8 }} />,
     form: <AddListingForm />,
+    hashLoc: 'add',
   },
   {
     name: 'Edit a listing',
     icon: <EditIcon style={{ marginRight: 8 }} />,
     form: <EditListingForm />,
+    hashLoc: 'edit',
   },
   {
     name: 'Feedback',
     icon: <FeedbackIcon style={{ marginRight: 8 }} />,
     form: <FeedbackForm />,
+    hashLoc: 'feedback',
   },
 ];
 
-const Listing = ({ form }) => {
+const Listing = () => {
   // SET State Variables!
   // to manage Accordion state-expanded or retracted
-  const [expanded, setExpanded] = useState(form === 'feedback' ? 2 : 0);
+  const [expanded, setExpanded] = useState(false);
 
   // FN to set which panel is expanded based on url:
   const expandUrlPanel = (url) => {
@@ -50,10 +54,14 @@ const Listing = ({ form }) => {
     const panelPath = url.split('/')[3];
     // according to the url set which panel index to expand
     switch (panelPath) {
+      /* add listing doesn't use # tag so that Navbar, title is seen */
       case 'listing':
         setExpanded(0);
         break;
-      case 'listing?form=feedback#feedback':
+      case 'listing#edit':
+        setExpanded(1);
+        break;
+      case 'listing#feedback':
         setExpanded(2);
         break;
       default:
@@ -87,21 +95,22 @@ const Listing = ({ form }) => {
           maxWidth="lg"
           style={{ paddingTop: '3rem', paddingBottom: '3rem' }}
         >
-          <div className="Listing-accordions" id="listaccordions">
+          {/* accordion grp uses #edit tag so that other accordion summaries can be seen  */}
+          <div className="Listing-accordions" id="edit">
             {forms.map((f, i) => (
-              <Link href="/listing#listaccordions" key={uuid()}>
+              <Link href="/listing#listaccordions" key={uuid()} id={i === 1 ? 'editListing' : f.hashLoc}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
                   onChange={handleAccordion(i)}
                   style={{ margin: '16px 0' }}
-                  id={i === 2 ? 'feedback' : ''}
+                  id={`Accordion0${i}`}
                   TransitionProps={{ timeout: 0, unmountOnExit: true }}
                 >
                   <AccordionSummary
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
-                    id="panel1bh-header"
+                    id="panel1bh-content"
                   >
                     <Typography
                       variant="h6"
