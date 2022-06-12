@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable max-len */
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   Typography,
@@ -13,6 +14,7 @@ import WbIncandescentIcon from '@material-ui/icons/WbIncandescent';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import GroupWorkIcon from '@material-ui/icons/GroupWork';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { v4 as uuidv4 } from 'uuid';
 import Layout from '../components/Layout/Layout';
 import PageHero from '../components/Sections/PageHero';
 import { colors } from '../constants/design';
@@ -205,7 +207,7 @@ const about = [
 ];
 
 const About = () => {
-  const [expanded, setExpanded] = React.useState(0);
+  const [expanded, setExpanded] = useState(0);
 
   const handleChange = (panel) => (isExpanded) => {
     setExpanded(isExpanded ? panel : 0);
@@ -234,14 +236,14 @@ const About = () => {
 
             <div className="About-accordions" id="accordions">
               {about.map((a, i) => (
-                <Link href="/about#accordions">
+                <Link href="/about#accordions" key={uuidv4()}>
                   <Accordion
                     elevation={3}
                     expanded={expanded === i}
                     onChange={handleChange(i)}
-                    key={a.name}
+                    /* key={a.name} */
                     style={{ margin: '16px 0' }}
-                    TransitionProps={{ timeout: 0 }}
+                    TransitionProps={{ timeout: 0, unmountOnExit: true }} /* unmount component after it finishes exiting */
                   >
                     <AccordionSummary
                       expandIcon={expanded !== i && <ExpandMoreIcon />}
