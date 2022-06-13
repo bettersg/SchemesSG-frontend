@@ -36,4 +36,3 @@ yarn-error.log*
 firebase-debug.log
 
 # github workflows
-.github/workflows/
