@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
@@ -9,12 +7,10 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from '@material-ui/core';
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FeedbackIcon from '@material-ui/icons/Feedback';
-import { v4 as uuidv4 } from 'uuid';
 import { colors } from '../constants/design';
 import PageHero from '../components/Sections/PageHero';
 import Layout from '../components/Layout/Layout';
@@ -44,8 +40,8 @@ const forms = [
 ];
 
 const Listing = () => {
-  // SET State Variables!
-  // to manage Accordion state-expanded or retracted
+  // State Variables
+  // to manage Accordion state, expanded (true) or retracted(false)
   const [expanded, setExpanded] = useState(false);
 
   // FN to set which panel is expanded based on url:
@@ -64,6 +60,9 @@ const Listing = () => {
       case 'listing#feedback':
         setExpanded(2);
         break;
+      case 'listing#listaccordions':
+        setExpanded(false);
+        break;
       default:
         console.log('error at Listing');
     }
@@ -75,15 +74,12 @@ const Listing = () => {
     // grab URL from the window.
     // due to next, this has to run before JSX elements are created.
     const currentURL = window.location.href;
-    console.log('currentURL =', currentURL);
     expandUrlPanel(currentURL);
   }, []);
 
-  // OnChange, change expanded panel to this panel if not expanded?
   const handleAccordion = (panel) => (isExpanded) => {
     setExpanded(isExpanded ? panel : 0);
   };
-
   return (
     <>
       <Layout title="Listing | Schemes SG">
@@ -96,21 +92,24 @@ const Listing = () => {
           style={{ paddingTop: '3rem', paddingBottom: '3rem' }}
         >
           {/* accordion grp uses #edit tag so that other accordion summaries can be seen  */}
+          {/* key added in Link tag as each Link is a child component when mapped */}
           <div className="Listing-accordions" id="edit">
             {forms.map((f, i) => (
-              <Link href="/listing#listaccordions" key={uuidv4()} id={i === 1 ? 'editListing' : f.hashLoc}>
+              <Link href="/listing#listaccordions" key={`Link#${f.hashLoc}`} id={i === 1 ? 'editListing' : f.hashLoc}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
                   onChange={handleAccordion(i)}
+                  key={f.name}
                   style={{ margin: '16px 0' }}
                   id={`Accordion0${i}`}
-                  TransitionProps={{ timeout: 0, unmountOnExit: true }}
+                  TransitionProps={{ timeout: 3, unmountOnExit: false }}
                 >
                   <AccordionSummary
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
-                    id="panel1bh-content"
+                    id="panel1bh-header"
+                    key={`AccordionSumm${f.hashLoc}`} /* added key here to speed up react rendering */
                   >
                     <Typography
                       variant="h6"
@@ -156,13 +155,11 @@ const Listing = () => {
           </div>
         </Container>
       </Layout>
-
       <style jsx>
         {`
           .Listing-root {
             position: relative;
           }
-
           .disclaimer {
             display: inline-block;
             margin: 3rem 0;
@@ -176,5 +173,4 @@ const Listing = () => {
     </>
   );
 };
-
 export default Listing;
