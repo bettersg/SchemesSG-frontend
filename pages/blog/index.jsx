@@ -1,6 +1,8 @@
 import React from 'react';
 import Prismic from '@prismicio/client';
-import { Container, Typography, Menu, MenuItem, Grid } from '@material-ui/core';
+import {
+  Container, Typography, Menu, MenuItem, Grid,
+} from '@material-ui/core';
 import { client } from '../../utils/prismic';
 import Layout from '../../components/Layout/Layout';
 import PageHero from '../../components/Sections/PageHero';
@@ -28,13 +30,13 @@ const Blog = ({ posts, updates }) => {
 
   return (
     <>
-      <Layout title='Blog & Updates | Schemes SG'>
+      <Layout title="Blog & Updates | Schemes SG">
         <PageHero
-          title='Schemes Blog & Updates'
-          subtitle='Documenting our journey so that other builders can take reference in future :)'
+          title="Schemes Blog & Updates"
+          subtitle="Documenting our journey so that other builders can take reference in future :)"
         />
-        <section className='blogposts-container'>
-          <Container maxWidth='lg'>
+        <section className="blogposts-container">
+          <Container maxWidth="lg">
             <Grid container spacing={3}>
               {posts.map((post) => (
                 <Grid item xs={12} sm={6} md={4}>
@@ -45,42 +47,47 @@ const Blog = ({ posts, updates }) => {
           </Container>
         </section>
 
-        <section className='updates-container'>
-          <Container maxWidth='lg'>
+        <section className="updates-container">
+          <Container maxWidth="lg">
             <Typography
-              variant='h6'
+              variant="h6"
               gutterBottom
-              style={{ marginBottom: '2rem' }}>
-              Update Type:{' '}
+              style={{ marginBottom: '2rem' }}
+            >
+              Update Type:
+              {' '}
               <span
-                className='updates-select'
+                className="updates-select"
                 style={{
                   border: `1px solid ${updateColors[options[selectedIndex]]}`,
                   color: updateColors[options[selectedIndex]],
                 }}
-                onClick={handleClick}>
+                onClick={handleClick}
+              >
                 {' '}
                 {options[selectedIndex]}
               </span>
             </Typography>
             <Menu
-              id='lock-menu'
+              id="lock-menu"
               anchorEl={anchorEl}
               keepMounted
               open={Boolean(anchorEl)}
-              onClose={handleClose}>
+              onClose={handleClose}
+            >
               {options.map((option, index) => (
                 <MenuItem
                   key={option}
                   selected={index === selectedIndex}
-                  onClick={(event) => handleMenuItemClick(event, index)}>
+                  onClick={(event) => handleMenuItemClick(event, index)}
+                >
                   {option}
                 </MenuItem>
               ))}
             </Menu>
             {updates
               .filter(
-                (option) => option.data.category === options[selectedIndex]
+                (option) => option.data.category === options[selectedIndex],
               )
               .map((update) => (
                 <UpdatesCard update={update} key={update.data.title[0].text} />
@@ -123,7 +130,7 @@ export async function getStaticProps() {
     {
       orderings: '[my.blog_posts.updated_on desc]',
       pageSize: 99,
-    }
+    },
   );
 
   const updates = await client.query(
@@ -131,7 +138,7 @@ export async function getStaticProps() {
     {
       orderings: '[my.updates.updated_on desc]',
       pageSize: 99,
-    }
+    },
   );
 
   return {

@@ -1,3 +1,4 @@
+/* eslint-disable object-shorthand */
 import React from 'react';
 import { updateColors } from '../../constants/design';
 
@@ -7,9 +8,13 @@ const UpdatesCard = ({ update }) => {
   return (
     <>
       <div
-        className='UpdatesCard-root'
-        style={{ border: `1px solid ${color}`, color: color }}>
-        <p className='update-title'>{update.data.title[0].text}:</p>
+        className="UpdatesCard-root"
+        style={{ border: `1px solid ${color}`, color: color }}
+      >
+        <p className="update-title">
+          {update.data.title[0].text}
+          :
+        </p>
         <p>{update.data.description[0].text}</p>
       </div>
 

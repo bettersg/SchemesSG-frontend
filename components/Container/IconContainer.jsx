@@ -1,12 +1,12 @@
 import React from 'react';
 import { colors } from '../../constants/design';
-const IconContainer = ({ icon }) => {
-  return (
-    <>
-      <div className='IconContainer-root'>{icon}</div>
 
-      <style jsx>
-        {`
+const IconContainer = ({ icon }) => (
+  <>
+    <div className="IconContainer-root">{icon}</div>
+
+    <style jsx>
+      {`
           .IconContainer-root {
             position: relative;
             padding: 1rem;
@@ -20,9 +20,8 @@ const IconContainer = ({ icon }) => {
             justify-content: center;
           }
         `}
-      </style>
-    </>
-  );
-};
+    </style>
+  </>
+);
 
 export default IconContainer;

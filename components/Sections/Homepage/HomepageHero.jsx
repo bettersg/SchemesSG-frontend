@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
@@ -35,7 +36,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
 }));
 const HomepageHero = () => {
   const sm = useMediaQuery(`(max-width: ${breakpoints.width.sm}px)`);

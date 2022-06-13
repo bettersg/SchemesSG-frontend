@@ -1,37 +1,36 @@
 import React from 'react';
 import { RichText } from 'prismic-dom';
+import Link from 'next/link';
 import { colors } from '../../constants/design';
 import { convertDate } from '../../utils/prismic';
-import Link from 'next/link';
 
-const BlogpostCard = ({ post }) => {
-  return (
-    <>
-      <div className='BlogpostCard-root'>
-        <Link href={`/blog/${post.uid}`} passHref>
-          <a href={`/blog/${post.uid}`}>
-            <img
-              src={post.data.featured_image.url}
-              alt={post.data.featured_image.alt}
-            />
-            <div className='BlogpostCard-details'>
-              <div className='cat-and-date'>
-                {convertDate(post.data.updated_on)}
-              </div>
-              <div className='BlogpostCard-title'>
-                {RichText.asText(post.data.title)}
-              </div>
-
-              <p className='BlogpostCard-text'>
-                {RichText.asText(post.data.excerpt)}
-              </p>
-
+const BlogpostCard = ({ post }) => (
+  <>
+    <div className="BlogpostCard-root">
+      <Link href={`/blog/${post.uid}`} passHref>
+        <a href={`/blog/${post.uid}`}>
+          <img
+            src={post.data.featured_image.url}
+            alt={post.data.featured_image.alt}
+          />
+          <div className="BlogpostCard-details">
+            <div className="cat-and-date">
+              {convertDate(post.data.updated_on)}
             </div>
-          </a>
-        </Link>
-      </div>
-      <style jsx>
-        {`
+            <div className="BlogpostCard-title">
+              {RichText.asText(post.data.title)}
+            </div>
+
+            <p className="BlogpostCard-text">
+              {RichText.asText(post.data.excerpt)}
+            </p>
+
+          </div>
+        </a>
+      </Link>
+    </div>
+    <style jsx>
+      {`
           .BlogpostCard-root {
             background-color: #fff;
             margin: 0.5rem 0;
@@ -84,9 +83,8 @@ const BlogpostCard = ({ post }) => {
             -webkit-box-orient: vertical;
           }
         `}
-      </style>
-    </>
-  );
-};
+    </style>
+  </>
+);
 
 export default BlogpostCard;
