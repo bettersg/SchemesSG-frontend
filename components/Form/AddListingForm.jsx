@@ -1,14 +1,17 @@
-import React from 'react';
+/* eslint-disable no-console */
+import React, { useState } from 'react';
 // import axios from 'axios';
-import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
+import {
+  Typography, Button, TextField, Snackbar,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const useStyles = makeStyles(() => ({
@@ -21,10 +24,19 @@ const useStyles = makeStyles(() => ({
 
 const AddListingForm = () => {
   const classes = useStyles();
-  const [form, setForm] = React.useState({});
-  const [open, setOpen] = React.useState(false);
-  const [success, setSuccess] = React.useState(true);
-  const [loading, setLoading] = React.useState(false);
+
+  const [form, setForm] = useState({
+    Name: '',
+    Email: '',
+    Scheme: '',
+    Agency: '',
+    Description: '',
+    URL: '',
+    Tags: '',
+  });
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
@@ -37,15 +49,14 @@ const AddListingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const scriptURLadd =
-      'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
+    const scriptURLadd = 'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
 
     fetch(scriptURLadd, {
       method: 'POST',
       body: createFormData(form),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -64,142 +75,151 @@ const AddListingForm = () => {
   };
   return (
     <>
-      <form className='AddListingForm-root' onSubmit={handleSubmit}>
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+      <form className="AddListingForm-root" onSubmit={handleSubmit}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. John Tan'
+          value={form.Name}
+          label=""
+          placeholder="e.g. John Tan"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Name'
+          name="Name"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Email (optional, if you want us to reply you)
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Email (optional, if you want us to reply you)
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          type='email'
-          placeholder='e.g. abc@123.com'
+          value={form.Email}
+          label=""
+          type="email"
+          placeholder="e.g. abc@123.com"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
-          name='Email'
+          variant="outlined"
+          name="Email"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Scheme Name
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Scheme Name
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. ABC Financial Assistance'
+          value={form.Scheme}
+          label=""
+          placeholder="e.g. ABC Financial Assistance"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Scheme'
+          name="Scheme"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Providing Agency
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Providing Agency
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. ABC Charity Singapore'
+          value={form.Agency}
+          label=""
+          placeholder="e.g. ABC Charity Singapore"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           style={{ marginTop: 5, marginBottom: 15 }}
           required
-          name='Agency'
+          name="Agency"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Description of the scheme
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Description of the scheme
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. Financial assistance for low income, etc.'
+          value={form.Description}
+          label=""
+          placeholder="e.g. Financial assistance for low income, etc."
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           style={{ marginTop: 5, marginBottom: 15 }}
           required
-          name='Description'
+          name="Description"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        URL
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          URL
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. http://www.abccharity.com.sg'
+          value={form.URL}
+          label=""
+          placeholder="e.g. http://www.abccharity.com.sg"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='URL'
+          name="URL"
         />
-         <Typography variant='body1' style={{ textAlign: 'left' }}>
-         Help us add a few keywords so that we can organise our data systems
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Help us add a few keywords so that we can organise our data systems
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. Low Income, Healthcare'
+          value={form.Tags}
+          label=""
+          placeholder="e.g. Low Income, Healthcare"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Tags'
+          name="Tags"
         />
         <Button
-          type='submit'
-          variant='contained'
-          color='primary'
+          type="submit"
+          variant="contained"
+          color="primary"
           style={{ marginTop: 16 }}
           disableElevation
-          disabled={loading}>
-          <Typography variant='subtitle1' className={classes.btnText}>
-            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Add Listing"}
+          disabled={loading}
+          onClick={handleSubmit}
+        >
+          <Typography variant="subtitle1" className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Add Listing'}
           </Typography>
         </Button>
       </form>
