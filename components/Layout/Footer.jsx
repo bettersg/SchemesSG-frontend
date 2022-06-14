@@ -108,7 +108,7 @@ const Footer = () => {
                   <div>
                     <TextLink
                       text="Add a listing"
-                      href="/listing"
+                      href="/listing#add"
                       color="inherit"
                       variant="body1"
                     />
