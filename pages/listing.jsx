@@ -54,6 +54,9 @@ const Listing = () => {
       case 'listing':
         setExpanded(0);
         break;
+      case 'listing#add':
+        setExpanded(0);
+        break;
       case 'listing#edit':
         setExpanded(1);
         break;
