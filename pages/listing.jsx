@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
@@ -8,12 +7,10 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from '@material-ui/core';
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import FeedbackIcon from '@material-ui/icons/Feedback';
-import { uuid } from 'uuidv4';
 import { colors } from '../constants/design';
 import PageHero from '../components/Sections/PageHero';
 import Layout from '../components/Layout/Layout';
@@ -26,23 +23,26 @@ const forms = [
     name: 'Add a listing',
     icon: <AddIcon style={{ marginRight: 8 }} />,
     form: <AddListingForm />,
+    hashLoc: 'add',
   },
   {
     name: 'Edit a listing',
     icon: <EditIcon style={{ marginRight: 8 }} />,
     form: <EditListingForm />,
+    hashLoc: 'edit',
   },
   {
     name: 'Feedback',
     icon: <FeedbackIcon style={{ marginRight: 8 }} />,
     form: <FeedbackForm />,
+    hashLoc: 'feedback',
   },
 ];
 
-const Listing = ({ form }) => {
-  // SET State Variables!
-  // to manage Accordion state-expanded or retracted
-  const [expanded, setExpanded] = useState(form === 'feedback' ? 2 : 0);
+const Listing = () => {
+  // State Variables
+  // to manage Accordion state, expanded (true) or retracted(false)
+  const [expanded, setExpanded] = useState(false);
 
   // FN to set which panel is expanded based on url:
   const expandUrlPanel = (url) => {
@@ -50,11 +50,18 @@ const Listing = ({ form }) => {
     const panelPath = url.split('/')[3];
     // according to the url set which panel index to expand
     switch (panelPath) {
+      /* add listing doesn't use # tag so that Navbar, title is seen */
       case 'listing':
         setExpanded(0);
         break;
-      case 'listing?form=feedback#feedback':
+      case 'listing#edit':
+        setExpanded(1);
+        break;
+      case 'listing#feedback':
         setExpanded(2);
+        break;
+      case 'listing#listaccordions':
+        setExpanded(false);
         break;
       default:
         console.log('error at Listing');
@@ -67,15 +74,12 @@ const Listing = ({ form }) => {
     // grab URL from the window.
     // due to next, this has to run before JSX elements are created.
     const currentURL = window.location.href;
-    console.log('currentURL =', currentURL);
     expandUrlPanel(currentURL);
   }, []);
 
-  // OnChange, change expanded panel to this panel if not expanded?
   const handleAccordion = (panel) => (isExpanded) => {
     setExpanded(isExpanded ? panel : 0);
   };
-
   return (
     <>
       <Layout title="Listing | Schemes SG">
@@ -87,21 +91,25 @@ const Listing = ({ form }) => {
           maxWidth="lg"
           style={{ paddingTop: '3rem', paddingBottom: '3rem' }}
         >
-          <div className="Listing-accordions" id="listaccordions">
+          {/* accordion grp uses #edit tag so that other accordion summaries can be seen  */}
+          {/* key added in Link tag as each Link is a child component when mapped */}
+          <div className="Listing-accordions" id="edit">
             {forms.map((f, i) => (
-              <Link href="/listing#listaccordions" key={uuid()}>
+              <Link href="/listing#listaccordions" key={`Link#${f.hashLoc}`} id={i === 1 ? 'editListing' : f.hashLoc}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
                   onChange={handleAccordion(i)}
+                  key={f.name}
                   style={{ margin: '16px 0' }}
-                  id={i === 2 ? 'feedback' : ''}
-                  TransitionProps={{ timeout: 0, unmountOnExit: true }}
+                  id={`Accordion0${i}`}
+                  TransitionProps={{ timeout: 3, unmountOnExit: false }}
                 >
                   <AccordionSummary
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
+                    key={`AccordionSumm${f.hashLoc}`} /* added key here to speed up react rendering */
                   >
                     <Typography
                       variant="h6"
@@ -147,13 +155,11 @@ const Listing = ({ form }) => {
           </div>
         </Container>
       </Layout>
-
       <style jsx>
         {`
           .Listing-root {
             position: relative;
           }
-
           .disclaimer {
             display: inline-block;
             margin: 3rem 0;
@@ -167,5 +173,4 @@ const Listing = ({ form }) => {
     </>
   );
 };
-
 export default Listing;
