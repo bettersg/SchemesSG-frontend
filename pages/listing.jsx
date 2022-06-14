@@ -57,7 +57,13 @@ const Listing = () => {
       case 'listing#edit':
         setExpanded(1);
         break;
+      case 'listing#editListing':
+        setExpanded(1);
+        break;
       case 'listing#feedback':
+        setExpanded(2);
+        break;
+      case 'listing?form=feedback#feedback':
         setExpanded(2);
         break;
       case 'listing#listaccordions':
@@ -102,13 +108,14 @@ const Listing = () => {
                   onChange={handleAccordion(i)}
                   key={f.name}
                   style={{ margin: '16px 0' }}
-                  id={i === 1 ? 'editListing' : f.hashLoc}
+                  id={`Accordion0${i}`}
                   TransitionProps={{ timeout: 3, unmountOnExit: false }}
                 >
                   <AccordionSummary
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
-                    id="panel1bh-header"
+                    id={i === 1 ? 'editListing' : f.hashLoc}
+                    /* id="panel1bh-header" */
                     key={`AccordionSumm${f.hashLoc}`} /* added key here to speed up react rendering */
                   >
                     <Typography
