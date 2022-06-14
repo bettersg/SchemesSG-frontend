@@ -95,14 +95,14 @@ const Listing = () => {
           {/* key added in Link tag as each Link is a child component when mapped */}
           <div className="Listing-accordions" id="edit">
             {forms.map((f, i) => (
-              <Link href="/listing#listaccordions" key={`Link#${f.hashLoc}`} id={i === 1 ? 'editListing' : f.hashLoc}>
+              <Link href="/listing#listaccordions" key={`Link#${f.hashLoc}`} id={`LinkHref${i}`}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
                   onChange={handleAccordion(i)}
                   key={f.name}
                   style={{ margin: '16px 0' }}
-                  id={`Accordion0${i}`}
+                  id={i === 1 ? 'editListing' : f.hashLoc}
                   TransitionProps={{ timeout: 3, unmountOnExit: false }}
                 >
                   <AccordionSummary
