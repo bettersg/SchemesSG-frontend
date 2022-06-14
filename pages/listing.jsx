@@ -57,9 +57,6 @@ const Listing = () => {
       case 'listing#edit':
         setExpanded(1);
         break;
-      case 'listing#editListing':
-        setExpanded(1);
-        break;
       case 'listing#feedback':
         setExpanded(2);
         break;
@@ -96,9 +93,9 @@ const Listing = () => {
         >
           {/* accordion grp uses #edit tag so that other accordion summaries can be seen  */}
           {/* key added in Link tag as each Link is a child component when mapped */}
-          <div className="Listing-accordions" id="edit">
+          <div className="Listing-accordions">
             {forms.map((f, i) => (
-              <Link href="/listing#listaccordions" key={`Link#${f.hashLoc}`} id={`LinkHref${i}`}>
+              <Link href={`/listing#${f.hashLoc}`} key={`Link#${f.hashLoc}`} id={`LinkHref${i}`}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
@@ -106,12 +103,17 @@ const Listing = () => {
                   key={f.name}
                   style={{ margin: '16px 0' }}
                   id={`Accordion0${i}`}
-                  TransitionProps={{ timeout: 3, unmountOnExit: false }}
+                  /* timeout has to be zero to ensure
+                  correct position of expanded panels
+                  when toggling between the 3 panels */
+                  /* unmountOnExit change to false to keep
+                  state and help with response */
+                  TransitionProps={{ timeout: 0, unmountOnExit: false }}
                 >
                   <AccordionSummary
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
-                    id={i === 1 ? 'editListing' : f.hashLoc}
+                    id={f.hashLoc}
                     /* previous id: */
                     /* id="panel1bh-header" */
                     key={`AccordionSumm${f.hashLoc}`} /* added key here to speed up react rendering */
