@@ -63,9 +63,6 @@ const Listing = () => {
       case 'listing#feedback':
         setExpanded(2);
         break;
-      case 'listing?form=feedback#feedback':
-        setExpanded(2);
-        break;
       case 'listing#listaccordions':
         setExpanded(false);
         break;
@@ -115,6 +112,7 @@ const Listing = () => {
                     expandIcon={expanded !== i && <ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
                     id={i === 1 ? 'editListing' : f.hashLoc}
+                    /* previous id: */
                     /* id="panel1bh-header" */
                     key={`AccordionSumm${f.hashLoc}`} /* added key here to speed up react rendering */
                   >
