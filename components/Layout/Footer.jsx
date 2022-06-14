@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -20,15 +21,17 @@ const useStyles = makeStyles(() => ({
 const Footer = () => {
   const classes = useStyles();
   return (
-    <footer className='footer-root'>
-      <AppBar position='static' elevation={0} color='transparent'>
-        <Container maxWidth='lg'>
-          <div className='footer-top'>
+    <footer className="footer-root">
+      <AppBar position="static" elevation={0} color="transparent">
+        <Container maxWidth="lg">
+          <div className="footer-top">
             <Grid container spacing={3}>
               <Grid item md={4} xs={12}>
-                <div className='address'>
-                  <Typography variant='body1'>
-                    <b>Schemes SG</b> is a product from better.sg, Singapore's open-source public #techforgood movement. We hope you find it helpful!
+                <div className="address">
+                  <Typography variant="body1">
+                    <b>Schemes SG</b>
+                    {' '}
+                    is a product from better.sg, Singapore's open-source public #techforgood movement. We hope you find it helpful!
                   </Typography>
                 </div>
               </Grid>
@@ -36,86 +39,94 @@ const Footer = () => {
                 <Grid item md={2} />
               </Hidden>
               <Grid item md={2} xs={6}>
-                <Typography variant='h6' className={classes.footerHeader}>
+                <Typography variant="h6" className={classes.footerHeader}>
                   Find schemes!
                 </Typography>
-                <div className='footer-links-container'>
+                <div className="footer-links-container">
                   <div>
                     <TextLink
-                      text='Use our AI'
-                      href='/pal'
-                      color='inherit'
-                      variant='body1'
+                      text="Use our AI"
+                      href="/pal"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                   <div>
                     <TextLink
-                      text='See all listings'
-                      href='/bank'
-                      color='inherit'
-                      variant='body1'
+                      text="See all listings"
+                      href="/bank"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                   <div>
                     <TextLink
-                      text='Ask a volunteer'
-                      href='/case'
-                      color='inherit'
-                      variant='body1'
+                      text="Ask a volunteer"
+                      href="/case"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                 </div>
               </Grid>
               <Grid item md={2} xs={6}>
-                <Typography variant='h6' className={classes.footerHeader}>
+                <Typography variant="h6" className={classes.footerHeader}>
                   Info
                 </Typography>
-                <div className='footer-links-container'>
+                <div className="footer-links-container">
                   <div>
                     <TextLink
-                      text='About'
-                      href='/about'
-                      color='inherit'
-                      variant='body1'
+                      text="About"
+                      href="/about"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                   <div>
                     <TextLink
-                      text='Our team'
-                      href='/team'
-                      color='inherit'
-                      variant='body1'
+                      text="Our team"
+                      href="/team"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                   <div>
                     <TextLink
-                      text='Blog'
-                      href='/blog'
-                      color='inherit'
-                      variant='body1'
+                      text="Blog"
+                      href="/blog"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                 </div>
               </Grid>
               <Grid item md={2} xs={6}>
-                <Typography variant='h6' className={classes.footerHeader}>
+                <Typography variant="h6" className={classes.footerHeader}>
                   Contact
                 </Typography>
-                <div className='footer-links-container'>
+                <div className="footer-links-container">
                   <div>
                     <TextLink
-                      text='Add a listing'
-                      href='/listing'
-                      color='inherit'
-                      variant='body1'
+                      text="Add a listing"
+                      href="/listing"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                   <div>
                     <TextLink
-                      text='Provide feedback'
-                      href='/listing?form=feedback#feedback'
-                      color='inherit'
-                      variant='body1'
+                      text="Edit a listing"
+                      href="/listing#edit"
+                      color="inherit"
+                      variant="body1"
+                    />
+                  </div>
+                  <div>
+                    <TextLink
+                      text="Provide feedback"
+                      href="/listing#feedback"
+                      color="inherit"
+                      variant="body1"
                     />
                   </div>
                 </div>
@@ -123,9 +134,12 @@ const Footer = () => {
             </Grid>
           </div>
           <Divider />
-          <div className='footer-btm'>
-            <Typography variant='subtitle2'>
-              © Copyright 2021, <b>Schemes SG</b>.
+          <div className="footer-btm">
+            <Typography variant="subtitle2">
+              © Copyright 2021,
+              {' '}
+              <b>Schemes SG</b>
+              .
             </Typography>
           </div>
         </Container>
