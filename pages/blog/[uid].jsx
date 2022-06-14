@@ -1,48 +1,48 @@
 import React from 'react';
 import Prismic from '@prismicio/client';
+import { Container } from '@material-ui/core';
+import { RichText } from 'prismic-reactjs';
 import { client, linkResolver } from '../../utils/prismic';
 import Layout from '../../components/Layout/Layout';
 import PageHero from '../../components/Sections/PageHero';
-import { Container } from '@material-ui/core';
-import { RichText } from 'prismic-reactjs';
 
 import { breakpoints } from '../../constants/design';
 
-const Blogpost = ({ post }) => {
-  return (
-    <>
-      <Layout
-        title={post.data.meta_title ? post.data.meta_title : undefined}
-        description={
+const Blogpost = ({ post }) => (
+  <>
+    <Layout
+      title={post.data.meta_title ? post.data.meta_title : undefined}
+      description={
           post.data.meta_description ? post.data.meta_description : undefined
         }
-        ogTitle={
+      ogTitle={
           post.data.open_graph_title ? post.data.open_graph_title : undefined
         }
-        ogDescription={
+      ogDescription={
           post.data.open_graph_description
             ? post.data.open_graph_description
             : undefined
         }
-        ogImage={
+      ogImage={
           post.data.open_graph_image.url
             ? post.data.open_graph_image.url
             : undefined
         }
-        ogUrl={`https://schemes.sg/blog/${post.uid}`}>
-        <PageHero
-          title={RichText.asText(post.data.title)}
-          subtitle={RichText.asText(post.data.excerpt)}
-        />
-        <section>
-          <Container maxWidth='lg'>
-            {RichText.render(post.data.post_content, linkResolver)}
-          </Container>
-        </section>
-      </Layout>
+      ogUrl={`https://schemes.sg/blog/${post.uid}`}
+    >
+      <PageHero
+        title={RichText.asText(post.data.title)}
+        subtitle={RichText.asText(post.data.excerpt)}
+      />
+      <section>
+        <Container maxWidth="lg">
+          {RichText.render(post.data.post_content, linkResolver)}
+        </Container>
+      </section>
+    </Layout>
 
-      <style jsx>
-        {`
+    <style jsx>
+      {`
           .Blogpost-root {
             position: relative;
           }
@@ -63,16 +63,15 @@ const Blogpost = ({ post }) => {
             }
           }
         `}
-      </style>
-    </>
-  );
-};
+    </style>
+  </>
+);
 
 export default Blogpost;
 
 export async function getStaticPaths() {
   const { results } = await client.query(
-    Prismic.Predicates.at('document.type', 'blog_posts')
+    Prismic.Predicates.at('document.type', 'blog_posts'),
   );
   const paths = results.map((post) => ({
     params: {
@@ -91,7 +90,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      post: post,
+      post,
     },
   };
 }
