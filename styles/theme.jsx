@@ -16,7 +16,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: `'Nunito Sans', sans-serif`,
+    fontFamily: "'Nunito Sans', sans-serif",
   },
   palette: colors,
 });
