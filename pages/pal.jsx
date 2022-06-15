@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/jsx-no-comment-textnodes */
@@ -17,10 +18,8 @@ import {
   Slider,
 } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import PersonIcon from '@material-ui/icons/Person';
 import InfoIcon from '@material-ui/icons/Info';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Layout from '../components/Layout/Layout';
