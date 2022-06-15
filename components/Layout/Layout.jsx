@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
@@ -13,36 +14,36 @@ const Layout = ({
   ogUrl,
 }) => {
   return (
-    <div className='layout-root'>
+    <div className="layout-root">
       <Head>
         {title && <title>{title}</title>}
-        {description && <meta name='description' content={description} />}
+        {description && <meta name="description" content={description} />}
 
         {ogTitle && (
           <>
-            <meta property='og:title' content={ogTitle} />
-            <meta name='twitter:title' content={ogTitle} />
+            <meta property="og:title" content={ogTitle} />
+            <meta name="twitter:title" content={ogTitle} />
           </>
         )}
 
         {ogDescription && (
           <>
-            <meta name='og:description' content={ogDescription} />
-            <meta name='twitter:description' content={ogDescription} />
+            <meta name="og:description" content={ogDescription} />
+            <meta name="twitter:description" content={ogDescription} />
           </>
         )}
 
         {ogImage && (
           <>
-            <meta property='og:image' content={ogImage} />
-            <meta name='twitter:image' content={ogImage} />
+            <meta property="og:image" content={ogImage} />
+            <meta name="twitter:image" content={ogImage} />
           </>
         )}
 
         {ogUrl && (
           <>
-            <meta property='og:url' content={ogUrl} />
-            <meta name='twitter:url' content={ogUrl} />
+            <meta property="og:url" content={ogUrl} />
+            <meta name="twitter:url" content={ogUrl} />
           </>
         )}
       </Head>
