@@ -1,9 +1,11 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import { colors } from '../../constants/design';
+
 const IconContainer = ({ icon }) => {
   return (
     <>
-      <div className='IconContainer-root'>{icon}</div>
+      <div className="IconContainer-root">{icon}</div>
 
       <style jsx>
         {`
