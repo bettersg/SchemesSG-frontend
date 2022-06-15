@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { Container, Typography, Grid } from '@material-ui/core';
 
