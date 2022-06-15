@@ -1,14 +1,17 @@
+/* eslint-disable no-console */
 import React from 'react';
 // import axios from 'axios';
-import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
+import {
+  Typography, Button, TextField, Snackbar,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const useStyles = makeStyles(() => ({
@@ -37,15 +40,14 @@ const EditListingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const scriptURLedit =
-      'https://script.google.com/macros/s/AKfycbyXWqdWuzjOgOyiF46jY_LuGk9u0dzDpFnBgWSvQoGu2IBg4Q8/exec';
+    const scriptURLedit = 'https://script.google.com/macros/s/AKfycbyXWqdWuzjOgOyiF46jY_LuGk9u0dzDpFnBgWSvQoGu2IBg4Q8/exec';
 
     fetch(scriptURLedit, {
       method: 'POST',
       body: createFormData(form),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -64,87 +66,88 @@ const EditListingForm = () => {
   };
   return (
     <>
-      <form className='EditListingForm-root' onSubmit={handleSubmit}>
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+      <form className="EditListingForm-root" onSubmit={handleSubmit}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. John Tan'
+          label=""
+          placeholder="e.g. John Tan"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Name'
+          name="Name"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Email (optional, if you want us to reply you)
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          type='email'
-          placeholder='e.g. abc@123.com'
+          label=""
+          type="email"
+          placeholder="e.g. abc@123.com"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
-          name='Email'
+          variant="outlined"
+          name="Email"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name of Scheme to Edit
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. ABC Financial Assistance'
+          label=""
+          placeholder="e.g. ABC Financial Assistance"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Scheme'
+          name="Scheme"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Updated name/description/organisation info of the scheme
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. Original listing mentions that this scheme provides X. Actually it provides Y instead etc.'
+          label=""
+          placeholder="e.g. Original listing mentions that this scheme provides X. Actually it provides Y instead etc."
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Update'
+          name="Update"
         />
         <Button
-          type='submit'
-          variant='contained'
-          color='primary'
+          type="submit"
+          variant="contained"
+          color="primary"
           style={{ marginTop: 16 }}
           disableElevation
-          disabled={loading}>
-          <Typography variant='subtitle1' className={classes.btnText}>
-            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Edit Listing"}
+          disabled={loading}
+        >
+          <Typography variant="subtitle1" className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Edit Listing'}
           </Typography>
         </Button>
       </form>
