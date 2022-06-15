@@ -74,7 +74,7 @@ const FeedbackForm = () => {
   };
   return (
     <>
-      <form className="FeedbackForm-root" onSubmit={handleSubmit}>
+      <form className="FeedbackForm-root">
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
@@ -166,12 +166,13 @@ const FeedbackForm = () => {
           name="Feedback"
         />
         <Button
-          type="submit"
+          type="button"
           variant="contained"
           color="primary"
           style={{ marginTop: 16 }}
           disableElevation
           disabled={loading}
+          onClick={(e) => { handleSubmit(e); }}
         >
           <Typography variant="subtitle1" className={classes.btnText}>
             {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Submit Feedback'}
