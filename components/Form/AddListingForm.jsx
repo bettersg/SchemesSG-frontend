@@ -69,7 +69,7 @@ const AddListingForm = () => {
   };
   return (
     <>
-      <form className="AddListingForm-root" onSubmit={handleSubmit}>
+      <form className="AddListingForm-root">
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
@@ -196,18 +196,21 @@ const AddListingForm = () => {
           required
           name="Tags"
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          style={{ marginTop: 16 }}
-          disableElevation
-          disabled={loading}
-        >
-          <Typography variant="subtitle1" className={classes.btnText}>
-            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Add Listing'}
-          </Typography>
-        </Button>
+        <span>
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+            style={{ marginTop: 16 }}
+            disableElevation
+            disabled={loading}
+            onClick={(e) => { handleSubmit(e); }}
+          >
+            <Typography variant="subtitle1" className={classes.btnText}>
+              {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Add Listing'}
+            </Typography>
+          </Button>
+        </span>
       </form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={success ? 'success' : 'error'}>
