@@ -9,14 +9,12 @@ export const linkResolver = (doc) => {
   // Define the url depending on the document type
   if (doc.type === 'blog') {
     return '/blog';
-  } else if (doc.type === 'blog_posts') {
-    return '/blog/' + doc.uid;
+  } else if (doc.type === 'blog_posts') { // eslint-disable-line no-else-return
+    return '/blog/' + doc.uid; // eslint-disable-line prefer-template
   }
 
   // Default to homepage
   return '/';
 };
 
-export const convertDate = (str) => {
-  return moment(str).format('MMMM D, YYYY');
-};
+export const convertDate = (str) => moment(str).format('MMMM D, YYYY');
