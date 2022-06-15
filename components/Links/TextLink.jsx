@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import Link from 'next/link';
 import { Typography } from '@material-ui/core';
@@ -13,7 +14,7 @@ const TextLink = ({
     <>
       <Link href={href} passHref>
         {newTab ? (
-          <a href={href} target='_blank' rel='noopener noreferrer'>
+          <a href={href} target="_blank" rel="noopener noreferrer">
             <Typography variant={variant} color={color}>
               <span>{text}</span>
             </Typography>
