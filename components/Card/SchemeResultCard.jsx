@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import Link from 'next/link';
 import { Card, CardActionArea, Typography } from '@material-ui/core';
@@ -15,31 +16,36 @@ const SchemeResultCard = ({
     <Card elevation={2}>
       <Link href={link} passHref>
         <CardActionArea
-          target='_blank'
-          rel='noopener noreferrer'
-          style={{ padding: '1.2rem' }}>
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ padding: '1.2rem' }}
+        >
           <img src={image} alt={agency} />
 
-          <Typography variant='h6' style={{ fontWeight: 700 }}>
+          <Typography variant="h6" style={{ fontWeight: 700 }}>
             {scheme}
           </Typography>
           <Typography
-            variant='subtitle1'
+            variant="subtitle1"
             gutterBottom
-            style={{ lineHeight: 1.4, margin: '4px 0 0.8rem 0' }}>
+            style={{ lineHeight: 1.4, margin: '4px 0 0.8rem 0' }}
+          >
             {scheme}
           </Typography>
-          <Typography variant='body2' color='textSecondary'>
+          <Typography variant="body2" color="textSecondary">
             {description}
           </Typography>
           <Typography
-            variant='body2'
-            color='textSecondary'
+            variant="body2"
+            color="textSecondary"
             style={{
               fontStyle: 'italic',
               marginTop: '1rem',
-            }}>
-            Relevance score: {relevance}
+            }}
+          >
+            Relevance score:
+            {' '}
+            {relevance}
           </Typography>
         </CardActionArea>
       </Link>
