@@ -1,28 +1,29 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import { RichText } from 'prismic-dom';
+import Link from 'next/link';
 import { colors } from '../../constants/design';
 import { convertDate } from '../../utils/prismic';
-import Link from 'next/link';
 
 const BlogpostCard = ({ post }) => {
   return (
     <>
-      <div className='BlogpostCard-root'>
+      <div className="BlogpostCard-root">
         <Link href={`/blog/${post.uid}`} passHref>
           <a href={`/blog/${post.uid}`}>
             <img
               src={post.data.featured_image.url}
               alt={post.data.featured_image.alt}
             />
-            <div className='BlogpostCard-details'>
-              <div className='cat-and-date'>
+            <div className="BlogpostCard-details">
+              <div className="cat-and-date">
                 {convertDate(post.data.updated_on)}
               </div>
-              <div className='BlogpostCard-title'>
+              <div className="BlogpostCard-title">
                 {RichText.asText(post.data.title)}
               </div>
 
-              <p className='BlogpostCard-text'>
+              <p className="BlogpostCard-text">
                 {RichText.asText(post.data.excerpt)}
               </p>
 
