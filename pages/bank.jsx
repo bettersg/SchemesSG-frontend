@@ -18,6 +18,7 @@ const Bank = () => (
           <div className="iframe-container">
             <Hidden xsDown>
               <iframe
+                title="HiddenXsDown"
                 src="https://datastudio.google.com/embed/reporting/e8187b37-7af2-4166-b61a-eb54446bb86c/page/v0CAC"
                 frameBorder="0"
                 allowFullScreen
@@ -25,6 +26,7 @@ const Bank = () => (
             </Hidden>
             <Hidden smUp>
               <iframe
+                title="HiddenSmUp"
                 src="https://datastudio.google.com/embed/reporting/e9511193-d184-432c-9db7-12061cd74d93/page/0V2DC"
                 frameBorder="0"
                 allowFullScreen
