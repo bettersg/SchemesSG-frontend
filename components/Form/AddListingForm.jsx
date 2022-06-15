@@ -1,14 +1,20 @@
+/* eslint-disable no-console */
 import React from 'react';
 // import axios from 'axios';
-import { Typography, Button, TextField, Snackbar } from '@material-ui/core';
+import {
+  Typography,
+  Button,
+  TextField,
+  Snackbar,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
-import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant='filled' {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const useStyles = makeStyles(() => ({
@@ -37,15 +43,14 @@ const AddListingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const scriptURLadd =
-      'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
+    const scriptURLadd = 'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
 
     fetch(scriptURLadd, {
       method: 'POST',
       body: createFormData(form),
     })
       .then((response) => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -64,142 +69,143 @@ const AddListingForm = () => {
   };
   return (
     <>
-      <form className='AddListingForm-root' onSubmit={handleSubmit}>
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+      <form className="AddListingForm-root" onSubmit={handleSubmit}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. John Tan'
+          label=""
+          placeholder="e.g. John Tan"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Name'
+          name="Name"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Email (optional, if you want us to reply you)
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Email (optional, if you want us to reply you)
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          type='email'
-          placeholder='e.g. abc@123.com'
+          label=""
+          type="email"
+          placeholder="e.g. abc@123.com"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
-          name='Email'
+          variant="outlined"
+          name="Email"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Scheme Name
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Scheme Name
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. ABC Financial Assistance'
+          label=""
+          placeholder="e.g. ABC Financial Assistance"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Scheme'
+          name="Scheme"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Providing Agency
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Providing Agency
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. ABC Charity Singapore'
+          label=""
+          placeholder="e.g. ABC Charity Singapore"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           style={{ marginTop: 5, marginBottom: 15 }}
           required
-          name='Agency'
+          name="Agency"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Description of the scheme
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Description of the scheme
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. Financial assistance for low income, etc.'
+          label=""
+          placeholder="e.g. Financial assistance for low income, etc."
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
-          variant='outlined'
+          variant="outlined"
           style={{ marginTop: 5, marginBottom: 15 }}
           required
-          name='Description'
+          name="Description"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        URL
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          URL
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. http://www.abccharity.com.sg'
+          label=""
+          placeholder="e.g. http://www.abccharity.com.sg"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='URL'
+          name="URL"
         />
-         <Typography variant='body1' style={{ textAlign: 'left' }}>
-         Help us add a few keywords so that we can organise our data systems
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Help us add a few keywords so that we can organise our data systems
         </Typography>
         <TextField
-          id='outlined-full-width'
+          id="outlined-full-width"
           onChange={handleChange}
-          label=''
-          placeholder='e.g. Low Income, Healthcare'
+          label=""
+          placeholder="e.g. Low Income, Healthcare"
           fullWidth
-          margin='normal'
+          margin="normal"
           InputLabelProps={{
             shrink: true,
           }}
           style={{ marginTop: 5, marginBottom: 15 }}
-          variant='outlined'
+          variant="outlined"
           required
-          name='Tags'
+          name="Tags"
         />
         <Button
-          type='submit'
-          variant='contained'
-          color='primary'
+          type="submit"
+          variant="contained"
+          color="primary"
           style={{ marginTop: 16 }}
           disableElevation
-          disabled={loading}>
-          <Typography variant='subtitle1' className={classes.btnText}>
-            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : "Add Listing"}
+          disabled={loading}
+        >
+          <Typography variant="subtitle1" className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Add Listing'}
           </Typography>
         </Button>
       </form>
