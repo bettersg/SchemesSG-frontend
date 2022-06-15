@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -74,7 +75,7 @@ const FeedbackForm = () => {
   return (
     <>
       <form className="FeedbackForm-root" onSubmit={handleSubmit}>
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
         <TextField
@@ -92,8 +93,8 @@ const FeedbackForm = () => {
           required
           name="Name"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Email (optional, if you want us to reply you)
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Email (optional, if you want us to reply you)
         </Typography>
         <TextField
           id="outlined-full-width"
@@ -110,9 +111,9 @@ const FeedbackForm = () => {
           variant="outlined"
           name="Email"
         />
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        From 1 (least likely) to 10 (most likely), how likely are you to
-            recommend this app to someone else?
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          From 1 (least likely) to 10 (most likely), how likely are you to
+          recommend this app to someone else?
         </Typography>
         <FormControl
           variant="outlined"
@@ -144,8 +145,8 @@ const FeedbackForm = () => {
             <option value="10">10</option>
           </Select>
         </FormControl>
-        <Typography variant='body1' style={{ textAlign: 'left' }}>
-        Feedback
+        <Typography variant="body1" style={{ textAlign: 'left' }}>
+          Feedback
         </Typography>
         <TextField
           id="outlined-full-width"
