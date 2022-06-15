@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import React from 'react';
 import { Typography, Container } from '@material-ui/core';
 import { breakpoints, colors } from '../../constants/design';
@@ -5,18 +6,19 @@ import { breakpoints, colors } from '../../constants/design';
 const HomepageHero = ({ title, subtitle }) => {
   return (
     <>
-      <section className='HomepageHero-root'>
-        <Container maxWidth='lg'>
+      <section className="HomepageHero-root">
+        <Container maxWidth="lg">
           <Typography
-            variant='h4'
+            variant="h4"
             variantMapping={{ h2: 'h1' }}
-            color='inherit'
-            style={{ fontWeight: 700, textAlign: 'center'}}
-            gutterBottom>
+            color="inherit"
+            style={{ fontWeight: 700, textAlign: 'center' }}
+            gutterBottom
+          >
             {title}
           </Typography>
 
-          <Typography style={{textAlign: 'center'}}>{subtitle}</Typography>
+          <Typography style={{ textAlign: 'center' }}>{subtitle}</Typography>
         </Container>
       </section>
 
