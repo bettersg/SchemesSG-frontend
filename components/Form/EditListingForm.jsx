@@ -66,7 +66,7 @@ const EditListingForm = () => {
   };
   return (
     <>
-      <form className="EditListingForm-root" onSubmit={handleSubmit}>
+      <form className="EditListingForm-root">
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name
         </Typography>
@@ -139,12 +139,13 @@ const EditListingForm = () => {
           name="Update"
         />
         <Button
-          type="submit"
+          type="button"
           variant="contained"
           color="primary"
           style={{ marginTop: 16 }}
           disableElevation
           disabled={loading}
+          onClick={(e) => { handleSubmit(e); }}
         >
           <Typography variant="subtitle1" className={classes.btnText}>
             {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Edit Listing'}
