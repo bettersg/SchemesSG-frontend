@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 // import axios from 'axios';
 import {
   Typography,
@@ -17,6 +17,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+// FN: style for CircularProgress indicator inside AddListing button
 const useStyles = makeStyles(() => ({
   btnText: {
     display: 'flex',
@@ -26,12 +27,40 @@ const useStyles = makeStyles(() => ({
 }));
 
 const AddListingForm = () => {
-  const classes = useStyles();
+  // set state var. for form input
   const [form, setForm] = useState({});
+  // set state var. for SnackBar open/close state
   const [open, setOpen] = useState(false);
+  // set state var. for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
+  // set state var for CSS spinner, for AddListing submit button
   const [loading, setLoading] = useState(false);
 
+  // create variable to call useStyles to set makeStyles
+  const classes = useStyles();
+
+  // useRefs for textInput value control
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const schemeRef = useRef();
+  const agencyRef = useRef();
+  const descriptRef = useRef();
+  const urlRef = useRef();
+  const tagsRef = useRef();
+
+  // Fn for emptying Text Input fields upon successful submission
+  const clearInputs = () => {
+    nameRef.current.value = '';
+    emailRef.current.value = '';
+    schemeRef.current.value = '';
+    agencyRef.current.value = '';
+    descriptRef.current.value = '';
+    urlRef.current.value = '';
+    tagsRef.current.value = '';
+    setForm({});
+  };
+
+  // Fn for shutting off Snackbar
   const handleClose = () => {
     setOpen(false);
   };
@@ -51,6 +80,7 @@ const AddListingForm = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          clearInputs();
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -87,6 +117,7 @@ const AddListingForm = () => {
           variant="outlined"
           required
           name="Name"
+          inputRef={nameRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Email (optional, if you want us to reply you)
@@ -105,6 +136,7 @@ const AddListingForm = () => {
           style={{ marginTop: 5, marginBottom: 15 }}
           variant="outlined"
           name="Email"
+          inputRef={emailRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Scheme Name
@@ -123,6 +155,7 @@ const AddListingForm = () => {
           variant="outlined"
           required
           name="Scheme"
+          inputRef={schemeRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Providing Agency
@@ -141,6 +174,7 @@ const AddListingForm = () => {
           style={{ marginTop: 5, marginBottom: 15 }}
           required
           name="Agency"
+          inputRef={agencyRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Description of the scheme
@@ -159,6 +193,7 @@ const AddListingForm = () => {
           style={{ marginTop: 5, marginBottom: 15 }}
           required
           name="Description"
+          inputRef={descriptRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           URL
@@ -177,6 +212,7 @@ const AddListingForm = () => {
           variant="outlined"
           required
           name="URL"
+          inputRef={urlRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Help us add a few keywords so that we can organise our data systems
@@ -195,6 +231,7 @@ const AddListingForm = () => {
           variant="outlined"
           required
           name="Tags"
+          inputRef={tagsRef}
         />
         <span>
           <Button
@@ -207,7 +244,7 @@ const AddListingForm = () => {
             onClick={(e) => { handleSubmit(e); }}
           >
             <Typography variant="subtitle1" className={classes.btnText}>
-              {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Add Listing'}
+              {loading ? <CircularProgress style={{ height: 20, width: 20 }} color="#fff" /> : 'Add Listing'}
             </Typography>
           </Button>
         </span>

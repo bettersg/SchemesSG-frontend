@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 // import axios from 'axios';
 import {
   Typography, Button, TextField, Snackbar,
@@ -14,6 +14,7 @@ function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+// FN: set styles for CircularProgress indicator inside EditListing button
 const useStyles = makeStyles(() => ({
   btnText: {
     display: 'flex',
@@ -23,12 +24,34 @@ const useStyles = makeStyles(() => ({
 }));
 
 const EditListingForm = () => {
-  const classes = useStyles();
+  // set state var. for form input
   const [form, setForm] = useState({});
+  // set state var. for SnackVar open/close state
   const [open, setOpen] = useState(false);
+  // set state var. for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
+  // set state var. for CSS Spinner, for EditListing submit Button
   const [loading, setLoading] = useState(false);
 
+  // create variable to useStyles to set makeStyles
+  const classes = useStyles();
+
+  // useRefs for textInput value control
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const schemeRef = useRef();
+  const updateRef = useRef();
+
+  // Fn for emptying Text Input fields upon successful submission
+  const clearInputs = () => {
+    nameRef.current.value = '';
+    emailRef.current.value = '';
+    schemeRef.current.value = '';
+    updateRef.current.value = '';
+    setForm({});
+  };
+
+  // Fn for shutting off Snackbar
   const handleClose = () => {
     setOpen(false);
   };
@@ -48,6 +71,7 @@ const EditListingForm = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          clearInputs();
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -84,6 +108,7 @@ const EditListingForm = () => {
           variant="outlined"
           required
           name="Name"
+          inputRef={nameRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Email (optional, if you want us to reply you)
@@ -102,6 +127,7 @@ const EditListingForm = () => {
           style={{ marginTop: 5, marginBottom: 15 }}
           variant="outlined"
           name="Email"
+          inputRef={emailRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Name of Scheme to Edit
@@ -120,6 +146,7 @@ const EditListingForm = () => {
           variant="outlined"
           required
           name="Scheme"
+          inputRef={schemeRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Updated name/description/organisation info of the scheme
@@ -137,6 +164,7 @@ const EditListingForm = () => {
           variant="outlined"
           required
           name="Update"
+          inputRef={updateRef}
         />
         <Button
           type="button"
@@ -148,7 +176,7 @@ const EditListingForm = () => {
           onClick={(e) => { handleSubmit(e); }}
         >
           <Typography variant="subtitle1" className={classes.btnText}>
-            {loading ? <CircularProgress style={{ height: 20, width: 20 }} /> : 'Edit Listing'}
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} color="#fff" /> : 'Edit Listing'}
           </Typography>
         </Button>
       </form>

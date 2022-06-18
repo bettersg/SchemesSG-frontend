@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -30,13 +30,32 @@ function Alert(props) {
 }
 
 const FeedbackForm = () => {
-  const classes = useStyles();
-
+  // set state var. for form input
   const [form, setForm] = useState({ NPS: '5' });
+  // set state var. for SnackVar open/close state
   const [open, setOpen] = useState(false);
+  // set state var. for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
+  // set state var. for CSS spinnger for Feedback submit button
   const [loading, setLoading] = useState(false);
 
+  // create variable to useStyles to makeStyles
+  const classes = useStyles();
+
+  // useRefs for textInput value control
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const feedbackRef = useRef();
+
+  // Fn for emptying Text Input fields upon successful submission
+  const clearInputs = () => {
+    nameRef.current.value = '';
+    emailRef.current.value = '';
+    feedbackRef.current.value = '';
+    setForm({ NPS: '5' });
+  };
+
+  // Fn for shutting off Snackbar
   const handleClose = () => {
     setOpen(false);
   };
@@ -56,6 +75,7 @@ const FeedbackForm = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          clearInputs();
           setOpen(true);
           setSuccess(true);
           setLoading(false);
@@ -92,6 +112,7 @@ const FeedbackForm = () => {
           style={{ marginTop: 5, marginBottom: 15 }}
           required
           name="Name"
+          inputRef={nameRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           Email (optional, if you want us to reply you)
@@ -110,6 +131,7 @@ const FeedbackForm = () => {
           style={{ marginTop: 5, marginBottom: 15 }}
           variant="outlined"
           name="Email"
+          inputRef={emailRef}
         />
         <Typography variant="body1" style={{ textAlign: 'left' }}>
           From 1 (least likely) to 10 (most likely), how likely are you to
@@ -164,6 +186,7 @@ const FeedbackForm = () => {
           variant="outlined"
           required
           name="Feedback"
+          inputRef={feedbackRef}
         />
         <Button
           type="button"
