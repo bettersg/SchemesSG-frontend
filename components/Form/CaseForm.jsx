@@ -4,22 +4,42 @@ import React, { useState } from 'react';
 import {
   Typography, Button, TextField, Snackbar,
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { createFormData } from '../../utils';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
+// Style for Circular Progress Indicator inside the Submit Button
+const useStyles = makeStyles(() => ({
+  btnText: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+}));
+
 const CaseForm = () => {
+  // setState for form input
   const [form, setForm] = useState({ Name: '', Email: '', Case: '' });
+  // open, setOpen: for SnackBar open/close state
   const [open, setOpen] = useState(false);
+  // setState for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
+  // setState for CSS spinner, for submit button
   const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
+    // when user clicks to close SnackBar, change
+    // open state to false
     setOpen(false);
   };
+
+  // create variable to call useStyles to set makeStyles
+  const classes = useStyles();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,6 +47,7 @@ const CaseForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const scriptURLschemescase = 'https://script.google.com/macros/s/AKfycbyqGHt2p224ebUahB6XDOgxtru9fvXm3YonCKcPus--p8e57TFB/exec';
 
     fetch(scriptURLschemescase, {
@@ -37,15 +58,18 @@ const CaseForm = () => {
         if (response.status === 200) {
           setOpen(true);
           setSuccess(true);
+          setLoading(false);
         } else {
           setOpen(true);
           setSuccess(false);
+          setLoading(false);
         }
       })
       .catch((error) => {
         console.error('Error!', error.message);
         setOpen(true);
         setSuccess(false);
+        setLoading(false);
       });
   };
   return (
@@ -113,7 +137,9 @@ const CaseForm = () => {
           color="primary"
           disableElevation
         >
-          <Typography variant="subtitle1">Submit</Typography>
+          <Typography variant="subtitle1" className={classes.btnText}>
+            {loading ? <CircularProgress style={{ height: 20, width: 20 }} color="#fff" /> : 'Submit'}
+          </Typography>
         </Button>
       </form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
