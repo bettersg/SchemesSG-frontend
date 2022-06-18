@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -32,10 +32,10 @@ function Alert(props) {
 const FeedbackForm = () => {
   const classes = useStyles();
 
-  const [form, setForm] = React.useState({ NPS: '5' });
-  const [open, setOpen] = React.useState(false);
-  const [success, setSuccess] = React.useState(true);
-  const [loading, setLoading] = React.useState(false);
+  const [form, setForm] = useState({ NPS: '5' });
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setOpen(false);

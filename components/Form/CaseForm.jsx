@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 // import axios from 'axios';
 import {
   Typography, Button, TextField, Snackbar,
@@ -12,9 +12,10 @@ function Alert(props) {
 }
 
 const CaseForm = () => {
-  const [form, setForm] = React.useState({ Name: '', Email: '', Case: '' });
-  const [open, setOpen] = React.useState(false);
-  const [success, setSuccess] = React.useState(true);
+  const [form, setForm] = useState({ Name: '', Email: '', Case: '' });
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setOpen(false);

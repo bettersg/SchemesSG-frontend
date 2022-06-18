@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useState } from 'react';
 // import axios from 'axios';
 import {
   Typography, Button, TextField, Snackbar,
@@ -24,10 +24,10 @@ const useStyles = makeStyles(() => ({
 
 const EditListingForm = () => {
   const classes = useStyles();
-  const [form, setForm] = React.useState({});
-  const [open, setOpen] = React.useState(false);
-  const [success, setSuccess] = React.useState(true);
-  const [loading, setLoading] = React.useState(false);
+  const [form, setForm] = useState({});
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
