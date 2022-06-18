@@ -45,6 +45,7 @@ const CaseForm = () => {
     nameRef.current.value = '';
     emailRef.current.value = '';
     caseRef.current.value = '';
+    setForm({ Name: '', Email: '', Case: '' });
   };
 
   // Fn for shutting off Snackbar display
