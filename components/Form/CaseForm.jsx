@@ -23,14 +23,17 @@ const useStyles = makeStyles(() => ({
 }));
 
 const CaseForm = () => {
-  // setState for form input
+  // set state variable for form input
   const [form, setForm] = useState({ Name: '', Email: '', Case: '' });
   // open, setOpen: for SnackBar open/close state
   const [open, setOpen] = useState(false);
-  // setState for request to track return status for SnackBar Alert
+  // set state var for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
-  // setState for CSS spinner, for submit button
+  // set state var for CSS spinner, for submit button
   const [loading, setLoading] = useState(false);
+
+  // create variable to call useStyles to set makeStyles
+  const classes = useStyles();
 
   // useRefs for textInput value control
   const nameRef = useRef();
@@ -44,16 +47,13 @@ const CaseForm = () => {
     caseRef.current.value = '';
   };
 
-  // Fn for shutting off Snackbar when user selects close
+  // Fn for shutting off Snackbar display
   const handleClose = () => {
     // when user clicks to close SnackBar, change
     // open state to false
     setOpen(false);
     clearInputs();
   };
-
-  // create variable to call useStyles to set makeStyles
-  const classes = useStyles();
 
   // Fn for handling text input fields
   const handleChange = (e) => {
