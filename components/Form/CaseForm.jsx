@@ -152,7 +152,7 @@ const CaseForm = () => {
           inputRef={caseRef}
         />
         <Button
-          type="onClick"
+          type="button"
           variant="contained"
           color="primary"
           disableElevation
