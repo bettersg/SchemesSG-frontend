@@ -29,9 +29,9 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     marginRight: 0,
   },
-  smButton: {
-    marginTop: '0.4rem',
-  },
+  /*   smButton: {
+    marginTop: '0.0rem',
+  }, */
   btnText: {
     display: 'flex',
     justifyContent: 'center',
@@ -93,7 +93,7 @@ const HomepageHero = () => {
                   className={sm ? classes.smInput : classes.input}
                   id="query-input"
                   label=""
-                  placeholder="Dialysis patient need financial assistance and food after being retrenched due to COVID 19"
+                  placeholder=""/* Dialysis patient need financial assistance and food after being retrenched due to COVID 19 */
                   name="query"
                   value={value}
                   onChange={handleChange}
@@ -102,9 +102,9 @@ const HomepageHero = () => {
                   multiline
                   InputProps={{
                     endAdornment: (
-                      <InputAdornment position="start">
+                      <InputAdornment position="end">
                         <Button
-                          className={sm ? classes.smButton : ''}
+                          /* className={sm ? classes.smButton : ''} */
                           type="submit"
                           variant="contained"
                           color="primary"
