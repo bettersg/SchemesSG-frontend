@@ -98,7 +98,7 @@ const Listing = () => {
           {/* key added in Link tag as each Link is a child component when mapped */}
           <div className="Listing-accordions">
             {forms.map((f, i) => (
-              <Link href={`/listing#${f.hashLoc}`} key={`Link#${f.hashLoc}`} id={`LinkHref${i}`}>
+              <div key={`Link#${f.hashLoc}`} id={`LinkHref${i}`}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
@@ -136,7 +136,7 @@ const Listing = () => {
                   </AccordionSummary>
                   <AccordionDetails>{f.form}</AccordionDetails>
                 </Accordion>
-              </Link>
+              </div>
             ))}
           </div>
         </Container>
