@@ -98,7 +98,11 @@ const Listing = () => {
           {/* key added in Link tag as each Link is a child component when mapped */}
           <div className="Listing-accordions">
             {forms.map((f, i) => (
-              <div key={`Link#${f.hashLoc}`} id={`LinkHref${i}`}>
+              /* Link component changed to div: */
+              /* (i) there was no real use for the href, */
+              /* (ii) changing it to hash locators made the page move */
+              /*      each time the user clicks on the next input field. */
+              <div key={`divParent#${f.hashLoc}`} id={`divParent${i}`}>
                 <Accordion
                   elevation={3}
                   expanded={expanded === i}
