@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import Link from 'next/link';
+/* import Link from 'next/link'; */ // swapped out with div parent component L239
 import {
   Typography,
   Container,
@@ -236,7 +236,7 @@ const About = () => {
 
             <div className="About-accordions" id="accordions">
               {about.map((a, i) => (
-                <Link href="/about#accordions" key={uuidv4()}>
+                <div key={uuidv4()}>
                   <Accordion
                     elevation={0}
                     expanded={expanded === i}
@@ -269,7 +269,7 @@ const About = () => {
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                </Link>
+                </div>
               ))}
             </div>
           </Container>
