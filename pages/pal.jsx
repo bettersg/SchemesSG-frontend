@@ -203,7 +203,7 @@ const Pal = () => {
               </div>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Paper elevation={3}>
+              <Paper elevation={0}>
                 <form className="query-container" onSubmit={handleSubmit}>
                   <Typography variant="body1" style={{ textAlign: 'left' }}>
                     Tell us about your needs:
