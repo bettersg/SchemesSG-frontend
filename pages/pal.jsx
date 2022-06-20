@@ -102,13 +102,32 @@ const Pal = () => {
       method: 'POST',
       body: createFormData({ Query: searchValue, relevance: relevanceScore }),
     })
-      .then((response) => console.log('Done!', response.status))
+      .then((response) => {
+        console.log('Done!', response.status);
+      })
       .catch((error) => console.error('Error!', error.message));
 
     const url = new URL(window.location);
     url.searchParams.set('query', searchValue);
     url.searchParams.set('relevance', relevanceScore);
     window.history.pushState({}, '', url);
+
+    /* // Using Window.scrollTo: to scroll a fixed pixel distance
+          window.scrollTo({
+          top: 800,
+          behaviour: 'smooth',
+        }); */
+
+    // element.scrollIntoView: scroll to that element
+    const element = document.getElementById('SearchResults');
+    element.scrollIntoView({
+      // transition animation, smooth or auto(default).
+      behaviour: 'smooth',
+      // set Vertical Alignment
+      block: 'start',
+      // set horizontal Alignment
+      inline: 'center',
+    });
   };
 
   React.useEffect(async () => {
@@ -219,7 +238,6 @@ const Pal = () => {
                       style={{ marginBottom: 10 }}
                     />
                   </div>
-
                   <Button
                     type="submit"
                     variant="contained"
@@ -249,6 +267,7 @@ const Pal = () => {
             searchResults.data.length > 0 ? (
               <Container maxWidth="lg">
                 <Typography
+                  id="SearchResults"
                   variant="h5"
                   color="primary"
                   style={{ fontWeight: 700, marginBottom: '1rem' }}
