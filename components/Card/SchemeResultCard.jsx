@@ -13,7 +13,7 @@ const SchemeResultCard = ({
   relevance,
 }) => {
   return (
-    <Card elevation={2}>
+    <Card elevation={1}>
       <Link href={link} passHref>
         <CardActionArea
           target="_blank"

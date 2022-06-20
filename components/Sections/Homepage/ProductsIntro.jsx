@@ -81,9 +81,9 @@ const ProductsIntro = () => {
                 </div>
               </Grid>
               <Grid item md={6} xs={12}>
-                <Paper elevation={2}>
-                  <CaseForm />
-                </Paper>
+                {/* <Paper elevation={0}> */}
+                <CaseForm />
+                {/* </Paper> */}
               </Grid>
             </Grid>
           </div>
