@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-/* import Link from 'next/link'; */ // swapped out with div parent component L239
+import Link from 'next/link';
 import {
   Typography,
   Container,
@@ -36,6 +36,7 @@ const about = [
       </>
     ),
     icon: <WbIncandescentIcon style={{ marginRight: 8 }} />,
+    hashLoc: 'HowItStarted', /* added for locating in page */
   },
   {
     name: 'What this platform tries to solve',
@@ -74,6 +75,7 @@ const about = [
       </>
     ),
     icon: <LockOpenIcon style={{ marginRight: 8 }} />,
+    hashLoc: 'WhatItSolves', /* added for locating in page */
   },
   {
     name: 'Considerations behind the listings',
@@ -136,6 +138,7 @@ const about = [
       </>
     ),
     icon: <GroupWorkIcon style={{ marginRight: 8 }} />,
+    hashLoc: 'Considerations', /* added for locating in page */
   },
   {
     name: 'Technical details for geeks',
@@ -203,15 +206,21 @@ const about = [
       </>
     ),
     icon: <SettingsIcon style={{ marginRight: 8 }} />,
+    hashLoc: 'TechDetails', /* added for locating in page */
   },
 ];
 
 const About = () => {
-  const [expanded, setExpanded] = useState(0);
+  // default expanded state is 'false' to keep all accordions shut when About page first loads
+  const [expanded, setExpanded] = useState(false);
 
-  const handleChange = (panel) => (isExpanded) => {
-    setExpanded(isExpanded ? panel : 0);
+  // tweaked handleChange as per MUI docs so that accordion panels
+  // can close when you click on them again.
+  // source: https://v4.mui.com/components/accordion/ - "Controlled Accordion"
+  const handleChange = (panelIndex) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panelIndex : false);
   };
+
   return (
     <>
       <Layout title="About | Schemes SG">
@@ -236,19 +245,22 @@ const About = () => {
 
             <div className="About-accordions" id="accordions">
               {about.map((a, i) => (
-                <div key={uuidv4()}>
+                <Link href={`/about#${a.hashLoc}`} key={uuidv4()}>
                   <Accordion
                     elevation={0}
                     expanded={expanded === i}
                     onChange={handleChange(i)}
-                    /* key={a.name} */
+                    key={`Accor${a.hashLoc}`}
                     style={{ margin: '16px 0' }}
                     TransitionProps={{ timeout: 0, unmountOnExit: true }} /* unmount component after it finishes exiting */
                   >
                     <AccordionSummary
                       expandIcon={expanded !== i && <ExpandMoreIcon />}
                       aria-controls="panel1bh-content"
-                      id="panel1bh-header"
+                      id={a.hashLoc}
+                      /* previous id: */
+                      /* id="panel1bh-header" */
+                      key={`AccordSumm${a.hashLoc}`} /* added key here to speed up react rendering */
                     >
                       <Typography
                         variant="h6"
@@ -269,7 +281,7 @@ const About = () => {
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                </div>
+                </Link>
               ))}
             </div>
           </Container>
