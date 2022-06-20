@@ -81,8 +81,8 @@ const Listing = () => {
     expandUrlPanel(currentURL);
   }, []);
 
-  const handleAccordion = (panel) => (isExpanded) => {
-    setExpanded(isExpanded ? panel : 0);
+  const handleAccordion = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
   };
   return (
     <>
