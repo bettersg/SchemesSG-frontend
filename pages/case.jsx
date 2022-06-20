@@ -45,7 +45,7 @@ const Case = () => (
             </div>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Paper elevation={3}>
+            <Paper elevation={0}>
               <CaseForm />
             </Paper>
           </Grid>

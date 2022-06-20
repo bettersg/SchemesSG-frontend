@@ -238,7 +238,7 @@ const About = () => {
               {about.map((a, i) => (
                 <Link href="/about#accordions" key={uuidv4()}>
                   <Accordion
-                    elevation={3}
+                    elevation={0}
                     expanded={expanded === i}
                     onChange={handleChange(i)}
                     /* key={a.name} */

@@ -104,7 +104,7 @@ const Listing = () => {
               /*      each time the user clicks on the next input field. */
               <div key={`divParent#${f.hashLoc}`} id={`divParent${i}`}>
                 <Accordion
-                  elevation={3}
+                  elevation={0}
                   expanded={expanded === i}
                   onChange={handleAccordion(i)}
                   key={f.name}
@@ -171,6 +171,10 @@ const Listing = () => {
       </Layout>
       <style jsx>
         {`
+          .bkgdColor{
+            background-color: #FAFAFA !important;
+          }
+
           .Listing-root {
             position: relative;
           }
