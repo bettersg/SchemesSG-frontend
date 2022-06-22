@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import Prismic from '@prismicio/client';
 import {
