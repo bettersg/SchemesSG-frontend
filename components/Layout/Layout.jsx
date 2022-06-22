@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable arrow-body-style */
 import React from 'react';
 import Head from 'next/head';
