@@ -11,12 +11,10 @@ const BlogpostCard = ({ post }) => {
       <div className="BlogpostCard-root">
         <Link href={`/blog/${post.uid}`} passHref>
           <a href={`/blog/${post.uid}`}>
-            <div className="BlogImage">
-              <img
-                src={post.data.featured_image.url}
-                alt={post.data.featured_image.alt}
-              />
-            </div>
+            <img
+              src={post.data.featured_image.url}
+              alt={post.data.featured_image.alt}
+            />
             <div className="BlogpostCard-details">
               <div className="cat-and-date">
                 {convertDate(post.data.updated_on)}
