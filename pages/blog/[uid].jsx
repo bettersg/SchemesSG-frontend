@@ -105,7 +105,7 @@ export async function getStaticProps({ params }) {
     // info: https://nextjs.org/docs/basic-features/data-fetching/incremental-static-regeneration
     // Next.js will attempt to re-generate the page:
     // - when a request comes in
-    // - at most once every 5 seonds
-    /* revalidate: 5, // in secs   */
+    // - at most once every 10 seonds
+    revalidate: 10, // in secs
   };
 }
