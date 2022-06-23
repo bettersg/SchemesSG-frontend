@@ -14,7 +14,7 @@ import BlogpostHandler from '../../components/Card/BlogpostHandler';
 import { breakpoints } from '../../constants/design';
 
 const Blogpost = ({ post }) => {
-  console.log('post =', post);
+  /* console.log('post =', post); */
   return (
     <>
       <Layout
