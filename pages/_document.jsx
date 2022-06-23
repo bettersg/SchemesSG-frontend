@@ -8,11 +8,11 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
   render() {
-    const { isDevelopment } = this.props;
+    const { isProduction } = this.props;
     return (
       <Html lang="en">
         <Head>
-          {isDevelopment && (
+          { isProduction && (
             <>
               <script
                 async
@@ -46,7 +46,9 @@ MyDocument.getInitialProps = async (ctx) => {
   // Render app and page and get the context of the page with collected side effects.
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  // trim() is used to remove any whitespace before or after the string
+  // source: https://stackoverflow.com/questions/39529870/ifprocess-env-node-env-production-always-false
+  const isProduction = process.env.NODE_ENV.trim() === 'production';
 
   ctx.renderPage = () => originalRenderPage({
     enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
@@ -56,7 +58,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   return {
     ...initialProps,
-    isDevelopment,
+    isProduction,
     styles: [
       ...React.Children.toArray(initialProps.styles),
       sheets.getStyleElement(),
