@@ -3,17 +3,13 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable prefer-const */
 /* eslint-disable no-console */
-import React, { useEffect } from 'react';
-import Prismic from '@prismicio/client';
-import { Container } from '@material-ui/core';
-import { RichText } from 'prismic-reactjs';
+import React from 'react';
+/* import { RichText } from 'prismic-reactjs'; */
 import { v4 as uuidv4 } from 'uuid';
-import { linkResolver } from '../../utils/prismic';
+/* import { linkResolver } from '../../utils/prismic'; */
 import { breakpoints } from '../../constants/design';
 
 const BlogpostHandler = ({ post }) => {
-  console.log('post =', post);
-
   return (
     <>
       {post.data.post_content.map((object, i) => {
