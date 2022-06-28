@@ -28,6 +28,9 @@ import IconContainer from '../components/Container/IconContainer';
 import { colors } from '../constants/design';
 import SchemeResultCard from '../components/Card/SchemeResultCard';
 import { createFormData } from '../utils';
+/* import {
+  checkPalQuery,
+} from '../utils/dataValidation'; */
 
 const LightTooltip = withStyles((theme) => ({
   tooltip: {

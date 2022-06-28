@@ -9,6 +9,12 @@ import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
+import {
+  checkName,
+  checkEmail,
+  checkScheme,
+  checkUpdate,
+} from '../../utils/dataValidation';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -25,13 +31,23 @@ const useStyles = makeStyles(() => ({
 
 const EditListingForm = () => {
   // set state var. for form input
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    Name: '',
+    Email: '',
+    Scheme: '',
+    Update: '',
+  });
   // set state var. for SnackVar open/close state
   const [open, setOpen] = useState(false);
   // set state var. for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
   // set state var. for CSS Spinner, for EditListing submit Button
   const [loading, setLoading] = useState(false);
+
+  // DV: set stateVariable for counting correct inputs
+  const [count, setCount] = useState(0);
+  // DV: statevariable for checked result object of inputs
+  const [outcomesArr, setOutcomesArr] = useState([]);
 
   // create variable to useStyles to set makeStyles
   const classes = useStyles();
@@ -56,37 +72,63 @@ const EditListingForm = () => {
     setOpen(false);
   };
 
+  // FN: set CheckedOutcomes
+  const setInputs = () => {
+    const checkedOutcomes = {
+      name: checkName(form.Name),
+      email: checkEmail(form.Email),
+      scheme: checkScheme(form.Scheme),
+      update: checkUpdate(form.Update),
+    };
+    setOutcomesArr(Object.values(checkedOutcomes));
+    console.log('outcomesArr =', outcomesArr);
+    setCount(0);
+    for (let i = 0; i < outcomesArr.length; i += 1) {
+      if (outcomesArr[i] === 'PASS') {
+        setCount((count) => count += 1);
+      }
+    }
+  };
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setInputs();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const scriptURLedit = 'https://script.google.com/macros/s/AKfycbyXWqdWuzjOgOyiF46jY_LuGk9u0dzDpFnBgWSvQoGu2IBg4Q8/exec';
+    await setInputs();
+    if (count === 4) {
+      console.log(count);
+      setLoading(true);
+      const scriptURLedit = 'https://script.google.com/macros/s/AKfycbyXWqdWuzjOgOyiF46jY_LuGk9u0dzDpFnBgWSvQoGu2IBg4Q8/exec';
 
-    fetch(scriptURLedit, {
-      method: 'POST',
-      body: createFormData(form),
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          clearInputs();
-          setOpen(true);
-          setSuccess(true);
-          setLoading(false);
-        } else {
+      fetch(scriptURLedit, {
+        method: 'POST',
+        body: createFormData(form),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            clearInputs();
+            setOpen(true);
+            setSuccess(true);
+            setLoading(false);
+          } else {
+            setOpen(true);
+            setSuccess(false);
+            setLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.error('Error!', error.message);
           setOpen(true);
           setSuccess(false);
           setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error('Error!', error.message);
-        setOpen(true);
-        setSuccess(false);
-        setLoading(false);
-      });
+        });
+    } else if (count < 4) {
+      setCount(0);
+      console.log('else Counted =', count);
+    }
   };
   return (
     <>
@@ -98,6 +140,8 @@ const EditListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkName(form.Name) !== 'PASS'}
+          helperText={(checkName(form.Name) === 'PASS') ? '' : checkName(form.Name)}
           placeholder="e.g. John Tan"
           fullWidth
           margin="normal"
@@ -117,6 +161,8 @@ const EditListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkEmail(form.Email) !== 'PASS'}
+          helperText={(checkEmail(form.Email) === 'PASS') ? '' : checkEmail(form.Email)}
           type="email"
           placeholder="e.g. abc@123.com"
           fullWidth
@@ -136,6 +182,8 @@ const EditListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkScheme(form.Scheme) !== 'PASS'}
+          helperText={(checkScheme(form.Scheme) === 'PASS') ? '' : checkScheme(form.Scheme)}
           placeholder="e.g. ABC Financial Assistance"
           fullWidth
           margin="normal"
@@ -155,6 +203,8 @@ const EditListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkUpdate(form.Update) !== 'PASS'}
+          helperText={(checkUpdate(form.Update) === 'PASS') ? '' : checkUpdate(form.Update)}
           placeholder="e.g. Original listing mentions that this scheme provides X. Actually it provides Y instead etc."
           fullWidth
           margin="normal"

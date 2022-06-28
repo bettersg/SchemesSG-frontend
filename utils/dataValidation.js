@@ -2,25 +2,26 @@
 /* eslint-disable no-useless-escape */
 
 export const checkName = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please enter your name.';
   }
   // ensure user fills up full name
-  else if (inputString.trim().split(' ').length < 2) {
+  else if ((inputString.trim().split(' ').length < 2)) {
     output = 'Please provide your full name.';
   }
   // name contains only alpha characters
   else if (/^[A-Za-z ]+$/.test(inputString) !== true) {
     output = 'Name entries should not contain any special characters or numbers.';
   }
+
   return output;
 };
 
 export const checkEmail = (inputString) => {
-  let output;
-  // check for empty string
+  let output = 'PASS';
+  // check for empty string ***OVERRULED BY BELOW CODE***
   if (inputString === '') {
     output = 'Please enter your email.';
   }
@@ -32,7 +33,7 @@ export const checkEmail = (inputString) => {
 };
 
 export const checkScheme = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please enter name of the scheme.';
@@ -54,7 +55,7 @@ export const checkScheme = (inputString) => {
 };
 
 export const checkOrg = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please enter name of the organsation.';
@@ -63,7 +64,7 @@ export const checkOrg = (inputString) => {
 };
 
 export const checkDescript = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please provide a short description of the scheme.';
@@ -72,7 +73,7 @@ export const checkDescript = (inputString) => {
 };
 
 export const checkUrl = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please enter a url.';
@@ -85,7 +86,7 @@ export const checkUrl = (inputString) => {
 };
 
 export const checkKeywords = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please provide keyword/s for your listing.';
@@ -94,7 +95,7 @@ export const checkKeywords = (inputString) => {
 };
 
 export const checkUpdate = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please enter the update information for the listing to update.';
@@ -103,7 +104,7 @@ export const checkUpdate = (inputString) => {
 };
 
 export const checkFeedback = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please enter your feedback in the feedback input field.';
@@ -112,7 +113,7 @@ export const checkFeedback = (inputString) => {
 };
 
 export const checkPalQuery = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
     output = 'Please type the help you need into the text input field before hitting the submit button.';
@@ -121,10 +122,10 @@ export const checkPalQuery = (inputString) => {
 };
 
 export const checkCase = (inputString) => {
-  let output;
+  let output = 'PASS';
   // check for empty string
   if (inputString === '') {
-    output = 'Please fill up the area that requires more research in the text input field before hitting the submit buitton.';
+    output = 'Please let us know which area requires more research.';
   }
   return output;
 };

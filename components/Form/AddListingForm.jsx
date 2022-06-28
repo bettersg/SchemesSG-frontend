@@ -1,3 +1,7 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable no-shadow */
+/* eslint-disable prefer-const */
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import React, { useState, useRef } from 'react';
 // import axios from 'axios';
@@ -12,6 +16,15 @@ import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
+import {
+  checkName,
+  checkEmail,
+  checkScheme,
+  checkOrg,
+  checkDescript,
+  checkUrl,
+  checkKeywords,
+} from '../../utils/dataValidation';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -28,13 +41,33 @@ const useStyles = makeStyles(() => ({
 
 const AddListingForm = () => {
   // set state var. for form input
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    Name: '',
+    Email: '',
+    Scheme: '',
+    Agency: '',
+    Description: '',
+    URL: '',
+    Tags: '',
+  });
   // set state var. for SnackBar open/close state
   const [open, setOpen] = useState(false);
   // set state var. for request to track return status for SnackBar Alert
   const [success, setSuccess] = useState(true);
   // set state var for CSS spinner, for AddListing submit button
   const [loading, setLoading] = useState(false);
+
+  // DV message state variable
+  const [dvMsg, setDvMsg] = useState([]);
+
+  // set stateVariable for counting correct inputs
+  const [count, setCount] = useState(0);
+
+  // statevariable for checked result object of inputs
+  const [outcomesArr, setOutcomesArr] = useState([]);
+
+  // State Variable for dV Snackbar status (open or closed)
+  const [dvSnkBr, setDvSnkBr] = useState('no Status');
 
   // create variable to call useStyles to set makeStyles
   const classes = useStyles();
@@ -65,37 +98,66 @@ const AddListingForm = () => {
     setOpen(false);
   };
 
+  // FN: set CheckedOutcomes
+  const setInputs = () => {
+    const checkedOutcomes = {
+      name: checkName(form.Name),
+      email: checkEmail(form.Email),
+      scheme: checkScheme(form.Scheme),
+      agency: checkOrg(form.Agency),
+      description: checkDescript(form.Description),
+      URL: checkUrl(form.URL),
+      Keywords: checkKeywords(form.Tags),
+    };
+    setOutcomesArr(Object.values(checkedOutcomes));
+    console.log('outcomesArr =', outcomesArr);
+    setCount(0);
+    for (let i = 0; i < outcomesArr.length; i += 1) {
+      if (outcomesArr[i] === 'PASS') {
+        setCount(count => count += 1);
+      }
+    }
+  };
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setInputs();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const scriptURLadd = 'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
+    await setInputs();
+    if (count === 7) {
+      console.log(count);
+      setLoading(true);
+      const scriptURLadd = 'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
 
-    fetch(scriptURLadd, {
-      method: 'POST',
-      body: createFormData(form),
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          clearInputs();
-          setOpen(true);
-          setSuccess(true);
-          setLoading(false);
-        } else {
+      fetch(scriptURLadd, {
+        method: 'POST',
+        body: createFormData(form),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            clearInputs();
+            setOpen(true);
+            setSuccess(true);
+            setLoading(false);
+          } else {
+            setOpen(true);
+            setSuccess(false);
+            setLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.error('Error!', error.message);
           setOpen(true);
           setSuccess(false);
           setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error('Error!', error.message);
-        setOpen(true);
-        setSuccess(false);
-        setLoading(false);
-      });
+        });
+    } else if (count < 7) {
+      setCount(0);
+      console.log('else Counted =', count);
+    }
   };
   return (
     <>
@@ -107,6 +169,8 @@ const AddListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkName(form.Name) !== 'PASS'}
+          helperText={(checkName(form.Name) === 'PASS') ? '' : checkName(form.Name)}
           placeholder="e.g. John Tan"
           fullWidth
           margin="normal"
@@ -126,6 +190,8 @@ const AddListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkEmail(form.Email) !== 'PASS'}
+          helperText={(checkEmail(form.Email) === 'PASS') ? '' : checkEmail(form.Email)}
           type="email"
           placeholder="e.g. abc@123.com"
           fullWidth
@@ -145,6 +211,8 @@ const AddListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkScheme(form.Scheme) !== 'PASS'}
+          helperText={(checkScheme(form.Scheme) === 'PASS') ? '' : checkScheme(form.Scheme)}
           placeholder="e.g. ABC Financial Assistance"
           fullWidth
           margin="normal"
@@ -165,6 +233,8 @@ const AddListingForm = () => {
           onChange={handleChange}
           label=""
           placeholder="e.g. ABC Charity Singapore"
+          error={checkScheme(form.Agency) !== 'PASS'}
+          helperText={(checkScheme(form.Agency) === 'PASS') ? '' : checkScheme(form.Agency)}
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -183,6 +253,8 @@ const AddListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkDescript(form.Description) !== 'PASS'}
+          helperText={(checkDescript(form.Description) === 'PASS') ? '' : checkDescript(form.Description)}
           placeholder="e.g. Financial assistance for low income, etc."
           fullWidth
           margin="normal"
@@ -202,6 +274,8 @@ const AddListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkUrl(form.URL) !== 'PASS'}
+          helperText={(checkUrl(form.URL) === 'PASS') ? '' : checkUrl(form.URL)}
           placeholder="e.g. http://www.abccharity.com.sg"
           fullWidth
           margin="normal"
@@ -221,6 +295,8 @@ const AddListingForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          error={checkKeywords(form.Tags) !== 'PASS'}
+          helperText={(checkKeywords(form.Tags) === 'PASS') ? '' : checkKeywords(form.Tags)}
           placeholder="e.g. Low Income, Healthcare"
           fullWidth
           margin="normal"

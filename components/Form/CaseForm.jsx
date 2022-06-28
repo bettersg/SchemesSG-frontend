@@ -8,6 +8,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { createFormData } from '../../utils';
+import {
+  checkName,
+  checkEmail,
+  checkCase,
+} from '../../utils/dataValidation';
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -31,6 +36,11 @@ const CaseForm = () => {
   const [success, setSuccess] = useState(true);
   // set state var for CSS spinner, for submit button
   const [loading, setLoading] = useState(false);
+
+  // DV: set stateVariable for counting correct inputs
+  const [count, setCount] = useState(0);
+  // DV: statevariable for checked result object of inputs
+  const [outcomesArr, setOutcomesArr] = useState([]);
 
   // create variable to call useStyles to set makeStyles
   const classes = useStyles();
@@ -56,38 +66,63 @@ const CaseForm = () => {
     clearInputs();
   };
 
+  // FN: set CheckedOutcomes
+  const setInputs = () => {
+    const checkedOutcomes = {
+      name: checkName(form.Name),
+      email: checkEmail(form.Email),
+      scheme: checkCase(form.Case),
+    };
+    setOutcomesArr(Object.values(checkedOutcomes));
+    console.log('outcomesArr =', outcomesArr);
+    setCount(0);
+    for (let i = 0; i < outcomesArr.length; i += 1) {
+      if (outcomesArr[i] === 'PASS') {
+        setCount((count) => count += 1);
+      }
+    }
+  };
+
   // Fn for handling text input fields
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setInputs();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const scriptURLschemescase = 'https://script.google.com/macros/s/AKfycbyqGHt2p224ebUahB6XDOgxtru9fvXm3YonCKcPus--p8e57TFB/exec';
+    await setInputs();
+    if (count === 3) {
+      console.log(count);
+      setLoading(true);
+      const scriptURLschemescase = 'https://script.google.com/macros/s/AKfycbyqGHt2p224ebUahB6XDOgxtru9fvXm3YonCKcPus--p8e57TFB/exec';
 
-    fetch(scriptURLschemescase, {
-      method: 'POST',
-      body: createFormData(form),
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          clearInputs();
-          setOpen(true);
-          setSuccess(true);
-          setLoading(false);
-        } else {
+      fetch(scriptURLschemescase, {
+        method: 'POST',
+        body: createFormData(form),
+      })
+        .then((response) => {
+          if (response.status === 200) {
+            clearInputs();
+            setOpen(true);
+            setSuccess(true);
+            setLoading(false);
+          } else {
+            setOpen(true);
+            setSuccess(false);
+            setLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.error('Error!', error.message);
           setOpen(true);
           setSuccess(false);
           setLoading(false);
-        }
-      })
-      .catch((error) => {
-        console.error('Error!', error.message);
-        setOpen(true);
-        setSuccess(false);
-        setLoading(false);
-      });
+        });
+    } else if (count < 3) {
+      setCount(0);
+      console.log('else Counted =', count);
+    }
   };
   return (
     <>
@@ -99,6 +134,7 @@ const CaseForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          helperText={(checkName(form.Name) === 'PASS') ? '' : checkName(form.Name)}
           placeholder="e.g. John Tan"
           style={{ marginTop: 5, marginBottom: 15 }}
           fullWidth
@@ -118,6 +154,7 @@ const CaseForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          helperText={(checkEmail(form.Email) === 'PASS') ? '' : checkEmail(form.Email)}
           type="email"
           placeholder="e.g. abc@123.com"
           fullWidth
@@ -137,6 +174,7 @@ const CaseForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
+          helperText={(checkCase(form.Case) === 'PASS') ? '' : checkCase(form.Case)}
           placeholder="e.g. I can't find schemes for caregivers with chronic conditions etc..."
           multiline
           rows={3}

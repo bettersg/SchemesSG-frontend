@@ -13,7 +13,7 @@ import {
   checkFeedback,
   checkPalQuery,
   checkCase,
-} from '../utils/dataValidation.js';
+} from '../utils/dataValidation';
 
 describe('Data Validation:', () => {
   describe('-Name Input Field:', () => {
