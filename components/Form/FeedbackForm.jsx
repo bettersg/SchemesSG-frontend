@@ -98,16 +98,17 @@ const FeedbackForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     await setInputs();
     if (count === 3) {
-      console.log(count);
+      e.preventDefault();
       setLoading(true);
+      console.log('Number of valid input fields =', count);
       const scriptURLfeedback = 'https://script.google.com/macros/s/AKfycbwN3CXj_MHbWqSU_HuoIMUbjrPFZc0WKKs6d0HLiW2qXZ0ih_5G/exec';
 
       fetch(scriptURLfeedback, {
         method: 'POST',
         body: createFormData(form),
+        mode: 'no-cors',
       })
         .then((response) => {
           if (response.status === 200) {

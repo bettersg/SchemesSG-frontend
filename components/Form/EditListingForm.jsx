@@ -96,16 +96,17 @@ const EditListingForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     await setInputs();
     if (count === 4) {
-      console.log(count);
+      e.preventDefault();
       setLoading(true);
+      console.log('No. of valid input fields =', count);
       const scriptURLedit = 'https://script.google.com/macros/s/AKfycbyXWqdWuzjOgOyiF46jY_LuGk9u0dzDpFnBgWSvQoGu2IBg4Q8/exec';
 
       fetch(scriptURLedit, {
         method: 'POST',
         body: createFormData(form),
+        mode: 'no-cors',
       })
         .then((response) => {
           if (response.status === 200) {

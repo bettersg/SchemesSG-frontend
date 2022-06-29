@@ -90,16 +90,17 @@ const CaseForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     await setInputs();
     if (count === 3) {
-      console.log(count);
+      e.preventDefault();
       setLoading(true);
+      console.log('No. of valid input fields =', count);
       const scriptURLschemescase = 'https://script.google.com/macros/s/AKfycbyqGHt2p224ebUahB6XDOgxtru9fvXm3YonCKcPus--p8e57TFB/exec';
 
       fetch(scriptURLschemescase, {
         method: 'POST',
         body: createFormData(form),
+        mode: 'no-cors',
       })
         .then((response) => {
           if (response.status === 200) {

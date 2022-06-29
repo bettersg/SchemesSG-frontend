@@ -57,17 +57,10 @@ const AddListingForm = () => {
   // set state var for CSS spinner, for AddListing submit button
   const [loading, setLoading] = useState(false);
 
-  // DV message state variable
-  const [dvMsg, setDvMsg] = useState([]);
-
-  // set stateVariable for counting correct inputs
+  // DV: set stateVariable for counting correct inputs
   const [count, setCount] = useState(0);
-
-  // statevariable for checked result object of inputs
+  // DV: statevariable for checked result object of inputs
   const [outcomesArr, setOutcomesArr] = useState([]);
-
-  // State Variable for dV Snackbar status (open or closed)
-  const [dvSnkBr, setDvSnkBr] = useState('no Status');
 
   // create variable to call useStyles to set makeStyles
   const classes = useStyles();
@@ -125,16 +118,17 @@ const AddListingForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     await setInputs();
     if (count === 7) {
-      console.log(count);
+      e.preventDefault();
       setLoading(true);
+      console.log('No. of valid input fields =', count);
       const scriptURLadd = 'https://script.google.com/macros/s/AKfycbzc8abpu0k4c9zs3ELG4aRY0HkjZksEIMQbam2sA31C4kqFzrwU/exec';
 
       fetch(scriptURLadd, {
         method: 'POST',
         body: createFormData(form),
+        mode: 'no-cors',
       })
         .then((response) => {
           if (response.status === 200) {
