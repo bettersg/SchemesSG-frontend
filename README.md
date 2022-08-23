@@ -1,8 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- @format -->
+
+# Schemes.SG - Social Welfare Scheme Aggregator
+
+[Schemes.sg](https://schemes.sg/) allows aid workers to quickly find relevant assistance schemes. It provides a directory of social assistance schemes offered by govt agencies, self-help groups, VWOs, and more (the directory is kept comprehensive and updated by volunteers).
+
+SchemesSG has an active and growing user base among aid workers in Singapore.
 
 Project board is [here](https://github.com/orgs/bettersg/projects/3).
 
-## Getting Started
+Demo Video of the old site(V2) is [here] (https://www.youtube.com/watch?v=xl2cw5GBNGg)
+
+## Key Features:
+
+**Schemes Bank**
+Full repository of known aid schemes and help with helpful description.
+
+**Schemes Pal**
+AI/NLP based search engine that fetches as much as possible relevant and useful results for the inquiries of the social workers (SW) using the app. The search engine takes user's input from the search bar and conducts a fuzzy search of the schemes in the Bank using NLP, and returns schemes above confidence threshold. User can adjust the confidence threshold based on the scope they require
+
+**Schemes Case**
+A 'concierge service' where the Schemes.sg team selects recurrent SchemesPal submissions, and/or collect specific requests via the dedicated Schemes Case form to follow up for further research.
+
+The team then identifies the schemes from the repository which may help, and can also conduct further research to find out what areas or gaps the Bank failed to cover.
+
+After anonymising, the schemes for this profile are publish and the Bank is updated.
+
+## Technologies
+
+Front-End
+
+- NEXT.Js
+- React
+- Material UI
+- JavaScript
+- Mocha
+- Chai
+
+Back-end
+
+- GENSIM
+- spaCy
+- Python
+- Google Data Studio
+- Prismic CMS
+
+## Schemes SG Team
+
+- Tan Weilie - Product Lead, Engineer
+- Hong Chiong - Front End Engineer
+- Joel - Backend and Deployment Engineer
+
+* Quintus - ML Engineer
+* Catrina - Comms and Outreach
+* Karn - UX Research and Content
+* Kenneth - Schemes Research I/C
+* Karthig - Schemes Research I/C 2
+
+## Other Contributors
+
+- Ray Ho - Frontend work to complete porting over to NEXT.Js React and Material UI
+
+## NEXT.Js Getting Started
 
 First, run the development server:
 
