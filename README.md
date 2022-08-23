@@ -8,17 +8,20 @@ SchemesSG has an active and growing user base among aid workers in Singapore.
 
 Project board is [here](https://github.com/orgs/bettersg/projects/3).
 
-Demo Video of the old site(V2) is [here] (https://www.youtube.com/watch?v=xl2cw5GBNGg)
+Demo Video of the old site(V2) is [here](https://www.youtube.com/watch?v=xl2cw5GBNGg).
 
 ## Key Features:
 
 **Schemes Bank**
+
 Full repository of known aid schemes and help with helpful description.
 
 **Schemes Pal**
+
 AI/NLP based search engine that fetches as much as possible relevant and useful results for the inquiries of the social workers (SW) using the app. The search engine takes user's input from the search bar and conducts a fuzzy search of the schemes in the Bank using NLP, and returns schemes above confidence threshold. User can adjust the confidence threshold based on the scope they require
 
 **Schemes Case**
+
 A 'concierge service' where the Schemes.sg team selects recurrent SchemesPal submissions, and/or collect specific requests via the dedicated Schemes Case form to follow up for further research.
 
 The team then identifies the schemes from the repository which may help, and can also conduct further research to find out what areas or gaps the Bank failed to cover.
@@ -27,7 +30,7 @@ After anonymising, the schemes for this profile are publish and the Bank is upda
 
 ## Technologies
 
-Front-End
+**Frontend:**
 
 - NEXT.Js
 - React
@@ -36,7 +39,7 @@ Front-End
 - Mocha
 - Chai
 
-Back-end
+**Backend:**
 
 - GENSIM
 - spaCy
