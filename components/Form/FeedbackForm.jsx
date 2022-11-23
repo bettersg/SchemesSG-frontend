@@ -15,7 +15,6 @@ import { breakpoints } from '../../constants/design';
 import { createFormData } from '../../utils';
 import {
   checkName,
-  checkEmail,
   checkFeedback,
 } from '../../utils/dataValidation';
 
@@ -164,8 +163,6 @@ const FeedbackForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
-          error={checkEmail(form.Email) !== 'PASS'}
-          helperText={(checkEmail(form.Email) === 'PASS') ? '' : checkEmail(form.Email)}
           type="email"
           placeholder="e.g. abc@123.com"
           fullWidth

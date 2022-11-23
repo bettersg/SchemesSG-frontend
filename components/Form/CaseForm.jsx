@@ -10,7 +10,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { createFormData } from '../../utils';
 import {
   checkName,
-  checkEmail,
   checkCase,
 } from '../../utils/dataValidation';
 
@@ -155,7 +154,6 @@ const CaseForm = () => {
           id="outlined-full-width"
           onChange={handleChange}
           label=""
-          helperText={(checkEmail(form.Email) === 'PASS') ? '' : checkEmail(form.Email)}
           type="email"
           placeholder="e.g. abc@123.com"
           fullWidth
